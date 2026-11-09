@@ -38,10 +38,14 @@ and staggered bars. Zero JS. Decided with the user: *"si tu recomendacion"*.
 Acceptance: renders without JS; static final state under `prefers-reduced-motion`;
 readable in both themes.
 
-**S5 — Proof strip.**
-Four metrics directly under the hero, sourced only from `src/data/metrics.ts`:
-`29.5M` rows in a star schema · `S/ 0.00` reconciliation difference · `0.3%` one-year
-forecast error · `131` automated tests. Values must match the case-study repositories.
+**S5 — Positioning band, not a metrics band.**
+The band under the hero states three capabilities, in this order: business judgement,
+technical execution, audit-grade rigour. Each pillar carries one proof line that links
+to the case study that demonstrates it. Numbers are evidence, not the pitch: they appear
+inside a pillar's proof line and inside case studies, never as the headline message.
+Requirement (verbatim): *"el portafolio es para decir en que soy bueno en vez de
+metricas ,seria como logica de negioc , habilidade tecnica y algo mas"*.
+Acceptance: three pillars, three proof lines, no standalone metric grid.
 
 **S6 — Three case studies, fixed narrative.**
 Each case page has exactly five sections, in this order: The question · What I found ·
@@ -56,7 +60,10 @@ to the repository for depth. Site copy is not a verbatim copy of the READMEs.
 
 **S8 — Header.**
 `Work` · `About` · `EN|ES` · theme toggle · `CV ↓`. Maximum five targets. Mobile menu
-under 768px.
+under 768px. Outbound profiles carry their official brand mark: GitHub and LinkedIn
+appear with their logos in the hero and the footer, never as bare text links.
+Requirement (verbatim): *"que lo del linkedin y guthut pues tenga sus loigos
+corresponientes"*.
 
 **S9 — About page and CV.**
 Bio, experience timeline, capability groups (FP&A modelling / Analytics engineering /
@@ -175,4 +182,13 @@ drift across sessions.
   S/ 0.00 across 29.5M rows, 0.3% one-year forecast error, 131 and 74 automated tests,
   17.4M enrollment records across 174 universities.
 
+**L4 (positioning over metrics, verbatim)**
+
+> si m[Image 1]  eso de las metricas  , nose  , es como  basicametne el portafolio es para decir en que soy bueno en vez de metricas  ,seria como  logica de negioc  , habilidade tecnica  y  algo mas  , osea el protafolio es algo mas vendible y mejraod y los poryectos tambien  por asi decirlo , algo asi  que lo del linkedin  y guthut  pues tenga sus loigos corresponientes  ,
+
+Applied: `ProofStrip` removed; `Pillars` added (business judgement / technical execution /
+audit-grade rigour, each with one proof line); metrics demoted to evidence; GitHub and
+LinkedIn brand marks added to hero and footer.
+
 **Next step:** T0 scaffold, then first deploy to confirm the pipeline before content work.
+

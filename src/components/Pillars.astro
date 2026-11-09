@@ -1,0 +1,48 @@
+---
+/**
+ * Positioning first, evidence second.
+ * Each pillar states a capability; the link underneath carries the proof.
+ * Numbers are demoted to evidence — they live in the case studies, not the pitch.
+ */
+const pillars = [
+  {
+    index: '01',
+    title: 'Business judgement',
+    body: 'I start from the question leadership is actually asking, not from the dataset. Read the P&L, find the driver, size the decision — before writing a line of code.',
+    proof: 'Revenue grew 0.9% while profit fell 61%',
+    href: '/work/',
+  },
+  {
+    index: '02',
+    title: 'Technical execution',
+    body: 'Python, SQL, DuckDB, Power BI. Pipelines and models that run again tomorrow without someone babysitting them.',
+    proof: '29.5M rows into a star schema that reconciles to S/ 0.00',
+    href: '/work/',
+  },
+  {
+    index: '03',
+    title: 'Audit-grade rigour',
+    body: 'Every figure traceable to a file, sheet and cell. Every assumption written down. Every gap left visible instead of smoothed away.',
+    proof: '€150,000 of unsupported expenses kept visible',
+    href: '/work/',
+  },
+];
+---
+
+<section class="pillars" aria-label="What I bring">
+  <div class="container pillars-grid">
+    {
+      pillars.map((p) => (
+        <article class="pillar">
+          <span class="pillar-index">{p.index}</span>
+          <h3>{p.title}</h3>
+          <p>{p.body}</p>
+          <a class="pillar-proof" href={p.href}>
+            <span class="arrow" aria-hidden="true">&rarr;</span>
+            <span>{p.proof}</span>
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</section>

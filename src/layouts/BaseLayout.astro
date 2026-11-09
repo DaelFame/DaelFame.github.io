@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import Github from '../components/Github.astro';
+import Linkedin from '../components/Linkedin.astro';
 
 interface Props {
   title: string;
@@ -63,9 +65,11 @@ const { title, description, lang = 'en' } = Astro.props;
     <footer class="site-footer">
       <div class="container footer-inner">
         <span>&copy; {new Date().getFullYear()} Joaquin Cardenas &middot; Arequipa, Peru</span>
-        <span class="row">
-          <a href="https://github.com/DaelFame">GitHub</a>
-          <a href="https://www.linkedin.com/in/joaquincardenas-data">LinkedIn</a>
+        <span class="row footer-links">
+          <a href="https://github.com/DaelFame"><Github class="brand-icon" /><span>GitHub</span></a>
+          <a href="https://www.linkedin.com/in/joaquincardenas-data">
+            <Linkedin class="brand-icon" /><span>LinkedIn</span>
+          </a>
           <a href="mailto:hello@example.com">Email</a>
         </span>
       </div>

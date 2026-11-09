@@ -217,6 +217,13 @@ p {
   opacity: 0.92;
 }
 
+.brand-icon {
+  width: 15px;
+  height: 15px;
+  color: currentColor;
+  flex-shrink: 0;
+}
+
 .btn-ghost {
   background: transparent;
   color: var(--ink);
@@ -412,41 +419,64 @@ p {
   }
 }
 
-/* ---------- proof strip ---------- */
+/* ---------- pillars ---------- */
 
-.proof {
+.pillars {
   border-block: 1px solid var(--line);
   background: var(--paper-2);
 }
 
-.proof-grid {
+.pillars-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem 1rem;
-  padding-block: 1.75rem;
+  padding-block: clamp(2.5rem, 6vw, 4rem);
 }
 
-.proof-item .num {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--ink);
-  line-height: 1.1;
+.pillar {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
 }
 
-.proof-item p {
+.pillar-index {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+.pillar h3 {
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
+}
+
+.pillar p {
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+  max-width: 34ch;
+}
+
+.pillar-proof {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  margin-block-start: 0.25rem;
+  padding-block-start: 0.875rem;
+  border-block-start: 1px solid var(--line);
   font-size: 0.8125rem;
   color: var(--muted);
-  margin-block-start: 0.25rem;
+  transition: color var(--dur) var(--ease);
 }
 
-/* ---------- capability cards ---------- */
-
-.cap-grid {
-  display: grid;
-  gap: 1rem;
-  margin-block-start: 2rem;
+.pillar-proof:hover {
+  color: var(--accent);
 }
+
+.pillar-proof .arrow {
+  color: var(--accent);
+}
+
+
+/* ---------- cards ---------- */
 
 .card {
   border: 1px solid var(--line);
@@ -501,6 +531,12 @@ p {
   color: var(--ink);
 }
 
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
 /* ---------- responsive ---------- */
 
 @media (min-width: 768px) {
@@ -512,13 +548,27 @@ p {
   .header-actions {
     margin-inline-start: auto;
   }
+}
 
-  .proof-grid {
-    grid-template-columns: repeat(4, 1fr);
+@media (min-width: 900px) {
+  .pillars-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .cap-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .pillar {
+    padding-inline: 2.5rem;
+  }
+
+  .pillar:first-child {
+    padding-inline-start: 0;
+  }
+
+  .pillar:last-child {
+    padding-inline-end: 0;
+  }
+
+  .pillar + .pillar {
+    border-inline-start: 1px solid var(--line);
   }
 }
 

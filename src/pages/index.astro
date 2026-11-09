@@ -1,25 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroWaterfall from '../components/HeroWaterfall.astro';
-import ProofStrip from '../components/ProofStrip.astro';
-
-const capabilities = [
-  {
-    title: 'FP&A modelling',
-    body: 'Driver-based forecasts, budget-vs-actual variance decomposition and scenarios that survive a backtest.',
-    tag: 'Python · Power BI',
-  },
-  {
-    title: 'Analytics engineering',
-    body: 'Pipelines with accounting controls: reconciliation gates that stop the run when the numbers disagree.',
-    tag: 'Polars · DuckDB · Prefect',
-  },
-  {
-    title: 'BI and decisions',
-    body: 'Reports that end in a recommendation, not in a chart. Every card answers a question leadership asked.',
-    tag: 'Power BI · DAX',
-  },
-];
+import Pillars from '../components/Pillars.astro';
+import Github from '../components/Github.astro';
+import Linkedin from '../components/Linkedin.astro';
 ---
 
 <BaseLayout
@@ -36,8 +20,12 @@ const capabilities = [
         </p>
         <div class="row">
           <a class="btn" href="/work/">See case studies &rarr;</a>
-          <a class="btn btn-ghost" href="https://github.com/DaelFame">GitHub</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/joaquincardenas-data">LinkedIn</a>
+          <a class="btn btn-ghost" href="https://github.com/DaelFame">
+            <Github class="brand-icon" /><span>GitHub</span>
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/joaquincardenas-data">
+            <Linkedin class="brand-icon" /><span>LinkedIn</span>
+          </a>
         </div>
       </div>
 
@@ -45,24 +33,5 @@ const capabilities = [
     </div>
   </section>
 
-  <ProofStrip />
-
-  <section class="section">
-    <div class="container">
-      <p class="eyebrow">What I do</p>
-      <h2>Three ways the same discipline shows up.</h2>
-
-      <div class="cap-grid">
-        {
-          capabilities.map((c) => (
-            <article class="card">
-              <h3>{c.title}</h3>
-              <p>{c.body}</p>
-              <span class="tag">{c.tag}</span>
-            </article>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  <Pillars />
 </BaseLayout>
