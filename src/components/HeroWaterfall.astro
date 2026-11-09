@@ -1,15 +1,40 @@
 ---
+import type { Lang } from '../i18n/ui';
+
 /**
  * Variance waterfall for the FP&A case.
- * Geometry is derived from one array — change a value and the bars follow.
+ * Geometry derives from one array — change a value and the bars follow.
  * Animation is CSS-only: zero JavaScript.
  */
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
 const bridge = [
   { en: 'Gross margin', es: 'Margen bruto', value: 74_457 },
   { en: 'Operating expenses', es: 'Gastos operativos', value: -359_888 },
   { en: 'Financial result', es: 'Resultado financiero', value: 24_294 },
   { en: 'Extraordinary result', es: 'Resultado extraordinario', value: 18_000 },
 ];
+
+const copy = {
+  en: {
+    headline: 'Where the €243,137 went',
+    period: 'FY 2026 · EUR',
+    net: 'Net variance',
+    note: '€150,000 of general expenses carry no supporting document.',
+    alt: 'Waterfall chart: revenue met plan, but operating expenses of 359,888 euros left a net variance of minus 243,137 euros.',
+  },
+  es: {
+    headline: 'Dónde se fueron los €243.137',
+    period: 'Ej. 2026 · EUR',
+    net: 'Varianza neta',
+    note: '€150.000 de gastos generales no tienen respaldo documental.',
+    alt: 'Gráfico de cascada: el ingreso llegó a presupuesto, pero 359.888 euros de gastos operativos dejaron una varianza neta de menos 243.137 euros.',
+  },
+}[lang];
 
 const DOMAIN_MIN = -300_000;
 const DOMAIN_MAX = 100_000;
@@ -21,7 +46,7 @@ const rows = bridge.map((d, i) => {
   const to = running + d.value;
   running = to;
   return {
-    label: d.en,
+    label: d[lang],
     value: d.value,
     left: ((Math.min(from, to) - DOMAIN_MIN) / SPAN) * 100,
     width: (Math.abs(d.value) / SPAN) * 100,
@@ -34,15 +59,15 @@ const netLeft = ((Math.min(0, net) - DOMAIN_MIN) / SPAN) * 100;
 const netWidth = (Math.abs(net) / SPAN) * 100;
 const zero = ((0 - DOMAIN_MIN) / SPAN) * 100;
 
-const nf = new Intl.NumberFormat('en-US');
+const nf = new Intl.NumberFormat(lang === 'es' ? 'es-ES' : 'en-US');
 const signed = (n: number) => `${n < 0 ? '−' : '+'}${nf.format(Math.abs(n))}`;
 const plain = (n: number) => `${n < 0 ? '−' : ''}${nf.format(Math.abs(n))}`;
 ---
 
-<figure class="wf" aria-label="Bridge to budget, 2026: net variance of minus 243,137 euros">
+<figure class="wf" aria-label={copy.alt}>
   <div class="wf-head">
-    <span class="wf-title">Bridge to budget</span>
-    <span class="wf-sub">FY 2026 &middot; EUR</span>
+    <h2 class="wf-title">{copy.headline}</h2>
+    <span class="wf-sub">{copy.period}</span>
   </div>
 
   <div class="wf-rows" style={`--zero:${zero}%`}>
@@ -64,11 +89,13 @@ const plain = (n: number) => `${n < 0 ? '−' : ''}${nf.format(Math.abs(n))}`;
     <div class="wf-divider"></div>
 
     <div class="wf-row wf-net">
-      <span class="wf-label">Net variance</span>
+      <span class="wf-label">{copy.net}</span>
       <span class="wf-track">
         <span class="wf-bar" style={`left:${netLeft}%;width:${netWidth}%;--delay:460ms`}></span>
       </span>
       <span class="wf-value">{plain(net)}</span>
     </div>
   </div>
+
+  <figcaption class="wf-note">{copy.note}</figcaption>
 </figure>

@@ -35,8 +35,13 @@ differs per theme (`#0F6B58` light / `#3DBFA0` dark), `color-scheme` set.
 The hero's signature interaction is an animated SVG waterfall of the FP&A bridge
 (+74,457 / −359,888 / +24,294 / +18,000 = −243,137), drawn with CSS `stroke-dasharray`
 and staggered bars. Zero JS. Decided with the user: *"si tu recomendacion"*.
+The chart is titled with the finding, not the chart type: **"Where the €243,137 went"**
+(ES: "Dónde se fueron los €243.137"), with a footnote stating that €150,000 of general
+expenses carry no supporting document. Requirement (verbatim): *"eso de bridgt tu
+budget  peude sr algo mas ?? , algo mas vendible y mejor ?"*.
 Acceptance: renders without JS; static final state under `prefers-reduced-motion`;
-readable in both themes.
+readable in both themes and both locales; number formatting follows the locale
+(`243,137` in EN, `243.137` in ES).
 
 **S5 — Positioning band, not a metrics band.**
 The band under the hero states three capabilities, in this order: business judgement,
@@ -67,8 +72,10 @@ corresponientes"*.
 
 **S9 — About page and CV.**
 Bio, experience timeline, capability groups (FP&A modelling / Analytics engineering /
-BI & decision), education, contact. Two CV PDFs, `-en` and `-es`; the download follows
-the active locale.
+BI & decision), education, contact. Source of truth for the biography:
+`odd/sources/cv.md`, stored verbatim from the user's input. Two CV PDFs, `-en` and
+`-es`; the download follows the active locale. The KPMG "ranked 1st globally in Audit
+Foundations 1" credential must be visible on the site, not buried in the PDF.
 
 **S10 — SEO and sharing.**
 Per-locale `<title>` and description, OG image per locale, JSON-LD `Person`, sitemap,
@@ -97,10 +104,10 @@ budgets run on every push. A red gate blocks deploy.
 
 | ID | Task | Specs | Route | Status |
 |----|------|-------|-------|--------|
-| T0 | Scaffold Astro, tokens, dual-theme CSS, base layout, CI workflow | S1, S3, S12, S14 | inline | pending |
-| T1 | i18n dictionaries, route mirroring under `/es/`, language switcher, hreflang | S2, S10 | inline | pending |
-| T2 | Header with both toggles, footer, 404, mobile menu | S3, S8 | inline | pending |
-| T3 | Home: hero + waterfall, proof strip, case cards, capability groups | S4, S5, S6 | inline | pending |
+| T0 | Scaffold Astro, tokens, dual-theme CSS, base layout, CI workflow | S1, S3, S12, S14 | inline | done — 13d0a61 |
+| T1 | i18n dictionaries, route mirroring under `/es/`, language switcher, hreflang | S2, S10 | inline | done |
+| T2 | Header with both toggles, footer, 404, mobile menu | S3, S8 | inline | done |
+| T3 | Home: hero + waterfall, pillars, case cards | S4, S5, S6 | inline | partial — cards pending |
 | T4 | Content schema + `/work` index in both locales | S6, S7 | inline | pending |
 | T5 | Case layout + 3 EN case files | S6, S7 | inline | pending |
 | T6 | 3 ES case files | S2, S6, S7 | delegated (parallel) | pending |
@@ -190,5 +197,22 @@ Applied: `ProofStrip` removed; `Pillars` added (business judgement / technical e
 audit-grade rigour, each with one proof line); metrics demoted to evidence; GitHub and
 LinkedIn brand marks added to hero and footer.
 
+**L5 (CV supplied; ES version required; waterfall headline challenged)**
+
+> falta tmabien el de español  mi cv necesitas ??  Joaquin Cardenas
+> Arequipa, Peru (UTC-5) | Joaquin.data.dev@gmail.com | linkedin.com/in/joaquincardenas-data | github.com/DaelFame
+> Accounting student (expected 2027) with KPMG audit experience and FP&A/BI work turning budget data into decisions.
+> […] aqui falta  el 3er proyecto pero tambien te va ayudar
+> eso de bridgt tu budget  peude sr algo mas ?? , algo mas vendible y mejor ?
+
+Full CV stored verbatim in `odd/sources/cv.md`, with the gaps listed there.
+Third project (`fpa-forecasting-case-study`) bullet drafted for the CV:
+*Rebuilt four years of statements from raw closing workbooks into a driver-based model,
+tracing a 61% net-income miss entirely to operating expenses and isolating €150,000 of
+general expenses with no supporting document. Forecast next-year revenue within 0.3%
+out-of-sample on a two-fold rolling-origin backtest, and showed that knowing
+management's decisions cuts revenue error by 15.4 percentage points.*
+
 **Next step:** T0 scaffold, then first deploy to confirm the pipeline before content work.
+
 

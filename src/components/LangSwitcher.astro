@@ -1,0 +1,41 @@
+---
+import { localizePath, useTranslations, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  path: string;
+}
+
+const { lang, path } = Astro.props;
+const t = useTranslations(lang);
+const options: Lang[] = ['en', 'es'];
+---
+
+<div class="lang-switch" role="group" aria-label={t('lang.label')}>
+  {
+    options.map((code, i) => (
+      <>
+        {i > 0 && <span class="lang-sep" aria-hidden="true">/</span>}
+        <a
+          href={localizePath(path, code)}
+          class:list={['lang-opt', lang === code && 'is-active']}
+          aria-current={lang === code ? 'true' : undefined}
+          hreflang={code}
+          data-set-lang={code}
+        >
+          {code.toUpperCase()}
+        </a>
+      </>
+    ))
+  }
+</div>
+
+<script is:inline>
+  document.querySelectorAll('[data-set-lang]').forEach((el) => {
+    el.addEventListener('click', () => {
+      try {
+        localStorage.setItem('lang', el.getAttribute('data-set-lang'));
+      } catch {}
+    });
+  });
+</script>

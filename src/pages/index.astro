@@ -4,22 +4,21 @@ import HeroWaterfall from '../components/HeroWaterfall.astro';
 import Pillars from '../components/Pillars.astro';
 import Github from '../components/Github.astro';
 import Linkedin from '../components/Linkedin.astro';
+import { useTranslations } from '../i18n/utils';
+
+const lang = 'en' as const;
+const t = useTranslations(lang);
 ---
 
-<BaseLayout
-  title="Joaquin Cardenas — FP&A & Business Intelligence"
-  description="From audit to FP&A. Financial statements and public data turned into decisions that survive an audit."
->
+<BaseLayout title={t('meta.home.title')} description={t('meta.home.description')} lang={lang}>
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">FP&amp;A &middot; Business Intelligence</p>
-        <h1>From audit to FP&amp;A.</h1>
-        <p class="lede">
-          I turn financial statements and public data into decisions that survive an audit.
-        </p>
+        <p class="eyebrow">{t('hero.eyebrow')}</p>
+        <h1>{t('hero.title')}</h1>
+        <p class="lede">{t('hero.lede')}</p>
         <div class="row">
-          <a class="btn" href="/work/">See case studies &rarr;</a>
+          <a class="btn" href="/work/">{t('hero.cta')} &rarr;</a>
           <a class="btn btn-ghost" href="https://github.com/DaelFame">
             <Github class="brand-icon" /><span>GitHub</span>
           </a>
@@ -29,9 +28,9 @@ import Linkedin from '../components/Linkedin.astro';
         </div>
       </div>
 
-      <HeroWaterfall />
+      <HeroWaterfall lang={lang} />
     </div>
   </section>
 
-  <Pillars />
+  <Pillars lang={lang} />
 </BaseLayout>

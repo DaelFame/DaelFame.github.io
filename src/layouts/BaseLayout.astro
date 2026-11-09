@@ -1,16 +1,25 @@
 ---
 import '../styles/global.css';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import LangSwitcher from '../components/LangSwitcher.astro';
 import Github from '../components/Github.astro';
 import Linkedin from '../components/Linkedin.astro';
+import { useTranslations, localizePath } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
 
 interface Props {
   title: string;
   description: string;
-  lang?: 'en' | 'es';
+  lang?: Lang;
 }
 
 const { title, description, lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+
+const path = Astro.url.pathname;
+const enUrl = new URL(localizePath(path, 'en'), Astro.site);
+const esUrl = new URL(localizePath(path, 'es'), Astro.site);
+const cvHref = lang === 'es' ? '/cv/joaquin-cardenas-fpa-es.pdf' : '/cv/joaquin-cardenas-fpa-en.pdf';
 ---
 
 <!doctype html>
@@ -22,7 +31,10 @@ const { title, description, lang = 'en' } = Astro.props;
     <meta name="description" content={description} />
     <meta name="theme-color" content="#FFFFFF" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="canonical" href={new URL(path, Astro.site)} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
 
     <!-- Set the theme before first paint so there is no flash of the wrong one. -->
     <script is:inline>
@@ -35,25 +47,35 @@ const { title, description, lang = 'en' } = Astro.props;
           document.documentElement.dataset.theme = 'light';
         }
       })();
+
+      // Remember the reader's language only on the root: a returning Spanish
+      // reader lands on Spanish, an English one is not moved.
+      (() => {
+        try {
+          if (location.pathname === '/' && localStorage.getItem('lang') === 'es') {
+            location.replace('/es/');
+          }
+        } catch {}
+      })();
     </script>
   </head>
 
   <body>
-    <a class="skip" href="#main">Skip to content</a>
+    <a class="skip" href="#main">{t('skip')}</a>
 
     <header class="site-header">
       <div class="container header-inner">
-        <a class="brand" href="/">Joaquin Cardenas</a>
+        <a class="brand" href={lang === 'es' ? '/es/' : '/'}>Joaquin Cardenas</a>
 
-        <nav class="nav" aria-label="Primary">
-          <a href="/work/">Work</a>
-          <a href="/about/">About</a>
+        <nav class="nav" aria-label={t('nav.primary')}>
+          <a href={localizePath('/work/', lang)}>{t('nav.work')}</a>
+          <a href={localizePath('/about/', lang)}>{t('nav.about')}</a>
         </nav>
 
         <div class="header-actions">
-          <span class="lang-static" aria-label="Language: English">EN</span>
+          <LangSwitcher lang={lang} path={path} />
           <ThemeToggle />
-          <a class="btn btn-ghost btn-sm" href="#">CV&nbsp;&darr;</a>
+          <a class="btn btn-ghost btn-sm" href={cvHref}>{t('nav.cv')}&nbsp;&darr;</a>
         </div>
       </div>
     </header>
@@ -64,13 +86,13 @@ const { title, description, lang = 'en' } = Astro.props;
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <span>&copy; {new Date().getFullYear()} Joaquin Cardenas &middot; Arequipa, Peru</span>
+        <span>&copy; {new Date().getFullYear()} Joaquin Cardenas &middot; {t('footer.rights')}</span>
         <span class="row footer-links">
           <a href="https://github.com/DaelFame"><Github class="brand-icon" /><span>GitHub</span></a>
           <a href="https://www.linkedin.com/in/joaquincardenas-data">
             <Linkedin class="brand-icon" /><span>LinkedIn</span>
           </a>
-          <a href="mailto:hello@example.com">Email</a>
+          <a href="mailto:Joaquin.data.dev@gmail.com">Email</a>
         </span>
       </div>
     </footer>

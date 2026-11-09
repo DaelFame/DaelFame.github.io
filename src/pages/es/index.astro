@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroWaterfall from '../../components/HeroWaterfall.astro';
+import Pillars from '../../components/Pillars.astro';
+import Github from '../../components/Github.astro';
+import Linkedin from '../../components/Linkedin.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'es' as const;
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={t('meta.home.title')} description={t('meta.home.description')} lang={lang}>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">{t('hero.eyebrow')}</p>
+        <h1>{t('hero.title')}</h1>
+        <p class="lede">{t('hero.lede')}</p>
+        <div class="row">
+          <a class="btn" href="/es/work/">{t('hero.cta')} &rarr;</a>
+          <a class="btn btn-ghost" href="https://github.com/DaelFame">
+            <Github class="brand-icon" /><span>GitHub</span>
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/joaquincardenas-data">
+            <Linkedin class="brand-icon" /><span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+
+      <HeroWaterfall lang={lang} />
+    </div>
+  </section>
+
+  <Pillars lang={lang} />
+</BaseLayout>
