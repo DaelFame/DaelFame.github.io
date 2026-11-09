@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: 'en' | 'es';
+}
+
+const { title, description, lang = 'en' } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#FFFFFF" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+    <!-- Set the theme before first paint so there is no flash of the wrong one. -->
+    <script is:inline>
+      (() => {
+        try {
+          const stored = localStorage.getItem('theme');
+          const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.dataset.theme = stored || system;
+        } catch {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/">Joaquin Cardenas</a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="/work/">Work</a>
+          <a href="/about/">About</a>
+        </nav>
+
+        <div class="header-actions">
+          <span class="lang-static" aria-label="Language: English">EN</span>
+          <ThemeToggle />
+          <a class="btn btn-ghost btn-sm" href="#">CV&nbsp;&darr;</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>&copy; {new Date().getFullYear()} Joaquin Cardenas &middot; Arequipa, Peru</span>
+        <span class="row">
+          <a href="https://github.com/DaelFame">GitHub</a>
+          <a href="https://www.linkedin.com/in/joaquincardenas-data">LinkedIn</a>
+          <a href="mailto:hello@example.com">Email</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

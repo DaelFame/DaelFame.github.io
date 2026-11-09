@@ -1,0 +1,61 @@
+/* Design tokens — single source of truth.
+   Every colour used anywhere lives here. No hardcoded hex outside this file. */
+
+:root {
+  color-scheme: light;
+
+  --ink: #101215;
+  --ink-2: #3f464f;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --line-strong: #d1d5db;
+  --paper: #ffffff;
+  --paper-2: #f7f7f5;
+  --accent: #0f6b58;
+  --accent-soft: #e6f2ef;
+  --on-accent: #ffffff;
+  --alert: #b45309;
+  --alert-soft: #fdf3e7;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Inter, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Consolas, monospace;
+
+  --step-0: 1.0625rem;
+  --step-1: 1.1875rem;
+  --step-2: 1.5rem;
+  --step-3: 2rem;
+  --step-4: 2.75rem;
+  --step-5: clamp(2.5rem, 6vw, 4rem);
+
+  --maxw: 1120px;
+  --prose: 68ch;
+  --gutter: 1.5rem;
+  --radius: 10px;
+  --radius-sm: 6px;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 220ms;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --ink: #f2f4f3;
+  --ink-2: #b4bcc2;
+  --muted: #7d8890;
+  --line: #232a30;
+  --line-strong: #333c44;
+  --paper: #0c1013;
+  --paper-2: #11171b;
+  --accent: #3dbfa0;
+  --accent-soft: #10231e;
+  --on-accent: #07120f;
+  --alert: #e08a4a;
+  --alert-soft: #241a10;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 2.5rem;
+  }
+}

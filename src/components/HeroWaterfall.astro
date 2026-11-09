@@ -1,0 +1,74 @@
+---
+/**
+ * Variance waterfall for the FP&A case.
+ * Geometry is derived from one array — change a value and the bars follow.
+ * Animation is CSS-only: zero JavaScript.
+ */
+const bridge = [
+  { en: 'Gross margin', es: 'Margen bruto', value: 74_457 },
+  { en: 'Operating expenses', es: 'Gastos operativos', value: -359_888 },
+  { en: 'Financial result', es: 'Resultado financiero', value: 24_294 },
+  { en: 'Extraordinary result', es: 'Resultado extraordinario', value: 18_000 },
+];
+
+const DOMAIN_MIN = -300_000;
+const DOMAIN_MAX = 100_000;
+const SPAN = DOMAIN_MAX - DOMAIN_MIN;
+
+let running = 0;
+const rows = bridge.map((d, i) => {
+  const from = running;
+  const to = running + d.value;
+  running = to;
+  return {
+    label: d.en,
+    value: d.value,
+    left: ((Math.min(from, to) - DOMAIN_MIN) / SPAN) * 100,
+    width: (Math.abs(d.value) / SPAN) * 100,
+    delay: i * 110,
+  };
+});
+
+const net = running;
+const netLeft = ((Math.min(0, net) - DOMAIN_MIN) / SPAN) * 100;
+const netWidth = (Math.abs(net) / SPAN) * 100;
+const zero = ((0 - DOMAIN_MIN) / SPAN) * 100;
+
+const nf = new Intl.NumberFormat('en-US');
+const signed = (n: number) => `${n < 0 ? '−' : '+'}${nf.format(Math.abs(n))}`;
+const plain = (n: number) => `${n < 0 ? '−' : ''}${nf.format(Math.abs(n))}`;
+---
+
+<figure class="wf" aria-label="Bridge to budget, 2026: net variance of minus 243,137 euros">
+  <div class="wf-head">
+    <span class="wf-title">Bridge to budget</span>
+    <span class="wf-sub">FY 2026 &middot; EUR</span>
+  </div>
+
+  <div class="wf-rows" style={`--zero:${zero}%`}>
+    {
+      rows.map((r) => (
+        <div class="wf-row">
+          <span class="wf-label">{r.label}</span>
+          <span class="wf-track">
+            <span
+              class:list={['wf-bar', r.value < 0 ? 'neg' : 'pos']}
+              style={`left:${r.left}%;width:${r.width}%;--delay:${r.delay}ms`}
+            />
+          </span>
+          <span class="wf-value">{signed(r.value)}</span>
+        </div>
+      ))
+    }
+
+    <div class="wf-divider"></div>
+
+    <div class="wf-row wf-net">
+      <span class="wf-label">Net variance</span>
+      <span class="wf-track">
+        <span class="wf-bar" style={`left:${netLeft}%;width:${netWidth}%;--delay:460ms`}></span>
+      </span>
+      <span class="wf-value">{plain(net)}</span>
+    </div>
+  </div>
+</figure>

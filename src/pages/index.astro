@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroWaterfall from '../components/HeroWaterfall.astro';
+import ProofStrip from '../components/ProofStrip.astro';
+
+const capabilities = [
+  {
+    title: 'FP&A modelling',
+    body: 'Driver-based forecasts, budget-vs-actual variance decomposition and scenarios that survive a backtest.',
+    tag: 'Python · Power BI',
+  },
+  {
+    title: 'Analytics engineering',
+    body: 'Pipelines with accounting controls: reconciliation gates that stop the run when the numbers disagree.',
+    tag: 'Polars · DuckDB · Prefect',
+  },
+  {
+    title: 'BI and decisions',
+    body: 'Reports that end in a recommendation, not in a chart. Every card answers a question leadership asked.',
+    tag: 'Power BI · DAX',
+  },
+];
+---
+
+<BaseLayout
+  title="Joaquin Cardenas — FP&A & Business Intelligence"
+  description="From audit to FP&A. Financial statements and public data turned into decisions that survive an audit."
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">FP&amp;A &middot; Business Intelligence</p>
+        <h1>From audit to FP&amp;A.</h1>
+        <p class="lede">
+          I turn financial statements and public data into decisions that survive an audit.
+        </p>
+        <div class="row">
+          <a class="btn" href="/work/">See case studies &rarr;</a>
+          <a class="btn btn-ghost" href="https://github.com/DaelFame">GitHub</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/joaquincardenas-data">LinkedIn</a>
+        </div>
+      </div>
+
+      <HeroWaterfall />
+    </div>
+  </section>
+
+  <ProofStrip />
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">What I do</p>
+      <h2>Three ways the same discipline shows up.</h2>
+
+      <div class="cap-grid">
+        {
+          capabilities.map((c) => (
+            <article class="card">
+              <h3>{c.title}</h3>
+              <p>{c.body}</p>
+              <span class="tag">{c.tag}</span>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>
