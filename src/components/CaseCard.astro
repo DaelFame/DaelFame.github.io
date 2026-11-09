@@ -1,0 +1,31 @@
+---
+import type { Lang } from '../i18n/ui';
+import type { CaseStudy } from '../data/cases';
+
+interface Props {
+  item: CaseStudy;
+  lang: Lang;
+}
+
+const { item, lang } = Astro.props;
+---
+
+<article class="case-card">
+  <div class="case-meta">
+    <span class="case-index">{item.index}</span>
+    <span class="case-discipline">{item.discipline[lang]}</span>
+  </div>
+
+  <h3 class="case-title">{item.title}</h3>
+  <p class="case-question">{item.question[lang]}</p>
+  <p class="case-result">{item.result[lang]}</p>
+
+  <div class="case-foot">
+    <ul class="case-stack">
+      {item.stack.map((s) => <li>{s}</li>)}
+    </ul>
+    <a class="case-link" href={item.href}>
+      {lang === 'es' ? 'Ver caso' : 'Open case'} <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</article>

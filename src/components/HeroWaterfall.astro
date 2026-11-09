@@ -1,5 +1,6 @@
 ---
 import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
 
 /**
  * Variance waterfall for the FP&A case.
@@ -11,6 +12,8 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+const t = useTranslations(lang);
+const caseHref = lang === 'es' ? '/es/work/' : '/work/';
 
 const bridge = [
   { en: 'Gross margin', es: 'Margen bruto', value: 74_457 },
@@ -64,7 +67,8 @@ const signed = (n: number) => `${n < 0 ? '−' : '+'}${nf.format(Math.abs(n))}`;
 const plain = (n: number) => `${n < 0 ? '−' : ''}${nf.format(Math.abs(n))}`;
 ---
 
-<figure class="wf" aria-label={copy.alt}>
+<div class="wf-wrap">
+  <figure class="wf" aria-label={copy.alt}>
   <div class="wf-head">
     <h2 class="wf-title">{copy.headline}</h2>
     <span class="wf-sub">{copy.period}</span>
@@ -98,4 +102,9 @@ const plain = (n: number) => `${n < 0 ? '−' : ''}${nf.format(Math.abs(n))}`;
   </div>
 
   <figcaption class="wf-note">{copy.note}</figcaption>
-</figure>
+  </figure>
+
+  <p class="wf-caption">
+    <a href={caseHref}>{t('waterfall.fromCase')} <span aria-hidden="true">&rarr;</span></a>
+  </p>
+</div>

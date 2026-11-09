@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HeroWaterfall from '../../components/HeroWaterfall.astro';
 import Pillars from '../../components/Pillars.astro';
+import SelectedWork from '../../components/SelectedWork.astro';
 import Github from '../../components/Github.astro';
 import Linkedin from '../../components/Linkedin.astro';
 import { useTranslations } from '../../i18n/utils';
@@ -33,4 +34,5 @@ const t = useTranslations(lang);
   </section>
 
   <Pillars lang={lang} />
+  <SelectedWork lang={lang} />
 </BaseLayout>

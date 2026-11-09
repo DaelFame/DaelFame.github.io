@@ -1,0 +1,37 @@
+---
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+import { cases } from '../data/cases';
+import CaseCard from './CaseCard.astro';
+
+interface Props {
+  lang: Lang;
+  heading?: string;
+  showAll?: boolean;
+}
+
+const { lang, heading, showAll = true } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="section" aria-labelledby="selected-work">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">{t('work.selected')}</p>
+        <h2 id="selected-work">{heading ?? t('work.heading')}</h2>
+      </div>
+      {
+        showAll && (
+          <a class="btn btn-ghost btn-sm" href={lang === 'es' ? '/es/work/' : '/work/'}>
+            {t('work.all')}
+          </a>
+        )
+      }
+    </div>
+
+    <div class="case-grid">
+      {cases.map((item) => <CaseCard item={item} lang={lang} />)}
+    </div>
+  </div>
+</section>

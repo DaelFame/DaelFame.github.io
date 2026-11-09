@@ -44,13 +44,33 @@ readable in both themes and both locales; number formatting follows the locale
 (`243,137` in EN, `243.137` in ES).
 
 **S5 — Positioning band, not a metrics band.**
-The band under the hero states three capabilities, in this order: business judgement,
-technical execution, audit-grade rigour. Each pillar carries one proof line that links
-to the case study that demonstrates it. Numbers are evidence, not the pitch: they appear
+The band under the hero states three capabilities, in this order: **accounting foundation**,
+technical execution, audit-grade rigour. Each pillar carries one proof line that links to
+the case study that demonstrates it. Numbers are evidence, not the pitch: they appear
 inside a pillar's proof line and inside case studies, never as the headline message.
 Requirement (verbatim): *"el portafolio es para decir en que soy bueno en vez de
-metricas ,seria como logica de negioc , habilidade tecnica y algo mas"*.
-Acceptance: three pillars, three proof lines, no standalone metric grid.
+metricas ,seria como logica de negioc , habilidade tecnica y algo mas"*, refined by
+*"soy cun contador  con el tema de data"*.
+Acceptance: three pillars, three proof lines, no standalone metric grid; the first
+pillar establishes the accounting base, not general business acumen.
+
+**S15 — Positioning statement.**
+The site positions the subject as an accountant who builds data, never as an auditor who
+moved into FP&A. H1 (EN): **"I read the ledger. I build the pipeline."** H1 (ES):
+**"Entiendo el asiento. Construyo el pipeline."** The lede explains the claim in plain
+language: accounting rules, data engineering and BI in one head, so nothing is lost in
+translation between the statement and the dashboard. Requirement (verbatim): *"eso de
+auditoro a financas no me gusta , ademas soy cun contador  con el tema de data , algo
+mucho mas vendible"*.
+Acceptance: no occurrence of "From audit to FP&A" anywhere in copy, metadata, or docs.
+
+**S16 — All three projects visible from the home page.**
+The hero visualises one case; the home page must still surface all three. A "Selected
+work" section lists every case with its discipline, its business question and its
+headline result, and links to the full list. Requirement (verbatim): *"aqui solo te
+enfocas en un solo caso  y cuando 3 proyectos"*.
+Acceptance: three cards rendered on `/` and `/es/`; each card carries a working link;
+`/work/` and `/es/work/` never return 404.
 
 **S6 — Three case studies, fixed narrative.**
 Each case page has exactly five sections, in this order: The question · What I found ·
@@ -107,8 +127,8 @@ budgets run on every push. A red gate blocks deploy.
 | T0 | Scaffold Astro, tokens, dual-theme CSS, base layout, CI workflow | S1, S3, S12, S14 | inline | done — 13d0a61 |
 | T1 | i18n dictionaries, route mirroring under `/es/`, language switcher, hreflang | S2, S10 | inline | done |
 | T2 | Header with both toggles, footer, 404, mobile menu | S3, S8 | inline | done |
-| T3 | Home: hero + waterfall, pillars, case cards | S4, S5, S6 | inline | partial — cards pending |
-| T4 | Content schema + `/work` index in both locales | S6, S7 | inline | pending |
+| T3 | Home: hero + waterfall, pillars, case cards | S4, S5, S6 | inline | done |
+| T4 | Content schema + `/work` index in both locales | S6, S7 | inline | partial — index done, detail pages pending |
 | T5 | Case layout + 3 EN case files | S6, S7 | inline | pending |
 | T6 | 3 ES case files | S2, S6, S7 | delegated (parallel) | pending |
 | T7 | About, CV PDFs, OG images, JSON-LD, sitemap | S9, S10 | inline | pending |
@@ -213,6 +233,16 @@ general expenses with no supporting document. Forecast next-year revenue within 
 out-of-sample on a two-fold rolling-origin backtest, and showed that knowing
 management's decisions cuts revenue error by 15.4 percentage points.*
 
+**L6 (positioning rejected; all three projects required)**
+
+> pero aqui solo te enfocas en un solo caso  y cuando 3 proyectos  , ademas eso de auditoro a financas no me gusta  , ademas soy cun contador  con el tema de data  , algo mucho mas vendible
+
+Applied: H1 replaced with "I read the ledger. I build the pipeline." / "Entiendo el
+asiento. Construyo el pipeline."; first pillar changed from business judgement to
+accounting foundation; hero eyebrow now Accounting · Data · Business Intelligence;
+"Selected work" section added with all three cases; `/work/` and `/es/work/` built.
+
 **Next step:** T0 scaffold, then first deploy to confirm the pipeline before content work.
+
 
 
