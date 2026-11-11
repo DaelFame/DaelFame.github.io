@@ -197,15 +197,17 @@ vendible"*.
 Acceptance: no invented brand path; chips remain monochrome so both themes stay AA; the
 process section states accounting → finance → data in that order.
 
-**S18 — Hero visual is a purpose diagram, not a single-project chart.**
-The waterfall was replaced in the hero by an ikigai-style four-circle diagram
-(what I love / what I'm good at / what teams need / what they pay for) with the
-positioning at the intersection. The waterfall is not deleted — it moves to the
-FP&A case page. Requirement (verbatim): *"esta parte no me convecne  algo ejro algo
-que muestr de manera grafiaca tipo como ikigai , lo que me gusta , lo que deseo ,
-bacsiametne vender mejro mi perrfil con mis beneficios"*.
-Acceptance: diagram renders in both themes from tokens alone; a legend carries the
-full one-line meaning of each quadrant.
+**S18 — Hero visual is a capability map, not a feelings diagram.**
+The hero carries a four-circle map of the four seats he fills — Accounting, FP&A,
+Data Engineering, Business Intelligence — intersecting at **"One person. Four seats."**
+Each quadrant's legend line states a concrete outcome ("the books close", "the numbers
+are explained", "the data holds", "the decision is made"), not a sentiment. The earlier
+ikigai ("what I love / what I'm good at") was rejected as too soft for a finance
+audience. The waterfall lives on the FP&A case page. The `Pillars` section was removed
+because it repeated this map. Requirement (verbatim): *"el tema de que soy bueno o que
+no , esas cosas que podemos mejorar en el sentido del ikigai algo mucho mejor"*.
+Acceptance: diagram renders in both themes from tokens alone; no soft love/desire
+wording.
 
 **S19 — Project cards reveal their dashboard on hover.**
 Each case card shows the real dashboard screenshot of its repository as a hover

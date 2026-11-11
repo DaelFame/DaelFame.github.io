@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Ikigai from '../../components/Ikigai.astro';
-import Pillars from '../../components/Pillars.astro';
+import CapabilityMap from '../../components/CapabilityMap.astro';
 import SelectedWork from '../../components/SelectedWork.astro';
 import Process from '../../components/Process.astro';
 import Github from '../../components/Github.astro';
@@ -30,11 +29,10 @@ const t = useTranslations(lang);
         </div>
       </div>
 
-      <Ikigai lang={lang} />
+      <CapabilityMap lang={lang} />
     </div>
   </section>
 
-  <Pillars lang={lang} />
   <SelectedWork lang={lang} />
   <Process lang={lang} />
 </BaseLayout>
