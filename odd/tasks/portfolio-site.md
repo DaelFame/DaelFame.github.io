@@ -220,7 +220,32 @@ devices and under `prefers-reduced-motion`.
 
 ---
 
+## Headhunter review (L10)
+
+Requested by the user: *"toma el rol de un head hunter y avelaulo y con esavelaucion mejroalo totalmente"*.
+
+**Findings, in order of severity:**
+
+1. **Broken nav — `About` and `CV` were 404.** The two highest-intent conversion
+   elements pointed at nothing. FIXED: `/about`, `/es/about`, `/cv`, `/es/cv` built.
+2. **No resume.** The CV button pointed to a PDF that did not exist. FIXED: `/cv/` is a
+   print-styled page (`Ctrl+P` → PDF); a generated PDF remains optional (T7).
+3. **No bio or experience anywhere.** The strongest credential — 1st globally in KPMG
+   Audit Foundations 1 — was invisible. FIXED: About page renders the full timeline from
+   `src/data/profile.ts`, with the KPMG ranking called out in a highlighted band.
+4. **No structured data.** FIXED: JSON-LD `Person` added to the layout head.
+5. **Case pages not built** (cards open the repository). Still pending: T5.
+6. **No OG/social preview images.** Still pending: T7.
+
+---
+
 ## Log
+
+**L10 (headhunter evaluation — see above)**
+
+---
+
+**Next step:** T5 — the three case-study pages (EN + ES), then the first deploy.
 
 **L1 (original request, verbatim)**
 
