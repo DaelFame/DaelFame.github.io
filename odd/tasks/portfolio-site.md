@@ -172,6 +172,17 @@ the spec above provide the discipline without the no-code gate.
 work. A single project-scoped agent carries the design tokens so component work does not
 drift across sessions.
 
+**D5 — Modern Web Guidance as a project skill.**
+`GoogleChrome/modern-web-guidance` (Apache-2.0, published with npm provenance by the
+Chrome team) is installed at `.opencode/skills/modern-web-guidance/`. The official
+installer targets Claude Code, Codex, Cursor, Copilot, Gemini, Antigravity and JetBrains,
+not OpenCode, so the skill file is placed where this runtime scans it. `AGENTS.md`
+declares the project Baseline target (2024) so the guidance is scoped to what this site
+can actually ship. Implication for T8: scroll reveals, the reading progress bar and the
+sticky header should follow guides `scroll-entry-exit-effects`,
+`scroll-progress-indicator` and `shrinking-header-on-scroll` rather than hand-rolled
+IntersectionObserver code.
+
 ---
 
 ## Log
@@ -242,7 +253,19 @@ asiento. Construyo el pipeline."; first pillar changed from business judgement t
 accounting foundation; hero eyebrow now Accounting · Data · Business Intelligence;
 "Selected work" section added with all three cases; `/work/` and `/es/work/` built.
 
+**L7 (tooling: modern web guidance)**
+
+> aqui falta agregar una cosa  [imagen: `$ npx modern-web-guidance@latest install` —
+> compatible con Claude Code, Antigravity CLI, GitHub Copilot, Gemini CLI, Cursor]
+> para tener  tambien una forma de optimizar y mejroar la web del desarrollo  tmabien
+
+Verified before running: published by the `GoogleChrome` npm org, maintainers Paul Irish
+and Rick Viscomi, Apache-2.0, SLSA provenance from GitHub Actions. Installed to
+`.opencode/skills/modern-web-guidance/`; smoke-tested with a real search query. Baseline
+target recorded in `AGENTS.md`.
+
 **Next step:** T0 scaffold, then first deploy to confirm the pipeline before content work.
+
 
 
 
