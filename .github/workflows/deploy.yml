@@ -24,6 +24,13 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+
+      - name: Sync latest CV from the cv repository
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/DaelFame/cv/main/resume.pdf \
+            -o public/cv/joaquin-cardenas-cv-en.pdf \
+            || echo "cv repo not reachable yet — using the committed copy"
+
       - run: npm run check
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
