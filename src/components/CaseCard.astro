@@ -1,7 +1,10 @@
 ---
 import type { Lang } from '../i18n/ui';
 import type { CaseStudy } from '../data/cases';
+import { Image } from 'astro:assets';
 import TechIcon from './TechIcon.astro';
+import ucspImg from '../assets/cases/ucsp.png';
+import peruImg from '../assets/cases/peru.png';
 
 interface Props {
   item: CaseStudy;
@@ -9,31 +12,60 @@ interface Props {
 }
 
 const { item, lang } = Astro.props;
+
+const PREVIEWS: Record<string, typeof ucspImg> = {
+  'ucsp-market-intelligence': ucspImg,
+  'peru-budget-lakehouse': peruImg,
+};
+
+const preview = PREVIEWS[item.slug];
+const inProgress = lang === 'es' ? 'Caso en desarrollo' : 'Case study in progress';
+const openLabel = lang === 'es' ? 'Ver caso' : 'Open case';
 ---
 
 <article class="case-card">
-  <div class="case-meta">
-    <span class="case-index">{item.index}</span>
-    <span class="case-discipline">{item.discipline[lang]}</span>
+  <div class="case-media">
+    {
+      preview ? (
+        <Image
+          src={preview}
+          alt={`${item.title} — dashboard preview`}
+          width={800}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div class="case-media-empty"><span>{inProgress}</span></div>
+      )
+    }
+    <span class="case-tag">
+      <span>{item.index}</span>
+      <span>{item.discipline[lang]}</span>
+    </span>
+    <a class="case-media-cta" href={item.href} tabindex={-1} aria-hidden="true">
+      {openLabel} <span>&rarr;</span>
+    </a>
   </div>
 
-  <h3 class="case-title">{item.title}</h3>
-  <p class="case-question">{item.question[lang]}</p>
-  <p class="case-result">{item.result[lang]}</p>
+  <div class="case-body">
+    <h3 class="case-title">{item.title}</h3>
+    <p class="case-question">{item.question[lang]}</p>
+    <p class="case-result">{item.result[lang]}</p>
 
-  <div class="case-foot">
-    <ul class="case-stack">
-      {
-        item.stack.map((tech) => (
-          <li>
-            <TechIcon slug={tech.slug} class="tech-mark" />
-            <span>{tech.label}</span>
-          </li>
-        ))
-      }
-    </ul>
-    <a class="case-link" href={item.href}>
-      {lang === 'es' ? 'Ver caso' : 'Open case'} <span aria-hidden="true">&rarr;</span>
-    </a>
+    <div class="case-foot">
+      <ul class="case-stack">
+        {
+          item.stack.map((tech) => (
+            <li>
+              <TechIcon slug={tech.slug} class="tech-mark" />
+              <span>{tech.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+      <a class="case-link" href={item.href}>
+        {openLabel} <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
   </div>
 </article>

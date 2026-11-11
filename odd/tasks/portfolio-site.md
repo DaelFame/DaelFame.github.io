@@ -197,6 +197,27 @@ vendible"*.
 Acceptance: no invented brand path; chips remain monochrome so both themes stay AA; the
 process section states accounting → finance → data in that order.
 
+**S18 — Hero visual is a purpose diagram, not a single-project chart.**
+The waterfall was replaced in the hero by an ikigai-style four-circle diagram
+(what I love / what I'm good at / what teams need / what they pay for) with the
+positioning at the intersection. The waterfall is not deleted — it moves to the
+FP&A case page. Requirement (verbatim): *"esta parte no me convecne  algo ejro algo
+que muestr de manera grafiaca tipo como ikigai , lo que me gusta , lo que deseo ,
+bacsiametne vender mejro mi perrfil con mis beneficios"*.
+Acceptance: diagram renders in both themes from tokens alone; a legend carries the
+full one-line meaning of each quadrant.
+
+**S19 — Project cards reveal their dashboard on hover.**
+Each case card shows the real dashboard screenshot of its repository as a hover
+reveal (PNG → WebP via Astro assets). The FP&A report is still in progress, so its
+card shows a "case study in progress" placeholder instead of a fabricated image.
+Requirement (verbatim): *"cuando pases el mouse aparezcan los dashboards adecuados
+de cada uno el de finanzas sigue en trabajo pero los demas ya se pueden usar con
+el github"*.
+Acceptance: images load from the repositories (`ucsp-market-intelligence`,
+`peru-budget-lakehouse`), no stock imagery, and the interaction is inert on touch
+devices and under `prefers-reduced-motion`.
+
 ---
 
 ## Log
@@ -289,7 +310,23 @@ Applied: `TechIcon` backed by `simple-icons` (14 marks rendered on the home page
 `Process` section added with four steps and their tools; skill registry updated with the
 project-scoped `modern-web-guidance` entry.
 
+**L9 (Power BI mark, ikigai hero, hover dashboards, headhunter review)**
+
+> okye  verifa y mejora lo  que tengamso  , si existe forma alguna de tener logas con
+> respectoa power bi adecuadms  ,seraiga gwenial  , esta parte de aqu Dónde se fueron
+> los €243.137 … esta parte no me convecne  algo ejro algo que  muestr de manera grafiaca
+> tipo como ikigay , lo que me gusta  lo que  deseo , bacsiametne vender mejro mi perrfil
+> con mis beneficios … lo de los 3 proyectos que  cuando apses el mosue aparecesa los
+> dashboard adecuadods de cada uno el de fianzas sigue en trabajo pero los demas ya se
+> peue usar con el git hb … y despues toma el rol de alguien un head hunter y avelaulo y
+> con esavelaucion mejroalo totalmente
+
+Applied: Power BI mark from Microsoft's official `PowerBI-Icons` repo (monochrome);
+`Ikigai` replaces the waterfall in the hero; `CaseCard` reveals repository dashboard
+screenshots on hover (WebP); `sharp` enabled so images drop from 530 KB → 55 KB.
+
 **Next step:** T0 scaffold, then first deploy to confirm the pipeline before content work.
+
 
 
 

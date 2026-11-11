@@ -32,7 +32,7 @@ export const cases: CaseStudy[] = [
       en: '€243,137 of variance traced line by line to operating expenses.',
       es: '€243.137 de varianza trazados línea por línea a gastos operativos.',
     },
-    stack: [{ label: 'Python', slug: 'python' }, { label: 'Power BI' }, { label: 'pytest', slug: 'pytest' }],
+    stack: [{ label: 'Python', slug: 'python' }, { label: 'Power BI', slug: 'powerbi' }, { label: 'pytest', slug: 'pytest' }],
     href: 'https://github.com/DaelFame/fpa-forecasting-case-study',
   },
   {
@@ -69,7 +69,7 @@ export const cases: CaseStudy[] = [
       en: '−1.6pp of market share hidden behind +19% volume growth.',
       es: '−1.6 pp de market share escondidos detrás de +19% de volumen.',
     },
-    stack: [{ label: 'Power BI' }, { label: 'DAX' }, { label: 'Python', slug: 'python' }],
+    stack: [{ label: 'Power BI', slug: 'powerbi' }, { label: 'DAX' }, { label: 'Python', slug: 'python' }],
     href: 'https://github.com/DaelFame/ucsp-market-intelligence',
   },
 ];

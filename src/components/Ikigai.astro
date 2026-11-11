@@ -1,0 +1,80 @@
+---
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+/**
+ * Ikigai-style value diagram: four overlapping circles (what I love, what I'm
+ * good at, what teams need, what they pay for) with the positioning at the
+ * intersection. Colours come from CSS tokens, so both themes work with no
+ * per-theme code. Keywords are short; the legend carries the full line.
+ */
+const data = {
+  en: {
+    love: 'What I love',
+    goodAt: "What I'm good at",
+    needed: 'What teams need',
+    paid: 'What they pay for',
+    center1: 'Accountant who',
+    center2: 'builds data',
+    legend: [
+      { k: 'What I love', v: 'Turning messy spreadsheets and public data into a story that ends in a decision.' },
+      { k: "What I'm good at", v: 'IFRS accounting, FP&A modelling, pipelines and BI — audited, tested, documented.' },
+      { k: 'What teams need', v: 'Numbers that reconcile, dashboards that answer the real question, work that runs itself.' },
+      { k: 'What they pay for', v: 'FP&A, BI and analytics-engineering roles that want accounting and code in one person.' },
+    ],
+  },
+  es: {
+    love: 'Lo que me gusta',
+    goodAt: 'En lo que soy bueno',
+    needed: 'Lo que necesitan',
+    paid: 'Por lo que pagan',
+    center1: 'Contador que',
+    center2: 'construye datos',
+    legend: [
+      { k: 'Lo que me gusta', v: 'Convertir planillas caóticas y datos públicos en una historia que termina en una decisión.' },
+      { k: 'En lo que soy bueno', v: 'Contabilidad IFRS, modelado FP&A, pipelines y BI — auditados, probados, documentados.' },
+      { k: 'Lo que necesitan', v: 'Números que cuadran, dashboards que responden la pregunta real, trabajo que corre solo.' },
+      { k: 'Por lo que pagan', v: 'Roles de FP&A, BI e ingeniería de datos que piden contabilidad y código en una sola persona.' },
+    ],
+  },
+}[lang as 'en' | 'es'];
+---
+
+<div class="ikigai">
+  <svg
+    viewBox="0 0 320 320"
+    role="img"
+    aria-label={lang === 'es'
+      ? 'Diagrama de propósito: contabilidad, finanzas y datos se cruzan en un contador que construye datos.'
+      : 'Purpose diagram: accounting, finance and data meet at an accountant who builds data.'}
+  >
+    <circle cx="102" cy="102" r="76" fill="var(--accent-soft)" fill-opacity="0.45" stroke="var(--accent)" stroke-opacity="0.4" />
+    <circle cx="218" cy="102" r="76" fill="var(--accent-soft)" fill-opacity="0.45" stroke="var(--accent)" stroke-opacity="0.4" />
+    <circle cx="102" cy="218" r="76" fill="var(--accent-soft)" fill-opacity="0.45" stroke="var(--accent)" stroke-opacity="0.4" />
+    <circle cx="218" cy="218" r="76" fill="var(--accent-soft)" fill-opacity="0.45" stroke="var(--accent)" stroke-opacity="0.4" />
+
+    <circle cx="160" cy="160" r="50" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.5" />
+
+    <text x="66" y="70" text-anchor="middle" class="ikigai-label">{data.love}</text>
+    <text x="254" y="70" text-anchor="middle" class="ikigai-label">{data.goodAt}</text>
+    <text x="66" y="252" text-anchor="middle" class="ikigai-label">{data.needed}</text>
+    <text x="254" y="252" text-anchor="middle" class="ikigai-label">{data.paid}</text>
+
+    <text x="160" y="153" text-anchor="middle" class="ikigai-center">{data.center1}</text>
+    <text x="160" y="172" text-anchor="middle" class="ikigai-center">{data.center2}</text>
+  </svg>
+
+  <ul class="ikigai-legend">
+    {data.legend.map((item) => (
+      <li>
+        <span class="ikigai-k">{item.k}</span>
+        <span class="ikigai-v">{item.v}</span>
+      </li>
+    ))}
+  </ul>
+</div>

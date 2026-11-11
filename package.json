@@ -17,5 +17,8 @@
     "@astrojs/check": "^0.9.4",
     "simple-icons": "^16.37.0",
     "typescript": "^5.7.2"
+  },
+  "allowScripts": {
+    "sharp@0.34.5": true
   }
 }

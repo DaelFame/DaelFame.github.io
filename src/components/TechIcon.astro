@@ -16,8 +16,11 @@ import {
  * no hand-written path data. The label sits next to the icon, so the icon is
  * decorative for screen readers.
  *
- * Power BI and Excel have no entry: Microsoft asked Simple Icons to remove its
- * marks. Those chips render as plain labels rather than a fabricated logo.
+ * Power BI has no entry in `simple-icons` (Microsoft asked that its marks be
+ * removed). Its geometry is taken from Microsoft's official
+ * `microsoft/PowerBI-Icons` repository (CC-BY-4.0) and rendered monochrome with
+ * `currentColor`, so it adapts to both themes. Nominative use — the mark labels
+ * the tool, it does not imply Microsoft endorsement.
  */
 const MARKS = {
   python: siPython,
@@ -31,7 +34,14 @@ const MARKS = {
   docker: siDocker,
 } as const;
 
-export type TechSlug = keyof typeof MARKS;
+/** Official Power BI logo geometry, three ascending bars (Microsoft, CC-BY-4.0). */
+const POWERBI_PATHS = [
+  'M 1400,66.75 v 1466.5 c 0,36.86 -29.89,66.75 -66.75,66.75 H 916.75 C 879.885,1600 850,1570.11 850,1533.25 V 66.75 C 850,29.885 879.885,0 916.75,0 h 416.5 c 36.87,0 66.75,29.8849 66.75,66.75 z',
+  'M 1075,466.667 V 1600 H 525 V 466.667 C 525,429.848 554.848,400 591.667,400 h 416.663 c 36.82,0 66.67,29.848 66.67,66.667 z',
+  'm 200,866.667 v 666.663 c 0,36.82 29.848,66.67 66.667,66.67 H 750 V 866.667 C 750,829.848 720.152,800 683.333,800 H 266.667 C 229.848,800 200,829.848 200,866.667 Z',
+];
+
+export type TechSlug = keyof typeof MARKS | 'powerbi';
 
 interface Props {
   slug?: string;
@@ -39,8 +49,23 @@ interface Props {
 }
 
 const { slug, class: className } = Astro.props;
-const mark = slug ? MARKS[slug as TechSlug] : undefined;
+const isPbi = slug === 'powerbi';
+const mark = slug && !isPbi ? MARKS[slug as keyof typeof MARKS] : undefined;
 ---
+
+{
+  isPbi && (
+    <svg
+      class={className}
+      viewBox="0 0 1200 1600"
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+    >
+      {POWERBI_PATHS.map((d) => <path fill="currentColor" d={d} />)}
+    </svg>
+  )
+}
 
 {
   mark && (
