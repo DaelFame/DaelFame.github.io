@@ -129,8 +129,8 @@ budgets run on every push. A red gate blocks deploy.
 | T2 | Header with both toggles, footer, 404, mobile menu | S3, S8 | inline | done |
 | T3 | Home: hero + waterfall, pillars, case cards | S4, S5, S6 | inline | done |
 | T4 | Content schema + `/work` index in both locales | S6, S7 | inline | partial — index done, detail pages pending |
-| T5 | Case layout + 3 EN case files | S6, S7 | inline | pending |
-| T6 | 3 ES case files | S2, S6, S7 | delegated (parallel) | pending |
+| T5 | Case layout + 3 EN case files | S6, S7 | inline | done — aff2302 |
+| T6 | 3 ES case files | S2, S6, S7 | delegated (parallel) | done — folded into T5 |
 | T7 | About, CV PDFs, OG images, JSON-LD, sitemap | S9, S10 | inline | pending |
 | T8 | Performance + a11y pass, mobile pass, budget verification | S11, S14 | delegated (verify) | pending |
 
