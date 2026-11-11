@@ -1,0 +1,12 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0C1013" />
+  <circle cx="1180" cy="90" r="320" fill="#10231E" />
+  <circle cx="1180" cy="90" r="320" fill="none" stroke="#3DBFA0" stroke-opacity="0.28" stroke-width="2" />
+  <rect x="0" y="0" width="9" height="630" fill="#3DBFA0" />
+
+  <text x="120" y="252" font-family="Segoe UI, Arial, sans-serif" font-size="92" font-weight="600" fill="#F2F4F3">Joaquin Cardenas</text>
+  <text x="123" y="332" font-family="Segoe UI, Arial, sans-serif" font-size="38" fill="#7D8890">Analytics Engineer · Accounting background</text>
+  <text x="120" y="424" font-family="Segoe UI, Arial, sans-serif" font-size="50" font-weight="600" fill="#3DBFA0">Finance data that ties out.</text>
+
+  <text x="123" y="574" font-family="Consolas, monospace" font-size="27" fill="#7D8890">daelfame.github.io</text>
+</svg>
