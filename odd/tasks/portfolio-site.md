@@ -54,15 +54,18 @@ metricas ,seria como logica de negioc , habilidade tecnica y algo mas"*, refined
 Acceptance: three pillars, three proof lines, no standalone metric grid; the first
 pillar establishes the accounting base, not general business acumen.
 
-**S15 — Positioning statement.**
-The site positions the subject as an accountant who builds data, never as an auditor who
-moved into FP&A. H1 (EN): **"I read the ledger. I build the pipeline."** H1 (ES):
-**"Entiendo el asiento. Construyo el pipeline."** The lede explains the claim in plain
-language: accounting rules, data engineering and BI in one head, so nothing is lost in
-translation between the statement and the dashboard. Requirement (verbatim): *"eso de
-auditoro a financas no me gusta , ademas soy cun contador  con el tema de data , algo
-mucho mas vendible"*.
-Acceptance: no occurrence of "From audit to FP&A" anywhere in copy, metadata, or docs.
+**S15 — Positioning statement (layered).**
+The site positions the subject as an analytics engineer with an accounting background,
+selling a result, not a capacity. Layered, each line one job: eyebrow = role
+("Analytics Engineer · Accounting background" / "Ingeniero de analítica · Base
+contable"); H1 = result ("Finance data that ties out." / "Datos financieros que
+cuadran."); lede = who + why credible ("I'm an accountant who builds the pipelines and
+dashboards…" / "Soy contador y construyo los pipelines y dashboards…"). The earlier H1
+("I read the ledger. I build the pipeline.") is retained as the heading of the "How I
+work" block, not the hero. Requirement (verbatim): *"No dice el rol. Un reclutador no
+sabe si buscas contador, analista o ingeniero. Habla de ti, no de lo que ganan ellos."*
+Acceptance: H1 states a role-adjacent result and is provable by the cases (the Lakehouse
+reconciles to S/ 0.00); no occurrence of "From audit to FP&A".
 
 **S16 — All three projects visible from the home page.**
 The hero visualises one case; the home page must still surface all three. A "Selected

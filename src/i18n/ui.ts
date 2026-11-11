@@ -8,9 +8,9 @@ export const defaultLang: Lang = 'en';
 
 export const ui = {
   en: {
-    'meta.home.title': 'Joaquin Cardenas — Accounting & Data',
+    'meta.home.title': 'Joaquin Cardenas — Analytics Engineer · Accounting',
     'meta.home.description':
-      'Accountant with IFRS and audit controls training, building the data pipelines and BI models that finance teams decide with.',
+      'Analytics engineer with an accounting background: pipelines and dashboards that make the numbers tie out from ledger to decision.',
 
     'nav.work': 'Work',
     'nav.about': 'About',
@@ -19,10 +19,10 @@ export const ui = {
     'lang.label': 'Language',
     skip: 'Skip to content',
 
-    'hero.eyebrow': 'Accounting · Data · Business Intelligence',
-    'hero.title': 'I read the ledger. I build the pipeline.',
+    'hero.eyebrow': 'Analytics Engineer · Accounting background',
+    'hero.title': 'Finance data that ties out.',
     'hero.lede':
-      'Accounting rules, data engineering and BI in one head — so nothing is lost in translation between the financial statement and the dashboard.',
+      "I'm an accountant who builds the pipelines and dashboards, so the numbers match from the ledger to the decision.",
     'hero.cta': 'See the work',
 
     'waterfall.fromCase': 'From the FP&A case study',
@@ -47,9 +47,9 @@ export const ui = {
     'footer.rights': 'Arequipa, Peru',
   },
   es: {
-    'meta.home.title': 'Joaquin Cardenas — Contabilidad y Datos',
+    'meta.home.title': 'Joaquin Cardenas — Ingeniero de analítica · Contabilidad',
     'meta.home.description':
-      'Contador con formación en IFRS y controles de auditoría, construyendo los pipelines y modelos BI con los que decide el área financiera.',
+      'Ingeniero de analítica con base contable: pipelines y dashboards que hacen cuadrar los números desde el asiento hasta la decisión.',
 
     'nav.work': 'Trabajo',
     'nav.about': 'Sobre mí',
@@ -58,10 +58,10 @@ export const ui = {
     'lang.label': 'Idioma',
     skip: 'Ir al contenido',
 
-    'hero.eyebrow': 'Contabilidad · Datos · Business Intelligence',
-    'hero.title': 'Entiendo el asiento. Construyo el pipeline.',
+    'hero.eyebrow': 'Ingeniero de analítica · Base contable',
+    'hero.title': 'Datos financieros que cuadran.',
     'hero.lede':
-      'Reglas contables, ingeniería de datos y BI en una sola cabeza — para que nada se pierda en la traducción entre el estado financiero y el dashboard.',
+      'Soy contador y construyo los pipelines y dashboards, para que los números cuadren desde el asiento hasta la decisión.',
     'hero.cta': 'Ver el trabajo',
 
     'waterfall.fromCase': 'Del caso de FP&A',

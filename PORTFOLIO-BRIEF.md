@@ -12,12 +12,19 @@ A personal portfolio website for **Joaquin Cardenas** (GitHub `DaelFame`), an ac
 in Arequipa, Peru, who also builds data pipelines and BI. The site is a **recruiter-facing
 layer** over three existing public repositories, not a gallery of screenshots.
 
-**Positioning (the one sentence the whole site sells):**
+**Positioning — layered, each line doing one job:**
 
-> **I read the ledger. I build the pipeline.** *(ES: "Entiendo el asiento. Construyo el pipeline.")*
+| Layer | EN | ES | Job |
+|---|---|---|---|
+| Eyebrow | Analytics Engineer · Accounting background | Ingeniero de analítica · Base contable | the role, at a glance |
+| H1 | **Finance data that ties out.** | **Datos financieros que cuadran.** | the result the reader gets |
+| Lede | I'm an accountant who builds the pipelines and dashboards, so the numbers match from the ledger to the decision. | Soy contador y construyo los pipelines y dashboards, para que los números cuadren desde el asiento hasta la decisión. | who he is + why it's credible |
+| Tagline (kept in the "How I work" block) | I read the ledger. I build the pipeline. | Entiendo el asiento. Construyo el pipeline. | the memorable hook, no longer carrying all the weight |
 
 The rare profile it claims: one person who does accounting **and** data — so nothing is
-lost in translation between the financial statement and the dashboard.
+lost in translation between the financial statement and the dashboard. "Ties out" is
+deliberate: it is accountant **and** finance-manager language, and it is provable — the
+Lakehouse reconciles to S/ 0.00.
 
 **Target audience:** recruiters and hiring managers for FP&A analyst, BI analyst, and
 analytics-engineering roles in Peru / LatAm / remote.
@@ -76,8 +83,9 @@ choice.
 
 ## 5. Home page structure (top to bottom)
 
-1. **Hero** — eyebrow ("Accounting · Data · Business Intelligence"), H1 ("I read the
-   ledger. I build the pipeline."), lede, CTAs (See the work · GitHub · LinkedIn).
+1. **Hero** — eyebrow ("Analytics Engineer · Accounting background"), H1 ("Finance data
+   that ties out."), lede (accountant who builds the pipelines and dashboards), CTAs
+   (See the work · GitHub · LinkedIn).
 2. **Capability map** (right of hero) — four overlapping circles: **Accounting · FP&A ·
    Data Engineering · Business Intelligence**, intersecting at **"One person. Four
    seats."** Each quadrant's legend line states an *outcome*, not a sentiment:
@@ -88,7 +96,8 @@ choice.
 3. **Selected work** — three case cards. Each shows the **real dashboard screenshot** on
    hover (FP&A shows a "case study in progress" placeholder — its Power BI report is not
    finished).
-4. **How I work** — a four-step process: Record and close → Plan and explain → Build the
+4. **How I work** — a four-step process, headed by the retained tagline *"I read the
+   ledger. I build the pipeline."*: Record and close → Plan and explain → Build the
    platform → Turn it into a decision, each step carrying its tools with brand marks.
 
 > Design note: an earlier "ikigai" (what I love / what I'm good at) and a "pillars"
