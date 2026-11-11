@@ -38,6 +38,12 @@ export const ui = {
     'work.intro':
       'Each one starts from a business question and ends in a decision you could defend. Start with 01 if you have three minutes.',
 
+    'about.meta.title': 'About — Joaquin Cardenas',
+    'about.meta.description':
+      'Accountant-in-training with KPMG audit experience and FP&A/BI work turning budget data into decisions.',
+    'cv.meta.title': 'CV — Joaquin Cardenas',
+    'cv.meta.description': 'Curriculum vitae of Joaquin Cardenas, accountant with a data stack.',
+
     'footer.rights': 'Arequipa, Peru',
   },
   es: {
@@ -70,6 +76,12 @@ export const ui = {
       'Tres casos: análisis de varianza FP&A, un lakehouse de presupuesto público y un deck de inteligencia de mercado universitario.',
     'work.intro':
       'Cada uno arranca con una pregunta de negocio y termina en una decisión defendible. Empezá por el 01 si tenés tres minutos.',
+
+    'about.meta.title': 'Sobre mí — Joaquin Cardenas',
+    'about.meta.description':
+      'Contador en formación con experiencia en auditoría en KPMG y trabajo de FP&A/BI convirtiendo datos de presupuesto en decisiones.',
+    'cv.meta.title': 'CV — Joaquin Cardenas',
+    'cv.meta.description': 'Currículum de Joaquin Cardenas, contador con stack de datos.',
 
     'footer.rights': 'Arequipa, Perú',
   },

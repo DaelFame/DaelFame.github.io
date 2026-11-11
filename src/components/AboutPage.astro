@@ -1,0 +1,95 @@
+---
+import type { Lang } from '../i18n/ui';
+import { profile, p } from '../data/profile';
+import Github from './Github.astro';
+import Linkedin from './Linkedin.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = p(lang);
+---
+
+<div class="about">
+  <header class="about-head">
+    <p class="eyebrow">{t(profile.role)}</p>
+    <h1 class="page-title">{profile.name}</h1>
+    <p class="lede">{t(profile.bio)}</p>
+
+    <p class="about-kpmg">
+      <span aria-hidden="true">★</span>
+      {t(profile.kpmg)}
+    </p>
+
+    <div class="row about-cta">
+      <a class="btn" href={`mailto:${profile.email}`}>{profile.email}</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/joaquincardenas-data">
+        <Linkedin class="brand-icon" /><span>LinkedIn</span>
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/DaelFame">
+        <Github class="brand-icon" /><span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <section class="about-block">
+    <h2>{lang === 'es' ? 'Experiencia' : 'Experience'}</h2>
+    <ol class="timeline">
+      {
+        profile.experience.map((job) => (
+          <li class="timeline-item">
+            <div class="timeline-head">
+              <div>
+                <h3>{t(job.role)}</h3>
+                <p class="timeline-org">{job.org}</p>
+              </div>
+              <div class="timeline-meta">
+                <span>{job.period}</span>
+                {job.location && <span>{t(job.location)}</span>}
+              </div>
+            </div>
+            <ul class="timeline-bullets">
+              {job.bullets.map((b) => <li>{t(b)}</li>)}
+            </ul>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="about-block about-cols">
+    <div>
+      <h2>{lang === 'es' ? 'Formación' : 'Education'}</h2>
+      <ul class="plain-list">
+        {
+          profile.education.map((ed) => (
+            <li>
+              <strong>{t(ed.degree)}</strong>
+              <span>{t(ed.org)}</span>
+              <span class="muted">{t(ed.period)}{ed.location ? ` · ${t(ed.location)}` : ''}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2>{lang === 'es' ? 'Certificaciones' : 'Certifications'}</h2>
+      <ul class="plain-list">
+        {profile.certifications.map((c) => <li>{c}</li>)}
+      </ul>
+    </div>
+
+    <div>
+      <h2>{lang === 'es' ? 'Habilidades' : 'Skills'}</h2>
+      {
+        profile.skills.map((s) => (
+          <div class="skill-group">
+            <h3>{t(s.group)}</h3>
+            <p>{t(s.items)}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</div>

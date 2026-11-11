@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AboutPage from '../../components/AboutPage.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'es' as const;
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={t('about.meta.title')} description={t('about.meta.description')} lang={lang}>
+  <section class="section">
+    <div class="container">
+      <AboutPage lang={lang} />
+    </div>
+  </section>
+</BaseLayout>

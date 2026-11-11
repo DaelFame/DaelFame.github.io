@@ -19,7 +19,7 @@ const t = useTranslations(lang);
 const path = Astro.url.pathname;
 const enUrl = new URL(localizePath(path, 'en'), Astro.site);
 const esUrl = new URL(localizePath(path, 'es'), Astro.site);
-const cvHref = lang === 'es' ? '/cv/joaquin-cardenas-fpa-es.pdf' : '/cv/joaquin-cardenas-fpa-en.pdf';
+const cvHref = lang === 'es' ? '/es/cv/' : '/cv/';
 ---
 
 <!doctype html>
@@ -35,6 +35,20 @@ const cvHref = lang === 'es' ? '/cv/joaquin-cardenas-fpa-es.pdf' : '/cv/joaquin-
     <link rel="alternate" hreflang="en" href={enUrl} />
     <link rel="alternate" hreflang="es" href={esUrl} />
     <link rel="alternate" hreflang="x-default" href={enUrl} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Joaquin Cardenas',
+      jobTitle: 'Accounting & Data',
+      url: 'https://daelfame.github.io',
+      email: 'mailto:Joaquin.data.dev@gmail.com',
+      address: { '@type': 'PostalAddress', addressLocality: 'Arequipa', addressCountry: 'PE' },
+      sameAs: [
+        'https://github.com/DaelFame',
+        'https://www.linkedin.com/in/joaquincardenas-data',
+      ],
+    })} />
 
     <!-- Set the theme before first paint so there is no flash of the wrong one. -->
     <script is:inline>
