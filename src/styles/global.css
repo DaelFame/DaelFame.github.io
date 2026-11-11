@@ -1138,6 +1138,12 @@ p {
 
 /* ---------- CV (print) ---------- */
 
+.cv-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-block-end: 1rem;
+}
+
 .cv {
   max-width: 72ch;
 }
@@ -1340,5 +1346,35 @@ p {
 
   .wf-bar {
     transform: scaleX(1);
+  }
+}
+
+/* ---------- print ---------- */
+
+@media print {
+  .site-header,
+  .site-footer,
+  .skip,
+  .cv-toolbar {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .cv {
+    max-width: none;
+  }
+
+  .cv-block h2 {
+    color: #000;
+    border-block-end-color: #000;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
   }
 }

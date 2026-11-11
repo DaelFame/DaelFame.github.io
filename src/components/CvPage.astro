@@ -8,9 +8,15 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = p(lang);
+const cvFile = '/cv/joaquin-cardenas-cv-en.pdf';
+const downloadLabel = lang === 'es' ? 'Descargar PDF' : 'Download PDF';
 ---
 
 <div class="cv">
+  <div class="cv-toolbar">
+    <a class="btn btn-sm" href={cvFile} download>{downloadLabel} &darr;</a>
+  </div>
+
   <header class="cv-head">
     <h1>{profile.name}</h1>
     <p class="cv-line">Arequipa, Peru (UTC-5) · {profile.email}</p>
