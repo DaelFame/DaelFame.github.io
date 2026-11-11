@@ -160,20 +160,21 @@ burying it.
 
 ---
 
-## 9. Status — DONE vs PENDING
+## 9. Status — LIVE
+
+**Deployed:** `https://daelfame.github.io` (GitHub Pages, built by GitHub Actions on
+every push to `main`). All routes verified 200: `/`, `/es/`, `/work/`, `/es/work/`,
+`/about/`, `/cv/`, `/work/<slug>/`, `/og.png`, `/sitemap-index.xml`.
 
 **Done:** all 15 pages, EN+ES, light/dark, responsive, the three case studies, About, CV
 (print-ready HTML), brand marks (incl. official Power BI), capability map, process
-section, SEO + JSON-LD, image optimization, CI workflow.
+section, SEO + JSON-LD, OG share card, image optimization, CI/CD deploy.
 
-**Pending (the only remaining work before it is "live and polished"):**
+**Optional, not blocking anything:**
 
-1. **Open Graph image** — a 1200×630 share card (name + "Accounting & Data") so LinkedIn
-   shares show a preview instead of nothing.
-2. **Deploy** — create the repo `daelfame.github.io`, push, and let the existing
-   `deploy.yml` publish to `https://daelfame.github.io`.
-3. *(Optional)* A generated `.pdf` version of `/cv/`, on top of the print-ready page.
-4. *(Optional)* Custom domain.
+1. A Spanish OG share card for `/es/` (the current one is English).
+2. A generated `.pdf` version of `/cv/`, on top of the print-ready page.
+3. A custom domain.
 
 ---
 
