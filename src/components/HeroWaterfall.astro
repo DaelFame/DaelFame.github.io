@@ -9,9 +9,11 @@ import { useTranslations } from '../i18n/utils';
  */
 interface Props {
   lang: Lang;
+  /** Show the "from the FP&A case study" attribution (hidden on the case page itself). */
+  showCaption?: boolean;
 }
 
-const { lang } = Astro.props;
+const { lang, showCaption = true } = Astro.props;
 const t = useTranslations(lang);
 const caseHref = lang === 'es' ? '/es/work/' : '/work/';
 
@@ -104,7 +106,11 @@ const plain = (n: number) => `${n < 0 ? '−' : ''}${nf.format(Math.abs(n))}`;
   <figcaption class="wf-note">{copy.note}</figcaption>
   </figure>
 
-  <p class="wf-caption">
-    <a href={caseHref}>{t('waterfall.fromCase')} <span aria-hidden="true">&rarr;</span></a>
-  </p>
+  {
+    showCaption && (
+      <p class="wf-caption">
+        <a href={caseHref}>{t('waterfall.fromCase')} <span aria-hidden="true">&rarr;</span></a>
+      </p>
+    )
+  }
 </div>

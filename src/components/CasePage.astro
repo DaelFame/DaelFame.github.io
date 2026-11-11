@@ -1,0 +1,82 @@
+---
+import type { Lang } from '../i18n/ui';
+import { cases, type CaseStudy } from '../data/cases';
+import TechIcon from './TechIcon.astro';
+import HeroWaterfall from './HeroWaterfall.astro';
+
+interface Props {
+  item: CaseStudy;
+  lang: Lang;
+}
+
+const { item, lang } = Astro.props;
+const t = (f: { en: string; es: string }) => f[lang];
+
+const idx = cases.findIndex((c) => c.slug === item.slug);
+const next = idx >= 0 && idx < cases.length - 1 ? cases[idx + 1] : undefined;
+const backHref = lang === 'es' ? '/es/work/' : '/work/';
+const nextHref = next ? (lang === 'es' ? `/es${next.href}` : next.href) : undefined;
+const readRepo = lang === 'es' ? 'Leer el repositorio' : 'Read the repository';
+const nextLabel = lang === 'es' ? 'Siguiente caso' : 'Next case';
+const backLabel = lang === 'es' ? 'Volver al trabajo' : 'Back to work';
+---
+
+<article class="case">
+  <header class="case-head">
+    <p class="eyebrow">{t(item.discipline)} &middot; {t(item.period)}</p>
+    <h1 class="case-h1">{item.title}</h1>
+    <p class="case-question-lg">{t(item.question)}</p>
+    <p class="case-result-lg">{t(item.result)}</p>
+
+    <div class="metric-grid">
+      {
+        item.metrics.map((m) => (
+          <div class="metric">
+            <span class="num">{m.value}</span>
+            <span>{t(m.label)}</span>
+          </div>
+        ))
+      }
+    </div>
+
+    <ul class="case-stack case-stack--lg">
+      {item.stack.map((tech) => (
+        <li>
+          <TechIcon slug={tech.slug} class="tech-mark" />
+          <span>{tech.label}</span>
+        </li>
+      ))}
+    </ul>
+
+    {
+      item.inProgress && (
+        <p class="case-wip">{t(item.inProgress)}</p>
+      )
+    }
+  </header>
+
+  <div class="case-story">
+    {
+      item.story.map((section, i) => (
+        <section class="case-section">
+          <h2 class="case-section-title">
+            <span class="case-section-n">{String(i + 1).padStart(2, '0')}</span>
+            {t(section.title)}
+          </h2>
+
+          {section.waterfall && <HeroWaterfall lang={lang} showCaption={false} />}
+
+          {section.body.map((p) => <p class="case-para">{t(p)}</p>)}
+        </section>
+      ))
+    }
+  </div>
+
+  <nav class="case-nav" aria-label={lang === 'es' ? 'Navegación del caso' : 'Case navigation'}>
+    <a class="btn btn-ghost" href={backHref}>&larr; {backLabel}</a>
+    <a class="btn" href={item.repo}>{readRepo} &rarr;</a>
+    {nextHref && (
+      <a class="btn btn-ghost" href={nextHref}>{nextLabel} &rarr;</a>
+    )}
+  </nav>
+</article>

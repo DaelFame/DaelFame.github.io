@@ -1020,6 +1020,122 @@ p {
   font-size: 0.9375rem;
 }
 
+/* ---------- case study page ---------- */
+
+.case {
+  max-width: 72ch;
+}
+
+.case-head {
+  padding-block-end: 2rem;
+  border-block-end: 1px solid var(--line);
+}
+
+.case-h1 {
+  margin-block: 0.5rem 1rem;
+}
+
+.case-question-lg {
+  font-size: var(--step-1);
+  color: var(--ink-2);
+}
+
+.case-result-lg {
+  margin-block-start: 1rem;
+  padding-inline-start: 0.9rem;
+  border-inline-start: 3px solid var(--accent);
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-block-start: 1.75rem;
+}
+
+.metric {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper-2);
+}
+
+.metric .num {
+  font-size: 1.375rem;
+  font-weight: 600;
+}
+
+.metric span:last-child {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.case-stack--lg {
+  margin-block-start: 1.25rem;
+}
+
+.case-wip {
+  display: inline-block;
+  margin-block-start: 1rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+.case-story {
+  margin-block-start: 2.5rem;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.case-section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
+  margin-block-end: 1rem;
+}
+
+.case-section-n {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+
+.case-para {
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+
+.case-section .wf-wrap {
+  margin-block-end: 1.25rem;
+}
+
+.case-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-block-start: 3rem;
+  padding-block-start: 1.5rem;
+  border-block-start: 1px solid var(--line);
+}
+
+@media (min-width: 640px) {
+  .metric-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 /* ---------- CV (print) ---------- */
 
 .cv {

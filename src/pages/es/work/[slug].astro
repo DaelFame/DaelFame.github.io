@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CasePage from '../../../components/CasePage.astro';
+import { cases, getCase } from '../../../data/cases';
+
+export function getStaticPaths() {
+  return cases.map((c) => ({ params: { slug: c.slug } }));
+}
+
+const { slug } = Astro.params;
+const item = getCase(slug!);
+
+const lang = 'es' as const;
+const description = item ? item.question.es : 'Caso de estudio';
+---
+
+<BaseLayout
+  title={item ? `${item.title} — Joaquin Cardenas` : 'Caso de estudio'}
+  description={description}
+  lang={lang}
+>
+  <section class="section">
+    <div class="container">
+      {item && <CasePage item={item} lang={lang} />}
+    </div>
+  </section>
+</BaseLayout>
