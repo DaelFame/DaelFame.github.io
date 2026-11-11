@@ -7,6 +7,7 @@ Last updated: 2026-11-11
 ## Sources scanned
 
 - C:\Users\ASUS\.config\opencode\skills
+- D:\Proyectos\portafolio\.opencode\skills
 
 ## Contract
 
@@ -25,6 +26,7 @@ Last updated: 2026-11-11
 | `skill-creator` | Trigger: new skills, agent instructions, documenting AI usage patterns. Create LLM-first skills with valid frontmatter. | user | `C:\Users\ASUS\.config\opencode\skills\skill-creator\SKILL.md` |
 | `skill-improver` | Trigger: improve skills, audit skills, refactor skills, skill quality. Audit and upgrade existing LLM-first skills. | user | `C:\Users\ASUS\.config\opencode\skills\skill-improver\SKILL.md` |
 | `work-unit-commits` | Plan commits as reviewable work units. Trigger: implementation, commit splitting, chained PRs, or keeping tests and docs with code. | user | `C:\Users\ASUS\.config\opencode\skills\work-unit-commits\SKILL.md` |
+| `modern-web-guidance` | Trigger: any HTML/CSS/client-side JS work (dialogs, popovers, layout, animations, CWV, forms, a11y). Search tool for modern web best practices with Baseline data. Do NOT trigger for backend, infra or tooling. | project | `D:\Proyectos\portafolio\.opencode\skills\modern-web-guidance\SKILL.md` |
 
 ## Loading protocol
 

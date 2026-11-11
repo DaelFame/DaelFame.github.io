@@ -1,5 +1,11 @@
 import type { Lang } from '../i18n/ui';
 
+export interface Tech {
+  label: string;
+  /** Key in `TechIcon`. Omitted when no legitimate brand mark exists (Power BI, DAX). */
+  slug?: string;
+}
+
 export interface CaseStudy {
   slug: string;
   index: string;
@@ -7,7 +13,7 @@ export interface CaseStudy {
   title: string;
   question: { en: string; es: string };
   result: { en: string; es: string };
-  stack: string[];
+  stack: Tech[];
   /** Until T5 ships the case pages, cards open the repository (the README is the case study). */
   href: string;
 }
@@ -26,7 +32,7 @@ export const cases: CaseStudy[] = [
       en: '€243,137 of variance traced line by line to operating expenses.',
       es: '€243.137 de varianza trazados línea por línea a gastos operativos.',
     },
-    stack: ['Python', 'Power BI', 'pytest'],
+    stack: [{ label: 'Python', slug: 'python' }, { label: 'Power BI' }, { label: 'pytest', slug: 'pytest' }],
     href: 'https://github.com/DaelFame/fpa-forecasting-case-study',
   },
   {
@@ -42,7 +48,12 @@ export const cases: CaseStudy[] = [
       en: '8M source rows rebuilt into 29.5M facts, reconciled to S/ 0.00.',
       es: '8M filas fuente convertidas en 29.5M hechos, reconciliadas a S/ 0.00.',
     },
-    stack: ['Polars', 'DuckDB', 'Prefect', 'NL to SQL'],
+    stack: [
+      { label: 'Polars', slug: 'polars' },
+      { label: 'DuckDB', slug: 'duckdb' },
+      { label: 'Prefect', slug: 'prefect' },
+      { label: 'Docker', slug: 'docker' },
+    ],
     href: 'https://github.com/DaelFame/peru-budget-lakehouse',
   },
   {
@@ -58,7 +69,7 @@ export const cases: CaseStudy[] = [
       en: '−1.6pp of market share hidden behind +19% volume growth.',
       es: '−1.6 pp de market share escondidos detrás de +19% de volumen.',
     },
-    stack: ['Power BI', 'DAX', 'Kimball'],
+    stack: [{ label: 'Power BI' }, { label: 'DAX' }, { label: 'Python', slug: 'python' }],
     href: 'https://github.com/DaelFame/ucsp-market-intelligence',
   },
 ];

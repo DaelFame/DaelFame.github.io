@@ -1,6 +1,7 @@
 ---
 import type { Lang } from '../i18n/ui';
 import type { CaseStudy } from '../data/cases';
+import TechIcon from './TechIcon.astro';
 
 interface Props {
   item: CaseStudy;
@@ -22,7 +23,14 @@ const { item, lang } = Astro.props;
 
   <div class="case-foot">
     <ul class="case-stack">
-      {item.stack.map((s) => <li>{s}</li>)}
+      {
+        item.stack.map((tech) => (
+          <li>
+            <TechIcon slug={tech.slug} class="tech-mark" />
+            <span>{tech.label}</span>
+          </li>
+        ))
+      }
     </ul>
     <a class="case-link" href={item.href}>
       {lang === 'es' ? 'Ver caso' : 'Open case'} <span aria-hidden="true">&rarr;</span>

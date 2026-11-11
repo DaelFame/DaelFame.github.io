@@ -183,6 +183,20 @@ sticky header should follow guides `scroll-entry-exit-effects`,
 `scroll-progress-indicator` and `shrinking-header-on-scroll` rather than hand-rolled
 IntersectionObserver code.
 
+**S17 — Technologies carry their brand marks; skills are shown as a process.**
+Every technology chip shows its official mark when one legitimately exists, sourced from
+`simple-icons` (CC0) and inlined at build time — no runtime request and no hand-written
+path data. Power BI, Excel and DAX have no entry there (Microsoft's marks were removed
+from the set), so those chips render as plain labels rather than a fabricated logo.
+Skills are presented as a four-step process — record and close → plan and explain →
+build the platform → turn it into a decision — with the tools attached to each step,
+never as an alphabetised list of software. Requirement (verbatim): *"losporyectos y las
+tecnologias con sus logos corresponidentes […] mis skill la forma en com podemos ver
+las coas combiandos procesos , contabildiad , fionanzas ese tipode cosas algo mas
+vendible"*.
+Acceptance: no invented brand path; chips remain monochrome so both themes stay AA; the
+process section states accounting → finance → data in that order.
+
 ---
 
 ## Log
@@ -264,7 +278,19 @@ and Rick Viscomi, Apache-2.0, SLSA provenance from GitHub Actions. Installed to
 `.opencode/skills/modern-web-guidance/`; smoke-tested with a real search query. Baseline
 target recorded in `AGENTS.md`.
 
+**L8 (brand marks, skills as process)**
+
+> okey otra cosa  , losporyectos y las tecnologias con sus logos corresponidentes
+> eso de donde se fueron  los eruos  , otra cosa  mis skill la forma en com podemos ver
+> las coas combiandos procesos ,  contabildiad , fionanzas ese tipode cosas  algo mas
+> vendible y actualiza las skill si se requiere
+
+Applied: `TechIcon` backed by `simple-icons` (14 marks rendered on the home page);
+`Process` section added with four steps and their tools; skill registry updated with the
+project-scoped `modern-web-guidance` entry.
+
 **Next step:** T0 scaffold, then first deploy to confirm the pipeline before content work.
+
 
 
 

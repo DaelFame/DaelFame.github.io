@@ -1,0 +1,89 @@
+---
+import type { Lang } from '../i18n/ui';
+import TechIcon from './TechIcon.astro';
+
+/**
+ * Skills shown as one process, not a tool list.
+ * The arc runs from the ledger to the decision — which is the whole positioning.
+ */
+const steps = [
+  {
+    index: '01',
+    title: { en: 'Record and close', es: 'Registrar y cerrar' },
+    body: {
+      en: 'Chart of accounts, AP/AR, month-end close and reconciliations that actually tie out.',
+      es: 'Plan contable, cuentas por pagar y cobrar, cierre de mes y conciliaciones que cuadran de verdad.',
+    },
+    tech: [{ label: 'PostgreSQL', slug: 'postgresql' }, { label: 'Excel' }, { label: 'Power BI' }],
+  },
+  {
+    index: '02',
+    title: { en: 'Plan and explain', es: 'Planificar y explicar' },
+    body: {
+      en: 'Driver-based budgets, variance decomposition and scenarios that survive a backtest.',
+      es: 'Presupuestos por drivers, descomposición de varianza y escenarios que resisten un backtest.',
+    },
+    tech: [{ label: 'Python', slug: 'python' }, { label: 'Power BI' }],
+  },
+  {
+    index: '03',
+    title: { en: 'Build the platform', es: 'Construir la plataforma' },
+    body: {
+      en: 'Pipelines, star schema and reconciliation gates that stop the run when the numbers disagree.',
+      es: 'Pipelines, star schema y gates de conciliación que frenan el proceso cuando los números no cuadran.',
+    },
+    tech: [
+      { label: 'Polars', slug: 'polars' },
+      { label: 'DuckDB', slug: 'duckdb' },
+      { label: 'Prefect', slug: 'prefect' },
+      { label: 'Docker', slug: 'docker' },
+    ],
+  },
+  {
+    index: '04',
+    title: { en: 'Turn it into a decision', es: 'Convertirlo en decisión' },
+    body: {
+      en: 'Executive decks, natural language to SQL, and recommendations with the number attached.',
+      es: 'Decks ejecutivos, lenguaje natural a SQL y recomendaciones con el número al lado.',
+    },
+    tech: [{ label: 'Streamlit', slug: 'streamlit' }, { label: 'Power BI' }, { label: 'DAX' }],
+  },
+];
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+---
+
+<section class="section" aria-labelledby="how-i-work">
+  <div class="container">
+    <p class="eyebrow">{lang === 'es' ? 'Cómo trabajo' : 'How I work'}</p>
+    <h2 id="how-i-work">
+      {lang === 'es'
+        ? 'Contabilidad, finanzas y datos como un solo proceso.'
+        : 'Accounting, finance and data as one process.'}
+    </h2>
+
+    <ol class="flow">
+      {
+        steps.map((step) => (
+          <li class="flow-step">
+            <span class="flow-index">{step.index}</span>
+            <h3>{step.title[lang]}</h3>
+            <p>{step.body[lang]}</p>
+            <ul class="tech-row">
+              {step.tech.map((tech) => (
+                <li class="tech-chip">
+                  <TechIcon slug={tech.slug} class="tech-mark" />
+                  <span>{tech.label}</span>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

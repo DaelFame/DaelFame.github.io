@@ -1,0 +1,57 @@
+---
+import {
+  siPython,
+  siPytest,
+  siPolars,
+  siDuckdb,
+  siPrefect,
+  siStreamlit,
+  siPandas,
+  siPostgresql,
+  siDocker,
+} from 'simple-icons';
+
+/**
+ * Brand marks come from `simple-icons` (CC0) at build time — no runtime request,
+ * no hand-written path data. The label sits next to the icon, so the icon is
+ * decorative for screen readers.
+ *
+ * Power BI and Excel have no entry: Microsoft asked Simple Icons to remove its
+ * marks. Those chips render as plain labels rather than a fabricated logo.
+ */
+const MARKS = {
+  python: siPython,
+  pytest: siPytest,
+  polars: siPolars,
+  duckdb: siDuckdb,
+  prefect: siPrefect,
+  streamlit: siStreamlit,
+  pandas: siPandas,
+  postgresql: siPostgresql,
+  docker: siDocker,
+} as const;
+
+export type TechSlug = keyof typeof MARKS;
+
+interface Props {
+  slug?: string;
+  class?: string;
+}
+
+const { slug, class: className } = Astro.props;
+const mark = slug ? MARKS[slug as TechSlug] : undefined;
+---
+
+{
+  mark && (
+    <svg
+      class={className}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
+    >
+      <path fill="currentColor" d={mark.path} />
+    </svg>
+  )
+}
