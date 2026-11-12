@@ -123,7 +123,10 @@ const SECTIONS = (lang) => {
   const projects = cases
     .map((c) => {
       const tech = c.stack.map((s) => s.label).join(', ');
-      const period = t(c.period);
+      const assessment = c.slug === 'ucsp-market-intelligence'
+        ? (lang === 'es' ? ' · prueba técnica' : ' · technical assessment')
+        : '';
+      const period = t(c.period) + assessment;
       return `\\resumeProjectHeading
           {\\textbf{${esc(c.title)}} $|$ \\emph{${esc(tech)}}}{${esc(period)}}
           \\resumeItemListStart
