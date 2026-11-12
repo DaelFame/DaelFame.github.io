@@ -19,8 +19,13 @@ const PREVIEWS: Record<string, typeof ucspImg> = {
 };
 
 const preview = PREVIEWS[item.slug];
-const inProgress = lang === 'es' ? 'Caso en desarrollo' : 'Case study in progress';
+const href = lang === 'es' ? `/es${item.href}` : item.href;
 const openLabel = lang === 'es' ? 'Ver caso' : 'Open case';
+const placeholder = item.inProgress
+  ? item.inProgress[lang]
+  : lang === 'es'
+    ? 'Caso en desarrollo'
+    : 'Case study in progress';
 ---
 
 <article class="case-card">
@@ -35,20 +40,21 @@ const openLabel = lang === 'es' ? 'Ver caso' : 'Open case';
           decoding="async"
         />
       ) : (
-        <div class="case-media-empty"><span>{inProgress}</span></div>
+        <div class="case-media-empty"><span>{placeholder}</span></div>
       )
     }
     <span class="case-tag">
       <span>{item.index}</span>
       <span>{item.discipline[lang]}</span>
     </span>
-    <a class="case-media-cta" href={item.href} tabindex={-1} aria-hidden="true">
+    <a class="case-media-cta" href={href} tabindex={-1} aria-hidden="true">
       {openLabel} <span>&rarr;</span>
     </a>
   </div>
 
   <div class="case-body">
     <h3 class="case-title">{item.title}</h3>
+    {item.disclosure && <p class="case-disclosure">{item.disclosure[lang]}</p>}
     <p class="case-question">{item.question[lang]}</p>
     <p class="case-result">{item.result[lang]}</p>
 
@@ -63,7 +69,7 @@ const openLabel = lang === 'es' ? 'Ver caso' : 'Open case';
           ))
         }
       </ul>
-      <a class="case-link" href={item.href}>
+      <a class="case-link" href={href}>
         {openLabel} <span aria-hidden="true">&rarr;</span>
       </a>
     </div>

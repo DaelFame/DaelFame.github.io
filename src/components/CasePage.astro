@@ -26,6 +26,7 @@ const backLabel = lang === 'es' ? 'Volver al trabajo' : 'Back to work';
     <p class="eyebrow">{t(item.discipline)} &middot; {t(item.period)}</p>
     <h1 class="case-h1">{item.title}</h1>
     <p class="case-question-lg">{t(item.question)}</p>
+    {item.disclosure && <p class="case-disclosure case-disclosure--lg">{t(item.disclosure)}</p>}
     <p class="case-result-lg">{t(item.result)}</p>
 
     <div class="metric-grid">

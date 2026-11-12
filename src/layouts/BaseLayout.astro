@@ -11,9 +11,11 @@ interface Props {
   title: string;
   description: string;
   lang?: Lang;
+  ogImage?: string;
+  hideLangSwitch?: boolean;
 }
 
-const { title, description, lang = 'en' } = Astro.props;
+const { title, description, lang = 'en', ogImage = '/og.png', hideLangSwitch = false } = Astro.props;
 const t = useTranslations(lang);
 
 const path = Astro.url.pathname;
@@ -41,17 +43,17 @@ const cvHref = lang === 'es' ? '/es/cv/' : '/cv/';
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={new URL(path, Astro.site)} />
-    <meta property="og:image" content={new URL('/og.png', Astro.site)} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : 'en_US'} />
+    <meta property="og:locale" content={lang === 'es' ? 'es_PE' : 'en_US'} />
     <meta name="twitter:card" content="summary_large_image" />
 
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'Person',
       name: 'Joaquin Cardenas',
-      jobTitle: 'Analytics Engineer',
+      jobTitle: 'Financial data analyst',
       url: 'https://daelfame.github.io',
       email: 'mailto:Joaquin.data.dev@gmail.com',
       address: { '@type': 'PostalAddress', addressLocality: 'Arequipa', addressCountry: 'PE' },
@@ -98,7 +100,7 @@ const cvHref = lang === 'es' ? '/es/cv/' : '/cv/';
         </nav>
 
         <div class="header-actions">
-          <LangSwitcher lang={lang} path={path} />
+          {!hideLangSwitch && <LangSwitcher lang={lang} path={path} />}
           <ThemeToggle />
           <a class="btn btn-ghost btn-sm" href={cvHref}>{t('nav.cv')}&nbsp;&darr;</a>
         </div>

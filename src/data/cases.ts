@@ -18,7 +18,6 @@ export interface Metric {
 export interface StorySection {
   title: Bilingual;
   body: Bilingual[];
-  /** Renders the FP&A variance waterfall inside this section. */
   waterfall?: boolean;
 }
 
@@ -37,85 +36,15 @@ export interface CaseStudy {
   repo: string;
   preview?: 'ucsp' | 'peru';
   inProgress?: Bilingual;
+  /** Visible disclosure at the top of the card and page. */
+  disclosure?: Bilingual;
+  cvBullets: Bilingual[];
 }
 
 export const cases: CaseStudy[] = [
   {
-    slug: 'fpa-forecasting',
-    index: '01',
-    discipline: { en: 'FP&A modelling', es: 'Modelado FP&A' },
-    title: 'FP&A Forecasting & Variance Analysis',
-    period: { en: '2026', es: '2026' },
-    question: {
-      en: 'Revenue grew 0.9% while profit fell 61%. Where did it go?',
-      es: 'El ingreso creció 0.9% y la utilidad cayó 61%. ¿Dónde se fue?',
-    },
-    result: {
-      en: '€243,137 of variance traced line by line to operating expenses.',
-      es: '€243.137 de varianza trazados línea por línea a gastos operativos.',
-    },
-    metrics: [
-      { value: '+0.9%', label: { en: 'revenue vs budget', es: 'ingreso vs presupuesto' } },
-      { value: '−61.1%', label: { en: 'net income vs budget', es: 'utilidad neta vs presupuesto' } },
-      { value: '0.3%', label: { en: 'one-year-ahead forecast error', es: 'error de forecast a un año' } },
-      { value: '74', label: { en: 'automated tests', es: 'tests automatizados' } },
-    ],
-    story: [
-      {
-        title: { en: 'The question', es: 'La pregunta' },
-        body: [
-          {
-            en: 'A fashion-accessories manufacturer grew revenue 0.9% in 2026 — and watched net income fall 61%. The market showed up. The result did not. Where did the money go?',
-            es: 'Un fabricante de accesorios de moda creció su ingreso 0.9% en 2026 — y vio caer la utilidad neta 61%. El mercado apareció. El resultado, no. ¿Dónde se fue el dinero?',
-          },
-        ],
-      },
-      {
-        title: { en: 'What I found', es: 'Qué encontré' },
-        waterfall: true,
-        body: [
-          {
-            en: 'The entire miss traced to one line: operating expenses. Revenue and gross margin beat plan, but €359,888 of overrun in OpEx consumed it — and €150,000 of that carries no documentary support. It is kept as a visible gap, not smoothed away.',
-            es: 'Toda la desviación se trazó a una sola línea: gastos operativos. Ingresos y margen bruto superaron el plan, pero €359.888 de sobrecosto en OpEx se lo comieron — y €150.000 de eso no tienen respaldo documental. Se mantiene como un hueco visible, no maquillado.',
-          },
-        ],
-      },
-      {
-        title: { en: 'How I proved it', es: 'Cómo lo probé' },
-        body: [
-          {
-            en: 'A driver-based Python model rebuilt four years of statements from the raw closing workbooks. A two-fold rolling-origin backtest — each fold trained only on years that were already closed — forecast the next year\u2019s revenue within 0.3%. 74 tests pin every accounting identity, referential constraint and variance tie-out.',
-            es: 'Un modelo Python por drivers reconstruyó cuatro años de estados financieros desde los libros de cierre. Un backtest de dos pliegues con origen rodante — cada pliegue entrenado solo con años ya cerrados — pronosticó el ingreso del año siguiente con 0.3% de error. 74 tests fijan cada identidad contable, restricción referencial y amarre de varianza.',
-          },
-        ],
-      },
-      {
-        title: { en: 'What it decides', es: 'Qué decide' },
-        body: [
-          {
-            en: 'The company was capacity-constrained, not demand-constrained. In 2028 the market could not serve 594,748 units of demand. The ceiling was production — which turns a commercial question into a capital-allocation decision.',
-            es: 'La empresa estaba limitada por capacidad, no por demanda. En 2028 el mercado no pudo atender 594.748 unidades de demanda. El techo era la producción — lo que convierte una pregunta comercial en una decisión de asignación de capital.',
-          },
-        ],
-      },
-      {
-        title: { en: 'What this does not prove', es: 'Qué no prueba' },
-        body: [
-          {
-            en: 'This is a competitive business simulation, not a real company\u2019s books. The origin is disclosed because claiming otherwise would be trivially falsifiable. What it demonstrates is the method.',
-            es: 'Es una simulación de negocio competitiva, no los libros de una empresa real. El origen se declara porque afirmar lo contrario sería trivialmente falsable. Lo que demuestra es el método.',
-          },
-        ],
-      },
-    ],
-    stack: [{ label: 'Python', slug: 'python' }, { label: 'Power BI', slug: 'powerbi' }, { label: 'pytest', slug: 'pytest' }],
-    href: '/work/fpa-forecasting/',
-    repo: 'https://github.com/DaelFame/fpa-forecasting-case-study',
-    inProgress: { en: 'Power BI report in progress', es: 'Reporte de Power BI en desarrollo' },
-  },
-  {
     slug: 'peru-budget-lakehouse',
-    index: '02',
+    index: '01',
     discipline: { en: 'Analytics engineering', es: 'Ingeniería de datos' },
     title: 'Peru Budget Lakehouse',
     period: { en: '2026', es: '2026' },
@@ -165,8 +94,8 @@ export const cases: CaseStudy[] = [
         title: { en: 'What it decides', es: 'Qué decide' },
         body: [
           {
-            en: 'Where money executes, and where it does not. Lima reports S/ 91.43B of execution in 2024; Cusco, the second department, S/ 5.63B. That 16.2\u00d7 gap is a property of the state — and the dashboard answers it in SQL, or in plain language through an NL-to-SQL interface.',
-            es: 'Dónde se ejecuta el dinero y dónde no. Lima reporta S/ 91.43B de ejecución en 2024; Cusco, el segundo departamento, S/ 5.63B. Esa brecha de 16.2× es una propiedad del Estado — y el dashboard la responde en SQL, o en lenguaje natural a través de una interfaz NL-to-SQL.',
+            en: 'Where money executes, and where it does not. In 2024, Lima reports S/ 91.43 billion of execution; Cusco, the second department, S/ 5.63 billion. That gap is partly structural — national ministries execute from Lima — so it is a question to investigate, not a ranking of regional performance. The dashboard answers it in SQL, or in plain language through an NL-to-SQL interface.',
+            es: 'Dónde se ejecuta el dinero y dónde no. En 2024, Lima reporta S/ 91,43 mil millones de ejecución; Cusco, el segundo departamento, S/ 5,63 mil millones. Esa brecha es en parte estructural — los ministerios nacionales ejecutan desde Lima — así que es una pregunta a investigar, no un ranking de desempeño regional. El dashboard la responde en SQL, o en lenguaje natural mediante una interfaz NL-to-SQL.',
           },
         ],
       },
@@ -174,8 +103,8 @@ export const cases: CaseStudy[] = [
         title: { en: 'What this does not prove', es: 'Qué no prueba' },
         body: [
           {
-            en: 'The committed demo is a 450,000-row sample, and the dashboard says so. Two KPIs are hidden in demo mode because a row-level sample cannot represent execution rates honestly. The full pipeline requires the source CSV, which is not committed.',
-            es: 'El demo publicado es una muestra de 450.000 filas, y el dashboard lo dice. Dos KPIs se ocultan en modo demo porque una muestra a nivel de fila no puede representar tasas de ejecución con honestidad. El pipeline completo requiere el CSV fuente, que no está commiteado.',
+            en: 'The committed demo is a 450,000-row sample, and the dashboard says so. Two KPIs are hidden in demo mode because a row-level sample cannot represent execution rates honestly. The full pipeline requires the MEF source CSV, which is not committed. Reconciliation is between pipeline layers (Silver vs Gold), not yet against the official MEF total.',
+            es: 'El demo publicado es una muestra de 450.000 filas, y el dashboard lo dice. Dos KPIs se ocultan en modo demo porque una muestra a nivel de fila no puede representar tasas de ejecución con honestidad. El pipeline completo requiere el CSV fuente del MEF, que no está commiteado. La conciliación es entre capas del pipeline (Silver vs Gold), todavía no contra el total oficial del MEF.',
           },
         ],
       },
@@ -189,16 +118,26 @@ export const cases: CaseStudy[] = [
     href: '/work/peru-budget-lakehouse/',
     repo: 'https://github.com/DaelFame/peru-budget-lakehouse',
     preview: 'peru',
+    cvBullets: [
+      {
+        en: 'Built an end-to-end public budget platform: 8M source rows into a 29.5M-row star schema with 131 automated tests and a reconciliation gate.',
+        es: 'Construí una plataforma de presupuesto público: 8M filas fuente convertidas en un star schema de 29.5M filas con 131 tests y un gate de conciliación.',
+      },
+      {
+        en: 'Orchestrated with Prefect/Docker; added a Streamlit dashboard whose conversational layer answers budget questions in SQL.',
+        es: 'Orquestado con Prefect/Docker; dashboard Streamlit con una capa conversacional que responde preguntas de presupuesto en SQL.',
+      },
+    ],
   },
   {
     slug: 'ucsp-market-intelligence',
-    index: '03',
+    index: '02',
     discipline: { en: 'Business intelligence', es: 'Inteligencia de negocio' },
     title: 'UCSP Market Intelligence',
     period: { en: '2026', es: '2026' },
     question: {
-      en: 'Where should a university grow when the market is already allocated?',
-      es: '¿Dónde debería crecer una universidad si el mercado ya está repartido?',
+      en: 'A public-data exercise: a private university in Arequipa was losing market share while growing. Could public enrollment data show where to grow next?',
+      es: 'Un ejercicio con datos públicos: una universidad privada en Arequipa perdía market share mientras crecía. ¿Pueden los datos públicos de matrícula mostrar dónde crecer?',
     },
     result: {
       en: '−1.6pp of market share hidden behind +19% volume growth.',
@@ -210,13 +149,17 @@ export const cases: CaseStudy[] = [
       { value: '174', label: { en: 'universities benchmarked', es: 'universidades comparadas' } },
       { value: '0.94', label: { en: 'modality–growth correlation', es: 'correlación modalidad–crecimiento' } },
     ],
+    disclosure: {
+      en: 'Built as a technical assessment for a hiring process, using public enrollment data.',
+      es: 'Desarrollado como prueba técnica de un proceso de selección, con datos públicos de matrícula.',
+    },
     story: [
       {
         title: { en: 'The question', es: 'La pregunta' },
         body: [
           {
-            en: 'A private university in Arequipa was deciding which programs to open, sustain or discontinue — without a consolidated view of demand. Where should it grow when the market is already allocated?',
-            es: 'Una universidad privada en Arequipa decidía qué programas abrir, sostener o discontinuar — sin una vista consolidada de la demanda. ¿Dónde crecer si el mercado ya está repartido?',
+            en: 'A public-data exercise built as a technical assessment, not a client engagement. Enrollment files are published per semester with inconsistent program names, duplicated rows and missing campus fields. The question: can that data show where a university should grow, when the local market is already allocated?',
+            es: 'Un ejercicio con datos públicos, hecho como prueba técnica, no como encargo de un cliente. Los archivos de matrícula se publican por semestre con nombres de programa inconsistentes, filas duplicadas y campus faltantes. La pregunta: ¿pueden esos datos mostrar dónde debería crecer una universidad, si el mercado local ya está repartido?',
           },
         ],
       },
@@ -224,8 +167,8 @@ export const cases: CaseStudy[] = [
         title: { en: 'What I found', es: 'Qué encontré' },
         body: [
           {
-            en: 'Growing is not the same as winning. Enrollment rose 19%, but market share fell from 10.1% to 8.4%. The market expansion went to a competitor that captured 74.6% of it. UCSP ranks 5th of 6 in its own city.',
-            es: 'Crecer no es lo mismo que ganar. La matrícula subió 19%, pero el market share cayó de 10.1% a 8.4%. La expansión del mercado se la llevó un competidor que capturó el 74.6%. UCSP es 5° de 6 en su propia ciudad.',
+            en: 'Growing is not the same as winning. Enrollment rose 19%, but market share fell from 10.1% to 8.4%. The market expansion went mostly to one competitor. The university ranks 5th of 6 in its own city.',
+            es: 'Crecer no es lo mismo que ganar. La matrícula subió 19%, pero el market share cayó de 10.1% a 8.4%. La expansión del mercado se la llevó mayormente un competidor. La universidad es 5ª de 6 en su propia ciudad.',
           },
         ],
       },
@@ -233,8 +176,8 @@ export const cases: CaseStudy[] = [
         title: { en: 'How I proved it', es: 'Cómo lo probé' },
         body: [
           {
-            en: '17.4M records cleaned into a Kimball star schema. The growth driver is modality, not brand: the two fastest-growing institutions are 73% and 57% distance; UCSP is 100% on-campus — and the correlation between market virtuality and growth is r = 0.94. 46 DAX measures, 20 hand-coded HTML flip cards.',
-            es: '17.4M registros limpiados en un star schema Kimball. El driver de crecimiento es la modalidad, no la marca: las dos instituciones que más crecen son 73% y 57% a distancia; UCSP es 100% presencial — y la correlación entre virtualidad del mercado y crecimiento es r = 0.94. 46 medidas DAX, 20 tarjetas HTML con flip hechas a mano.',
+            en: '17.4M records cleaned into a Kimball star schema. Across the 5 private universities in Arequipa (n = 5, one observation per university), growth is positively associated with distance-modality share: r = 0.94. The two fastest-growing institutions are 73% and 57% distance; this one is 100% on-campus. This is an association, not proof of cause — brand, price and program mix are plausible confounders. 46 DAX measures, 20 hand-coded HTML flip cards.',
+            es: '17.4M registros limpiados en un star schema Kimball. Entre las 5 universidades privadas de Arequipa (n = 5, una observación por universidad), el crecimiento se asocia positivamente con la cuota de modalidad a distancia: r = 0.94. Las dos instituciones que más crecen son 73% y 57% a distancia; esta es 100% presencial. Es una asociación, no prueba de causa — marca, precio y mezcla de programas son confusores plausibles. 46 medidas DAX, 20 tarjetas HTML con flip hechas a mano.',
           },
         ],
       },
@@ -242,8 +185,8 @@ export const cases: CaseStudy[] = [
         title: { en: 'What it decides', es: 'Qué decide' },
         body: [
           {
-            en: 'Four sequenced moves: launch Nursing in distance mode (6,469 enrollments, +124%, 62% already non-presential, 0 UCSP share); transfer the existing postgraduate distance capability to undergraduate; defend the regional franchise; and enter Norte + Centro only where no new campus is needed.',
-            es: 'Cuatro movimientos secuenciados: lanzar Enfermería a distancia (6.469 matrículas, +124%, 62% ya no presencial, 0% de UCSP); transferir la capacidad de distancia ya existente en posgrado al pregrado; defender la franquicia regional; y entrar a Norte + Centro solo donde no se necesite campus nuevo.',
+            en: 'Four sequenced moves: launch Nursing in distance mode (6,469 enrollments, +124%, 62% already non-presential, 0 share); transfer the existing postgraduate distance capability to undergraduate; defend the regional franchise; and enter Norte + Centro only where no new campus is needed.',
+            es: 'Cuatro movimientos secuenciados: lanzar Enfermería a distancia (6.469 matrículas, +124%, 62% ya no presencial, 0% de participación); transferir la capacidad de distancia ya existente en posgrado al pregrado; defender la franquicia regional; y entrar a Norte + Centro solo donde no se necesite campus nuevo.',
           },
         ],
       },
@@ -251,8 +194,8 @@ export const cases: CaseStudy[] = [
         title: { en: 'What this does not prove', es: 'Qué no prueba' },
         body: [
           {
-            en: 'Public enrollment data only — no P&L, tuition or cost data. \u201cRevenue\u201d is expressed as addressable student volume, a demand proxy, never as currency. Every figure is reproducible from the notebooks and the semantic model.',
-            es: 'Solo datos públicos de matrícula — sin P&L, matrícula ni costos. El “ingreso” se expresa como volumen de estudiantes alcanzable, un proxy de demanda, nunca en moneda. Cada cifra es reproducible desde los notebooks y el modelo semántico.',
+            en: 'Public enrollment data only — no P&L, tuition or cost data, and no university financials. “Revenue” is expressed as addressable student volume, a demand proxy, never as currency. With n = 5, the correlation is a signal to investigate, not a forecast.',
+            es: 'Solo datos públicos de matrícula — sin P&L, matrícula ni costos, y sin estados financieros de la universidad. El “ingreso” se expresa como volumen de estudiantes alcanzable, un proxy de demanda, nunca en moneda. Con n = 5, la correlación es una señal a investigar, no un pronóstico.',
           },
         ],
       },
@@ -260,7 +203,103 @@ export const cases: CaseStudy[] = [
     stack: [{ label: 'Power BI', slug: 'powerbi' }, { label: 'DAX' }, { label: 'Python', slug: 'python' }],
     href: '/work/ucsp-market-intelligence/',
     repo: 'https://github.com/DaelFame/ucsp-market-intelligence',
-    preview: 'ucsp',
+    cvBullets: [
+      {
+        en: 'Built a two-page Power BI decision deck on 17.4M public enrollment records, exposing a −1.6pp market-share leak hidden behind +19% volume growth.',
+        es: 'Construí un deck de decisión de dos páginas en Power BI sobre 17.4M registros públicos, exponiendo una pérdida de −1.6 pp de market share oculta tras +19% de crecimiento en volumen.',
+      },
+      {
+        en: 'Growth is associated with distance-modality share (r = 0.94 across 5 private universities; n = 5) — an association, not a causal claim.',
+        es: 'El crecimiento se asocia con la cuota de modalidad a distancia (r = 0.94 entre 5 universidades privadas; n = 5) — una asociación, no una afirmación causal.',
+      },
+    ],
+  },
+  {
+    slug: 'fpa-forecasting',
+    index: '03',
+    discipline: { en: 'FP&A modelling', es: 'Modelado FP&A' },
+    title: 'FP&A Forecasting & Variance Analysis',
+    period: { en: 'Competitive simulation', es: 'Simulación competitiva' },
+    question: {
+      en: 'Revenue grew 0.9% in Year 1 while profit fell 61%. Where did it go?',
+      es: 'El ingreso creció 0.9% en el Año 1 y la utilidad cayó 61%. ¿Dónde se fue?',
+    },
+    result: {
+      en: '€243,137 of variance traced line by line to operating expenses.',
+      es: '€243.137 de varianza trazados línea por línea a gastos operativos.',
+    },
+    metrics: [
+      { value: '+0.9%', label: { en: 'revenue vs budget', es: 'ingreso vs presupuesto' } },
+      { value: '−61.1%', label: { en: 'net income vs budget', es: 'utilidad neta vs presupuesto' } },
+      { value: '€243,137', label: { en: 'net variance traced to OpEx', es: 'varianza neta trazada a OpEx' } },
+      { value: '83', label: { en: 'automated tests', es: 'tests automatizados' } },
+    ],
+    disclosure: {
+      en: 'Competitive business simulation — not a real company. Years are labelled Year 1–4.',
+      es: 'Simulación competitiva de negocio — no es una empresa real. Los años se etiquetan Año 1–4.',
+    },
+    story: [
+      {
+        title: { en: 'The question', es: 'La pregunta' },
+        body: [
+          {
+            en: 'A competitive business simulation of a fashion-accessories manufacturer, not a real client. Revenue grew 0.9% in Year 1 and net income fell 61%. The market showed up. The result did not. Where did the money go?',
+            es: 'Una simulación competitiva de negocio de un fabricante de accesorios de moda, no un cliente real. El ingreso creció 0.9% en el Año 1 y la utilidad neta cayó 61%. El mercado apareció. El resultado, no. ¿Dónde se fue el dinero?',
+          },
+        ],
+      },
+      {
+        title: { en: 'What I found', es: 'Qué encontré' },
+        waterfall: true,
+        body: [
+          {
+            en: 'The entire miss traced to one line: operating expenses. Revenue and gross margin beat plan, but €359,888 of overrun in OpEx consumed it — and €150,000 of that carries no documentary support. It is kept as a visible gap, not smoothed away.',
+            es: 'Toda la desviación se trazó a una sola línea: gastos operativos. Ingresos y margen bruto superaron el plan, pero €359.888 de sobrecosto en OpEx se lo comieron — y €150.000 de eso no tienen respaldo documental. Se mantiene como un hueco visible, no maquillado.',
+          },
+        ],
+      },
+      {
+        title: { en: 'How I proved it', es: 'Cómo lo probé' },
+        body: [
+          {
+            en: 'A driver-based Python model rebuilt four years of simulated statements. Accounting identities, referential integrity and the exact variance tie-out are pinned by 83 automated tests. A naive/seasonal-naive baseline is being added to the repository so the forecast claim can be compared against a trivial benchmark before it is published.',
+            es: 'Un modelo Python por drivers reconstruyó cuatro años de estados simulados. Las identidades contables, la integridad referencial y el amarre exacto de la varianza están fijados por 83 tests automatizados. Se está añadiendo un baseline ingenuo/estacional al repositorio para comparar el forecast contra un benchmark trivial antes de publicarlo.',
+          },
+        ],
+      },
+      {
+        title: { en: 'What it decides', es: 'Qué decide' },
+        body: [
+          {
+            en: 'The company was capacity-constrained, not demand-constrained. In Year 3 the market could not serve 594,748 units of demand. The ceiling was production — which turns a commercial question into a capital-allocation decision.',
+            es: 'La empresa estaba limitada por capacidad, no por demanda. En el Año 3 el mercado no pudo atender 594.748 unidades de demanda. El techo era la producción — lo que convierte una pregunta comercial en una decisión de asignación de capital.',
+          },
+        ],
+      },
+      {
+        title: { en: 'What this does not prove', es: 'Qué no prueba' },
+        body: [
+          {
+            en: 'This is a competitive business simulation, not a real company’s books. The origin is disclosed because claiming otherwise would be trivially falsifiable. What it demonstrates is the method.',
+            es: 'Es una simulación competitiva de negocio, no los libros de una empresa real. El origen se declara porque afirmar lo contrario sería trivialmente falsable. Lo que demuestra es el método.',
+          },
+        ],
+      },
+    ],
+    stack: [{ label: 'Python', slug: 'python' }, { label: 'pytest', slug: 'pytest' }],
+    href: '/work/fpa-forecasting/',
+    repo: 'https://github.com/DaelFame/fpa-forecasting-case-study',
+    inProgress: { en: 'Power BI report not built yet', es: 'Reporte de Power BI todavía no construido' },
+    cvBullets: [
+      {
+        en: 'Rebuilt four simulated years of statements into a driver-based model, tracing a 61% net-income miss to operating expenses and isolating EUR 150,000 of unsupported expenses.',
+        es: 'Reconstruí cuatro años simulados de estados en un modelo por drivers, trazando una caída del 61% de la utilidad neta a gastos operativos y aislando EUR 150.000 sin respaldo.',
+      },
+      {
+        en: 'Pinned accounting identities and the variance tie-out with 83 automated tests (competitive simulation).',
+        es: 'Fijé las identidades contables y el amarre de la varianza con 83 tests automatizados (simulación competitiva).',
+      },
+    ],
   },
 ];
 

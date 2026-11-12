@@ -325,6 +325,29 @@ p {
   margin-block-start: 1.75rem;
 }
 
+.hero-available {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-block-start: 1.5rem;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.hero-available a {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.hero-available .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
 /* ---------- waterfall ---------- */
 
 .wf {
@@ -693,6 +716,20 @@ p {
   color: var(--ink-2);
 }
 
+.case-disclosure {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  border-inline-start: 2px solid var(--line-strong);
+  padding-inline-start: 0.6rem;
+}
+
+.case-disclosure--lg {
+  margin-block-start: 0.75rem;
+  font-size: 0.75rem;
+}
+
 .case-result {
   font-size: 0.875rem;
   color: var(--ink);
@@ -791,6 +828,14 @@ p {
 .ikigai-v {
   font-size: 0.8125rem;
   color: var(--ink-2);
+}
+
+.ikigai-phrase {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+  max-width: 34ch;
+  margin-inline: auto;
 }
 
 @media (hover: none) {
