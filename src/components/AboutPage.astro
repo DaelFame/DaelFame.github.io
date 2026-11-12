@@ -10,18 +10,17 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = p(lang);
+const labels = {
+  en: { experience: 'Experience', education: 'Education', certifications: 'Certifications', skills: 'Skills', languages: 'Languages', contact: 'Email' },
+  es: { experience: 'Experiencia', education: 'Formación', certifications: 'Certificaciones', skills: 'Habilidades', languages: 'Idiomas', contact: 'Email' },
+}[lang];
 ---
 
 <div class="about">
   <header class="about-head">
-    <p class="eyebrow">{t(profile.role)}</p>
+    <p class="eyebrow">{t(profile.title)}</p>
     <h1 class="page-title">{profile.name}</h1>
-    <p class="lede">{t(profile.bio)}</p>
-
-    <p class="about-kpmg">
-      <span aria-hidden="true">★</span>
-      {t(profile.kpmg)}
-    </p>
+    <p class="lede about-narrative">{t(profile.about)}</p>
 
     <div class="row about-cta">
       <a class="btn" href={`mailto:${profile.email}`}>{profile.email}</a>
@@ -35,7 +34,7 @@ const t = p(lang);
   </header>
 
   <section class="about-block">
-    <h2>{lang === 'es' ? 'Experiencia' : 'Experience'}</h2>
+    <h2>{labels.experience}</h2>
     <ol class="timeline">
       {
         profile.experience.map((job) => (
@@ -43,10 +42,10 @@ const t = p(lang);
             <div class="timeline-head">
               <div>
                 <h3>{t(job.role)}</h3>
-                <p class="timeline-org">{job.org}</p>
+                <p class="timeline-org">{t(job.org)}</p>
               </div>
               <div class="timeline-meta">
-                <span>{job.period}</span>
+                <span>{t(job.period)}</span>
                 {job.location && <span>{t(job.location)}</span>}
               </div>
             </div>
@@ -61,7 +60,7 @@ const t = p(lang);
 
   <section class="about-block about-cols">
     <div>
-      <h2>{lang === 'es' ? 'Formación' : 'Education'}</h2>
+      <h2>{labels.education}</h2>
       <ul class="plain-list">
         {
           profile.education.map((ed) => (
@@ -74,14 +73,14 @@ const t = p(lang);
         }
       </ul>
 
-      <h2>{lang === 'es' ? 'Certificaciones' : 'Certifications'}</h2>
+      <h2>{labels.certifications}</h2>
       <ul class="plain-list">
-        {profile.certifications.map((c) => <li>{c}</li>)}
+        {profile.certifications.map((c) => <li>{t(c)}</li>)}
       </ul>
     </div>
 
     <div>
-      <h2>{lang === 'es' ? 'Habilidades' : 'Skills'}</h2>
+      <h2>{labels.skills}</h2>
       {
         profile.skills.map((s) => (
           <div class="skill-group">
@@ -90,6 +89,11 @@ const t = p(lang);
           </div>
         ))
       }
+
+      <div class="skill-group">
+        <h3>{labels.languages}</h3>
+        <p>{t(profile.languages)}</p>
+      </div>
     </div>
   </section>
 </div>

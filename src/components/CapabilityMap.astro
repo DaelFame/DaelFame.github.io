@@ -19,9 +19,10 @@ const data = {
     fpa: 'FP&A',
     data: 'Data Eng.',
     bi: 'BI',
-    center1: 'One person.',
-    center2: 'Four seats.',
-    aria: 'Four overlapping circles — accounting, FP&A, data engineering and BI — meeting at one person who fills all four seats.',
+    center1: 'One workflow.',
+    center2: '',
+    phrase: 'Accounting, finance, data and BI in one workflow.',
+    aria: 'Four overlapping circles — accounting, FP&A, data engineering and BI — working as one workflow.',
     legend: [
       { k: 'Accounting', v: 'The books close: AP/AR, month-end and reconciliations that actually tie out.' },
       { k: 'FP&A', v: 'The numbers are explained: budget vs actual, variance and scenarios.' },
@@ -34,9 +35,10 @@ const data = {
     fpa: 'FP&A',
     data: 'Ing. de datos',
     bi: 'BI',
-    center1: 'Una persona.',
-    center2: 'Cuatro sillas.',
-    aria: 'Cuatro círculos superpuestos — contabilidad, FP&A, ingeniería de datos y BI — que se cruzan en una persona que cubre las cuatro sillas.',
+    center1: 'Un flujo.',
+    center2: '',
+    phrase: 'Contabilidad, finanzas, datos y BI en un mismo flujo.',
+    aria: 'Cuatro círculos superpuestos — contabilidad, FP&A, ingeniería de datos y BI — trabajando como un mismo flujo.',
     legend: [
       { k: 'Contabilidad', v: 'El cierre cuadra: AP/AR, cierre de mes y conciliaciones que cierran de verdad.' },
       { k: 'FP&A', v: 'Los números se explican: presupuesto vs real, varianza y escenarios.' },
@@ -64,6 +66,8 @@ const data = {
     <text x="160" y="153" text-anchor="middle" class="ikigai-center">{data.center1}</text>
     <text x="160" y="172" text-anchor="middle" class="ikigai-center">{data.center2}</text>
   </svg>
+
+  <p class="ikigai-phrase">{data.phrase}</p>
 
   <ul class="ikigai-legend">
     {data.legend.map((item) => (

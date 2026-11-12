@@ -1,6 +1,7 @@
 ---
 import type { Lang } from '../i18n/ui';
 import { profile, p } from '../data/profile';
+import { cases } from '../data/cases';
 
 interface Props {
   lang: Lang;
@@ -10,6 +11,11 @@ const { lang } = Astro.props;
 const t = p(lang);
 const cvFile = lang === 'es' ? '/cv/joaquin-cardenas-cv-es.pdf' : '/cv/joaquin-cardenas-cv-en.pdf';
 const downloadLabel = lang === 'es' ? 'Descargar PDF' : 'Download PDF';
+
+const labels = {
+  en: { summary: 'Summary', projects: 'Projects', experience: 'Experience', education: 'Education & certifications', skills: 'Skills', languages: 'Languages' },
+  es: { summary: 'Resumen', projects: 'Proyectos', experience: 'Experiencia', education: 'Formación y certificaciones', skills: 'Habilidades', languages: 'Idiomas' },
+}[lang];
 ---
 
 <div class="cv">
@@ -19,22 +25,40 @@ const downloadLabel = lang === 'es' ? 'Descargar PDF' : 'Download PDF';
 
   <header class="cv-head">
     <h1>{profile.name}</h1>
-    <p class="cv-line">Arequipa, Peru (UTC-5) · {profile.email}</p>
+    <p class="cv-line">{t(profile.location)} · {profile.email}</p>
     <p class="cv-line">linkedin.com/in/joaquincardenas-data · github.com/DaelFame</p>
-    <p class="cv-summary">{t(profile.bio)}</p>
+    <p class="cv-summary">{t(profile.summary)}</p>
   </header>
 
   <section class="cv-block">
-    <h2>{lang === 'es' ? 'Experiencia' : 'Experience'}</h2>
+    <h2>{labels.projects}</h2>
+    {
+      cases.map((c) => (
+        <div class="cv-job">
+          <div class="cv-job-head">
+            <strong>{c.title}</strong>
+            <span class="cv-period">{t(c.period)}</span>
+          </div>
+          <p class="cv-org">{c.discipline[lang]}</p>
+          <ul>
+            {c.cvBullets.map((b) => <li>{t(b)}</li>)}
+          </ul>
+        </div>
+      ))
+    }
+  </section>
+
+  <section class="cv-block">
+    <h2>{labels.experience}</h2>
     {
       profile.experience.map((job) => (
         <div class="cv-job">
           <div class="cv-job-head">
             <strong>{t(job.role)}</strong>
-            <span class="cv-period">{job.period}</span>
+            <span class="cv-period">{t(job.period)}</span>
           </div>
           <p class="cv-org">
-            {job.org}
+            {t(job.org)}
             {job.location ? ` — ${t(job.location)}` : ''}
           </p>
           <ul>
@@ -46,48 +70,24 @@ const downloadLabel = lang === 'es' ? 'Descargar PDF' : 'Download PDF';
   </section>
 
   <section class="cv-block">
-    <h2>{lang === 'es' ? 'Proyectos' : 'Projects'}</h2>
-    <div class="cv-job">
-      <p class="cv-org"><strong>UCSP Market Intelligence</strong> · Power BI, DAX, Python — 2026</p>
-      <ul>
-        <li>{lang === 'es' ? 'Deck de decisión de dos páginas sobre 17.4M registros públicos, exponiendo una pérdida de 1.6 pp de market share escondida detrás de +19% de volumen.' : 'Two-page BI decision deck on 17.4M public enrollment records, exposing a −1.6pp market-share leak masked by +19% volume growth.'}</li>
-        <li>{lang === 'es' ? 'Cuantifiqué el driver de crecimiento (modalidad vs. marca, r = 0.94) y dimensioné un mercado de 608.758 estudiantes sin inversión nueva en campus.' : 'Quantified the growth driver (modality vs. brand, r = 0.94) and sized a 608,758-student expansion market requiring no new campus investment.'}</li>
-      </ul>
-    </div>
-    <div class="cv-job">
-      <p class="cv-org"><strong>Peru Budget Lakehouse</strong> · Python, SQL, DuckDB, Streamlit — 2026</p>
-      <ul>
-        <li>{lang === 'es' ? 'Plataforma de datos de presupuesto público que procesa 29.5M filas de hechos (8M registros fuente) con 131 tests automatizados.' : 'End-to-end public budget data platform processing 29.5M fact rows (8M source records) with 131 automated tests.'}</li>
-        <li>{lang === 'es' ? 'Orquestado con Prefect/Docker; dashboard Streamlit con interfaz NL-to-SQL.' : 'Orchestrated with Prefect/Docker; Streamlit dashboard with an NL-to-SQL interface.'}</li>
-      </ul>
-    </div>
-    <div class="cv-job">
-      <p class="cv-org"><strong>FP&A Forecasting & Variance Analysis</strong> · Python, Power BI — 2026</p>
-      <ul>
-        <li>{lang === 'es' ? 'Reconstruí cuatro años de estados financieros en un modelo por drivers, trazando una caída del 61% de la utilidad neta a gastos operativos y aislando €150.000 de gastos sin respaldo.' : 'Rebuilt four years of statements into a driver-based model, tracing a 61% net-income miss to operating expenses and isolating €150,000 of unsupported expenses.'}</li>
-        <li>{lang === 'es' ? 'Forecast de ingresos con 0.3% de error out-of-sample en un backtest de dos pliegues.' : 'Forecast next-year revenue within 0.3% out-of-sample on a two-fold backtest.'}</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="cv-block">
-    <h2>{lang === 'es' ? 'Formación y certificaciones' : 'Education & certifications'}</h2>
+    <h2>{labels.education}</h2>
     <ul>
       {
         profile.education.map((ed) => (
           <li><strong>{t(ed.degree)}</strong> — {t(ed.org)}, {t(ed.period)}</li>
         ))
       }
-      {profile.certifications.map((c) => <li>{c}</li>)}
+      {profile.certifications.map((c) => <li>{t(c)}</li>)}
     </ul>
   </section>
 
   <section class="cv-block">
-    <h2>{lang === 'es' ? 'Habilidades' : 'Skills'}</h2>
+    <h2>{labels.skills}</h2>
     {
       profile.skills.map((s) => (
         <p class="cv-org"><strong>{t(s.group)}:</strong> {t(s.items)}</p>
       ))
     }
+    <p class="cv-org"><strong>{labels.languages}:</strong> {t(profile.languages)}</p>
   </section>
 </div>

@@ -6,6 +6,7 @@ import Process from '../../components/Process.astro';
 import Github from '../../components/Github.astro';
 import Linkedin from '../../components/Linkedin.astro';
 import { useTranslations } from '../../i18n/utils';
+import { profile } from '../../data/profile';
 
 const lang = 'es' as const;
 const t = useTranslations(lang);
@@ -27,6 +28,12 @@ const t = useTranslations(lang);
             <Linkedin class="brand-icon" /><span>LinkedIn</span>
           </a>
         </div>
+
+        <p class="hero-available">
+          <span class="dot" aria-hidden="true"></span>
+          <span>{t('hero.available')}.</span>
+          <a href={`mailto:${profile.email}`}>{t('hero.email')} &rarr;</a>
+        </p>
       </div>
 
       <CapabilityMap lang={lang} />
