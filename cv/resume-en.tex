@@ -1,0 +1,173 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez — Based off of: https://github.com/sb2nov/resume (MIT)
+% Generated from src/data/profile.ts + src/data/cases.ts — do not edit by hand.
+%------------------------
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+\begin{center}
+    \textbf{\Huge \scshape Joaquin Cardenas} \\ \vspace{1pt}
+    \small Remote $\cdot$ Arequipa, Peru (UTC-5) $|$ \href{mailto:Joaquin.data.dev@gmail.com}{\underline{Joaquin.data.dev@gmail.com}} $|$
+    \href{https://linkedin.com/in/joaquincardenas-data}{\underline{linkedin.com/in/joaquincardenas-data}} $|$
+    \href{https://github.com/DaelFame}{\underline{github.com/DaelFame}}
+    \\ \vspace{4pt}
+    \small Financial data analyst with an accounting background and an engineering streak: I build the pipelines and dashboards that keep finance numbers reliable. I understand where a ledger entry comes from and how finance uses it, so decisions can keep being made on it. As General Manager of a restaurant, I moved operations from paper to digital records and used the data to justify every change; revenue grew 55\%. At KPMG, I used Power Query, SQL and Python to clean very large Excel files so the audit work could start faster and stay focused. Accounting degree expected 2027. Based in Arequipa (UTC-5); worked in English at US resorts on two J-1 seasons.
+\end{center}
+
+\section{Projects}
+    \resumeSubHeadingListStart
+\resumeProjectHeading
+          {\textbf{Peru Budget Lakehouse} $|$ \emph{Polars, DuckDB, Prefect, Docker}}{2026}
+          \resumeItemListStart
+            \resumeItem{Built an end-to-end public budget platform: 8M source rows into a 29.5M-row star schema with 131 automated tests and a reconciliation gate.}
+            \resumeItem{Orchestrated with Prefect/Docker; added a Streamlit dashboard whose conversational layer answers budget questions in SQL.}
+          \resumeItemListEnd
+\resumeProjectHeading
+          {\textbf{UCSP Market Intelligence} $|$ \emph{Power BI, DAX, Python}}{2026}
+          \resumeItemListStart
+            \resumeItem{Built a two-page Power BI decision deck on 17.4M public enrollment records, exposing a -1.6pp market-share leak hidden behind +19\% volume growth.}
+            \resumeItem{Growth is associated with distance-modality share (r = 0.94 across 5 private universities; n = 5) --- an association, not a causal claim.}
+          \resumeItemListEnd
+\resumeProjectHeading
+          {\textbf{FP\&A Forecasting \& Variance Analysis} $|$ \emph{Python, pytest}}{Competitive simulation}
+          \resumeItemListStart
+            \resumeItem{Rebuilt four simulated years of statements into a driver-based model, tracing a 61\% net-income miss to operating expenses and isolating EUR 150,000 of unsupported expenses.}
+            \resumeItem{Pinned accounting identities and the variance tie-out with 83 automated tests (competitive simulation).}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+\section{Experience}
+  \resumeSubHeadingListStart
+\resumeSubheading
+      {Audit Data Analyst Intern}{Jan 2026 -- Mar 2026}
+      {KPMG en Peru}{Lima, Peru}
+      \resumeItemListStart
+        \resumeItem{Reconciled accounts and validated data for IFRS audit engagements; cleaned very large Excel files with Power Query, SQL and Python so the audit work could start faster.}
+        \resumeItem{Ranked 1st globally in KPMG's Audit Foundations 1 training program (international cohort).}
+      \resumeItemListEnd
+
+\resumeSubheading
+      {Operations Analyst}{Aug 2024 -- Aug 2025}
+      {La Katita --- Government \& Corporate Contracting}{Arequipa, Peru}
+      \resumeItemListStart
+        \resumeItem{Managed logistics, budgeting and administration for large-scale institutional food service.}
+        \resumeItem{Tracked budget vs. actual spend and built routing metrics that cut delivery times by 15\%.}
+      \resumeItemListEnd
+
+\resumeSubheading
+      {Operations \& BI Analyst}{Jun 2023 -- Jul 2024}
+      {Triburritos --- Fast Casual Food Industry}{Arequipa, Peru}
+      \resumeItemListStart
+        \resumeItem{Built automated Power BI dashboards for cash flow, labor and KPIs, raising reporting efficiency 30\%.}
+        \resumeItem{Analyzed transactional sales data to identify revenue leaks and cost optimization opportunities.}
+      \resumeItemListEnd
+
+\resumeSubheading
+      {Accounting Systems \& Data Associate}{Jan 2023 -- Jun 2023}
+      {Talleres Escarcina Torres --- Automotive Service}{Arequipa, Peru}
+      
+
+\resumeSubheading
+      {General Manager \& Revenue Analyst}{May 2020 -- Jun 2022}
+      {Toro Loco Bar \& Grill --- Restaurant}{Arequipa, Peru}
+      \resumeItemListStart
+        \resumeItem{Moved restaurant records from paper to digital systems, then used the data to justify each operational change.}
+        \resumeItem{Analyzed sales trends and implemented electronic invoicing, driving a 55\% revenue increase.}
+        \resumeItem{Managed full P\&L and built Power BI dashboards for cash flow, labor costs and revenue KPIs.}
+      \resumeItemListEnd
+
+\resumeSubheading
+      {Operations Associate}{Dec 2016 -- Mar 2017 \& Dec 2019 -- Mar 2020}
+      {J-1 Program --- Hospitality Operations (USA)}{Hawaii \& Ohio, USA}
+      
+  \resumeSubHeadingListEnd
+
+\section{Education \& Certifications}
+  \resumeSubHeadingListStart
+\resumeSubheading
+      {Bachelor's degree in Accounting}{Expected 2027}
+      {Universidad Cat\'olica San Pablo (UCSP)}{Arequipa, Peru}
+\resumeSubheading
+      {Power BI Professional}{2022}
+      {TECSUP}{Arequipa, Peru}
+    \resumeItemListStart
+    \resumeItem{Data Analytics for Finance --- Universidad Cat\'olica San Pablo (2026)}
+    \resumeItem{Python Essentials 2: Intermediate --- Cisco (2026)}
+    \resumeItem{SQL Interactivo --- Desaf\'io Latam (2024)}
+    \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\section{Skills \& Languages}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Finance \& Accounting}{: FP\&A $\cdot$ Budgeting $\cdot$ Variance Analysis $\cdot$ Financial Reporting $\cdot$ AP/AR $\cdot$ Month-End Close $\cdot$ IFRS} \\
+     \textbf{Data \& Engineering}{: SQL $\cdot$ Power BI (DAX) $\cdot$ Python (Polars, Pandas) $\cdot$ Power Query $\cdot$ Excel $\cdot$ Streamlit $\cdot$ DuckDB $\cdot$ Parquet $\cdot$ Prefect $\cdot$ Docker $\cdot$ CI/CD} \\
+     \textbf{Languages}{: English: B2}
+    }}
+ \end{itemize}
+
+\end{document}

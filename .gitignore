@@ -17,3 +17,11 @@ Thumbs.db
 
 # logs
 npm-debug.log*
+
+# generated CV build artifacts (keep .tex and .pdf)
+cv/*.aux
+cv/*.log
+cv/*.out
+cv/*.fls
+cv/*.fdb_latexmk
+cv/*.synctex.gz
