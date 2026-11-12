@@ -11,12 +11,12 @@ interface Props {
 const { lang } = Astro.props;
 const t = p(lang);
 const labels = {
-  en: { experience: 'Experience', education: 'Education', certifications: 'Certifications', skills: 'Skills', languages: 'Languages', contact: 'Email' },
-  es: { experience: 'Experiencia', education: 'Formación', certifications: 'Certificaciones', skills: 'Habilidades', languages: 'Idiomas', contact: 'Email' },
+  en: { languages: 'Languages', looking: 'What I am looking for', cv: 'Full CV', cvHref: '/cv/' },
+  es: { languages: 'Idiomas', looking: 'Qué busco', cv: 'CV completo', cvHref: '/es/cv/' },
 }[lang];
 ---
 
-<div class="about">
+<div class="about about--narrative">
   <header class="about-head">
     <p class="eyebrow">{t(profile.title)}</p>
     <h1 class="page-title">{profile.name}</h1>
@@ -30,70 +30,25 @@ const labels = {
       <a class="btn btn-ghost" href="https://github.com/DaelFame">
         <Github class="brand-icon" /><span>GitHub</span>
       </a>
+      <a class="btn btn-ghost" href={labels.cvHref}>{labels.cv} &rarr;</a>
     </div>
   </header>
 
-  <section class="about-block">
-    <h2>{labels.experience}</h2>
-    <ol class="timeline">
-      {
-        profile.experience.map((job) => (
-          <li class="timeline-item">
-            <div class="timeline-head">
-              <div>
-                <h3>{t(job.role)}</h3>
-                <p class="timeline-org">{t(job.org)}</p>
-              </div>
-              <div class="timeline-meta">
-                <span>{t(job.period)}</span>
-                {job.location && <span>{t(job.location)}</span>}
-              </div>
-            </div>
-            <ul class="timeline-bullets">
-              {job.bullets.map((b) => <li>{t(b)}</li>)}
-            </ul>
-          </li>
-        ))
-      }
-    </ol>
-  </section>
-
   <section class="about-block about-cols">
     <div>
-      <h2>{labels.education}</h2>
+      <h2>{labels.looking}</h2>
       <ul class="plain-list">
-        {
-          profile.education.map((ed) => (
-            <li>
-              <strong>{t(ed.degree)}</strong>
-              <span>{t(ed.org)}</span>
-              <span class="muted">{t(ed.period)}{ed.location ? ` · ${t(ed.location)}` : ''}</span>
-            </li>
-          ))
-        }
-      </ul>
-
-      <h2>{labels.certifications}</h2>
-      <ul class="plain-list">
-        {profile.certifications.map((c) => <li>{t(c)}</li>)}
+        <li>{lang === 'es' ? 'Roles remotos de datos financieros, BI o FP&A.' : 'Remote financial data, BI or FP&A roles.'}</li>
+        <li>{lang === 'es' ? 'Equipos donde contabilidad y datos se hablan en el mismo idioma.' : 'Teams where accounting and data speak the same language.'}</li>
       </ul>
     </div>
 
     <div>
-      <h2>{labels.skills}</h2>
-      {
-        profile.skills.map((s) => (
-          <div class="skill-group">
-            <h3>{t(s.group)}</h3>
-            <p>{t(s.items)}</p>
-          </div>
-        ))
-      }
-
-      <div class="skill-group">
-        <h3>{labels.languages}</h3>
-        <p>{t(profile.languages)}</p>
-      </div>
+      <h2>{labels.languages}</h2>
+      <ul class="plain-list">
+        <li>{t(profile.languages)}</li>
+        <li>{lang === 'es' ? 'Español: nativo' : 'Spanish: native'}</li>
+      </ul>
     </div>
   </section>
 </div>

@@ -11,7 +11,7 @@ export interface Tech {
 }
 
 export interface Metric {
-  value: string;
+  value: Bilingual;
   label: Bilingual;
 }
 
@@ -57,10 +57,10 @@ export const cases: CaseStudy[] = [
       es: '8M filas fuente convertidas en 29.5M hechos, reconciliadas a S/ 0.00.',
     },
     metrics: [
-      { value: '8M', label: { en: 'source rows', es: 'filas fuente' } },
-      { value: '29.5M', label: { en: 'fact rows in a star schema', es: 'filas de hechos en un star schema' } },
-      { value: 'S/ 0.00', label: { en: 'Silver vs Gold difference', es: 'diferencia Silver vs Gold' } },
-      { value: '131', label: { en: 'automated tests', es: 'tests automatizados' } },
+      { value: { en: '8M', es: '8 M' }, label: { en: 'source rows', es: 'filas fuente' } },
+      { value: { en: '29.5M', es: '29,5 M' }, label: { en: 'fact rows in a star schema', es: 'filas de hechos en un star schema' } },
+      { value: { en: 'S/ 0.00', es: 'S/ 0,00' }, label: { en: 'Silver vs Gold difference', es: 'diferencia Silver vs Gold' } },
+      { value: { en: '131', es: '131' }, label: { en: 'automated tests', es: 'tests automatizados' } },
     ],
     story: [
       {
@@ -144,10 +144,10 @@ export const cases: CaseStudy[] = [
       es: '−1.6 pp de market share escondidos detrás de +19% de volumen.',
     },
     metrics: [
-      { value: '17.4M', label: { en: 'enrollment records', es: 'registros de matrícula' } },
-      { value: '−1.6pp', label: { en: 'market share leak', es: 'pérdida de market share' } },
-      { value: '174', label: { en: 'universities benchmarked', es: 'universidades comparadas' } },
-      { value: '0.94', label: { en: 'modality–growth correlation', es: 'correlación modalidad–crecimiento' } },
+      { value: { en: '17.4M', es: '17,4 M' }, label: { en: 'enrollment records', es: 'registros de matrícula' } },
+      { value: { en: '−1.6pp', es: '−1,6 pp' }, label: { en: 'market share leak', es: 'pérdida de market share' } },
+      { value: { en: '174', es: '174' }, label: { en: 'universities benchmarked', es: 'universidades comparadas' } },
+      { value: { en: '0.94', es: '0,94' }, label: { en: 'modality–growth correlation', es: 'correlación modalidad–crecimiento' } },
     ],
     disclosure: {
       en: 'Built as a technical assessment for a hiring process, using public enrollment data.',
@@ -229,10 +229,10 @@ export const cases: CaseStudy[] = [
       es: '€243.137 de varianza trazados línea por línea a gastos operativos.',
     },
     metrics: [
-      { value: '+0.9%', label: { en: 'revenue vs budget', es: 'ingreso vs presupuesto' } },
-      { value: '−61.1%', label: { en: 'net income vs budget', es: 'utilidad neta vs presupuesto' } },
-      { value: '€243,137', label: { en: 'net variance traced to OpEx', es: 'varianza neta trazada a OpEx' } },
-      { value: '83', label: { en: 'automated tests', es: 'tests automatizados' } },
+      { value: { en: '+0.9%', es: '+0,9 %' }, label: { en: 'revenue vs budget', es: 'ingreso vs presupuesto' } },
+      { value: { en: '−61.1%', es: '−61,1 %' }, label: { en: 'net income vs budget', es: 'utilidad neta vs presupuesto' } },
+      { value: { en: '€243,137', es: '€243.137' }, label: { en: 'net variance traced to OpEx', es: 'varianza neta trazada a OpEx' } },
+      { value: { en: '83', es: '83' }, label: { en: 'automated tests', es: 'tests automatizados' } },
     ],
     disclosure: {
       en: 'Competitive business simulation — not a real company. Years are labelled Year 1–4.',

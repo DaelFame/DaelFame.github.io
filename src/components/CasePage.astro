@@ -33,7 +33,7 @@ const backLabel = lang === 'es' ? 'Volver al trabajo' : 'Back to work';
       {
         item.metrics.map((m) => (
           <div class="metric">
-            <span class="num">{m.value}</span>
+            <span class="num">{t(m.value)}</span>
             <span>{t(m.label)}</span>
           </div>
         ))
