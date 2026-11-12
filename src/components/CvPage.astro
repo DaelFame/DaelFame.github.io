@@ -8,7 +8,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = p(lang);
-const cvFile = '/cv/joaquin-cardenas-cv-en.pdf';
+const cvFile = lang === 'es' ? '/cv/joaquin-cardenas-cv-es.pdf' : '/cv/joaquin-cardenas-cv-en.pdf';
 const downloadLabel = lang === 'es' ? 'Descargar PDF' : 'Download PDF';
 ---
 

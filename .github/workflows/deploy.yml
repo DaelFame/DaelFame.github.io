@@ -25,11 +25,14 @@ jobs:
           cache: npm
       - run: npm ci
 
-      - name: Sync latest CV from the cv repository
+      - name: Sync latest CVs from the cv repository
         run: |
-          curl -fsSL https://raw.githubusercontent.com/DaelFame/cv/main/resume.pdf \
+          curl -fsSL https://raw.githubusercontent.com/DaelFame/cv/main/resume-en.pdf \
             -o public/cv/joaquin-cardenas-cv-en.pdf \
-            || echo "cv repo not reachable yet — using the committed copy"
+            || echo "en CV not reachable - using the committed copy"
+          curl -fsSL https://raw.githubusercontent.com/DaelFame/cv/main/resume-es.pdf \
+            -o public/cv/joaquin-cardenas-cv-es.pdf \
+            || echo "es CV not reachable - using the committed copy"
 
       - run: npm run check
       - run: npm run build
