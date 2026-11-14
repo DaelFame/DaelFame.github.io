@@ -5,6 +5,7 @@ import { Image } from 'astro:assets';
 import TechIcon from './TechIcon.astro';
 import ucspImg from '../assets/cases/ucsp.png';
 import peruImg from '../assets/cases/peru.png';
+import fpaSummaryImg from '../assets/cases/1_Summary.png';
 
 interface Props {
   item: CaseStudy;
@@ -16,25 +17,11 @@ const { item, lang } = Astro.props;
 const PREVIEWS: Record<string, typeof ucspImg> = {
   'ucsp-market-intelligence': ucspImg,
   'peru-budget-lakehouse': peruImg,
+  'fpa-forecasting': fpaSummaryImg,
 };
 
 const preview = PREVIEWS[item.slug];
-const href = lang === 'es' ? `/es${item.href}` : item.href;
-const openLabel = lang === 'es' ? 'Ver caso' : 'Open case';
-const placeholder = item.inProgress
-  ? item.inProgress[lang]
-  : lang === 'es'
-    ? 'Caso en desarrollo'
-    : 'Case study in progress';
----
-
-<article class="case-card">
-  <div class="case-media">
-    {
-      preview ? (
-        <Image
-          src={preview}
-          alt={`${item.title} — dashboard preview`}
+const href = lang === 'es' ? `/es${item.href}` : item.href; const openLabel = lang === 'es' ? 'Ver caso' : 'Open case'; const placeholder = item.inProgress ? item.inProgress[lang] : lang === 'es' ? 'Caso en desarrollo' : 'Case study in progress'; ---  <article class="case-card"> <div class="case-media"> { preview ? ( <Image src={preview} alt={`${item.title} — dashboard preview`}
           width={800}
           loading="lazy"
           decoding="async"

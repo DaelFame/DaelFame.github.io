@@ -1,8 +1,11 @@
 ---
 import type { Lang } from '../i18n/ui';
 import { cases, type CaseStudy } from '../data/cases';
+import { Image } from 'astro:assets';
 import TechIcon from './TechIcon.astro';
 import HeroWaterfall from './HeroWaterfall.astro';
+import fpaSummaryImg from '../assets/cases/1_Summary.png';
+import fpaProfitabilityImg from '../assets/cases/2_Profitability.png';
 
 interface Props {
   item: CaseStudy;
@@ -19,6 +22,27 @@ const nextHref = next ? (lang === 'es' ? `/es${next.href}` : next.href) : undefi
 const readRepo = lang === 'es' ? 'Leer el repositorio' : 'Read the repository';
 const nextLabel = lang === 'es' ? 'Siguiente caso' : 'Next case';
 const backLabel = lang === 'es' ? 'Volver al trabajo' : 'Back to work';
+
+const GALLERY: Record<string, { src: typeof fpaSummaryImg; caption: { en: string; es: string } }[]> = {
+  'fpa-forecasting': [
+    {
+      src: fpaSummaryImg,
+      caption: {
+        en: '01 | Summary — Executive P&L overview with interactive Report Page Tooltips (FY 2024–2029, pre-tax).',
+        es: '01 | Summary — Resumen ejecutivo de P&L con Report Page Tooltips interactivos (FY 2024–2029, pre-tax).',
+      },
+    },
+    {
+      src: fpaProfitabilityImg,
+      caption: {
+        en: '02 | Profitability — Margin drivers, channel mix and unit-economics breakdown.',
+        es: '02 | Profitability — Drivers de margen, mix de canales y desglose de unit economics.',
+      },
+    },
+  ],
+};
+
+const gallery = GALLERY[item.slug] ?? [];
 ---
 
 <article class="case">
@@ -55,6 +79,28 @@ const backLabel = lang === 'es' ? 'Volver al trabajo' : 'Back to work';
       )
     }
   </header>
+
+  {
+    gallery.length > 0 && (
+      <div class="case-gallery" style="display: grid; gap: 1.5rem; margin: 2rem 0;">
+        {gallery.map((shot) => (
+          <figure style="margin: 0;">
+            <Image
+              src={shot.src}
+              alt={t(shot.caption)}
+              width={1400}
+              loading="lazy"
+              decoding="async"
+              style="width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08);"
+            />
+            <figcaption style="margin-top: 0.5rem; font-size: 0.875rem; opacity: 0.75;">
+              {t(shot.caption)}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    )
+  }
 
   <div class="case-story">
     {

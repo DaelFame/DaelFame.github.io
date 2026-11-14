@@ -286,18 +286,26 @@ export const cases: CaseStudy[] = [
         ],
       },
     ],
-    stack: [{ label: 'Python', slug: 'python' }, { label: 'pytest', slug: 'pytest' }],
+  stack: [
+      { label: 'Python', slug: 'python' },
+      { label: 'Power BI', slug: 'powerbi' },
+      { label: 'DAX' },
+      { label: 'pytest', slug: 'pytest' },
+    ],
     href: '/work/fpa-forecasting/',
     repo: 'https://github.com/DaelFame/fpa-forecasting-case-study',
-    inProgress: { en: 'Power BI report not built yet', es: 'Reporte de Power BI todavía no construido' },
+    inProgress: {
+      en: 'Executive report live (Pages 01–02 published · Pages 03–05 in final review)',
+      es: 'Reporte ejecutivo activo (Páginas 01–02 publicadas · Páginas 03–05 en revisión final)',
+    },
     cvBullets: [
       {
-        en: 'Rebuilt four simulated years of statements into a driver-based model, tracing a 61% net-income miss to operating expenses and isolating EUR 150,000 of unsupported expenses.',
-        es: 'Reconstruí cuatro años simulados de estados en un modelo por drivers, trazando una caída del 61% de la utilidad neta a gastos operativos y aislando EUR 150.000 sin respaldo.',
+        en: 'Built an end-to-end FP&A data engine (cg_01) and executive Power BI report (PBIR/TMDL) across FY 2024–2029, tracing a 61% Year-1 net-income miss to operating expenses and isolating EUR 150,000 of unsupported expenses.',
+        es: 'Construí un motor de datos FP&A (cg_01) y un reporte ejecutivo en Power BI (PBIR/TMDL) para FY 2024–2029, trazando una caída del 61% de utilidad neta en el Año 1 a gastos operativos y aislando EUR 150.000 sin respaldo.',
       },
       {
-        en: 'Pinned accounting identities and the variance tie-out with 83 automated tests (competitive simulation).',
-        es: 'Fijé las identidades contables y el amarre de la varianza con 83 tests automatizados (simulación competitiva).',
+        en: 'Pinned accounting identities, SHA-256 source lineage, and exact variance tie-outs with automated pytest suites (competitive simulation).',
+        es: 'Fijé identidades contables, trazabilidad SHA-256 y amarres exactos de varianza con suites automatizadas en pytest (simulación competitiva).',
       },
     ],
   },
@@ -310,3 +318,4 @@ export function getCase(slug: string): CaseStudy | undefined {
 export function caseField(lang: Lang) {
   return (field: Bilingual) => field[lang];
 }
+
