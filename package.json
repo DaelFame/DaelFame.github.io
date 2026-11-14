@@ -11,11 +11,11 @@
     "cv": "node scripts/build-cv.mjs"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.2.1",
-    "astro": "^5.1.0"
+    "@astrojs/sitemap": "^3.7.5",
+    "astro": "^7.4.12"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.12",
     "puppeteer-core": "^25.17.0",
     "simple-icons": "^16.37.0",
     "typescript": "^5.7.2"
