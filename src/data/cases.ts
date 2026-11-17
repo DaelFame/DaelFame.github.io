@@ -140,12 +140,12 @@ export const cases: CaseStudy[] = [
       es: 'Un ejercicio con datos públicos: una universidad privada en Arequipa perdía market share mientras crecía. ¿Pueden los datos públicos de matrícula mostrar dónde crecer?',
     },
     result: {
-      en: '−1.6pp of market share hidden behind +19% volume growth.',
-      es: '−1.6 pp de market share escondidos detrás de +19% de volumen.',
+      en: '−1.7pp of market share hidden behind +19% volume growth.',
+      es: '−1,7 pp de market share escondidos detrás de +19% de volumen.',
     },
     metrics: [
       { value: { en: '17.4M', es: '17,4 M' }, label: { en: 'enrollment records', es: 'registros de matrícula' } },
-      { value: { en: '−1.6pp', es: '−1,6 pp' }, label: { en: 'market share leak', es: 'pérdida de market share' } },
+      { value: { en: '−1.7pp', es: '−1,7 pp' }, label: { en: 'market share leak', es: 'pérdida de market share' } },
       { value: { en: '174', es: '174' }, label: { en: 'universities benchmarked', es: 'universidades comparadas' } },
       { value: { en: '0.94', es: '0,94' }, label: { en: 'modality–growth correlation', es: 'correlación modalidad–crecimiento' } },
     ],
@@ -167,8 +167,8 @@ export const cases: CaseStudy[] = [
         title: { en: 'What I found', es: 'Qué encontré' },
         body: [
           {
-            en: 'Growing is not the same as winning. Enrollment rose 19%, but market share fell from 10.1% to 8.4%. The market expansion went mostly to one competitor. The university ranks 5th of 6 in its own city.',
-            es: 'Crecer no es lo mismo que ganar. La matrícula subió 19%, pero el market share cayó de 10.1% a 8.4%. La expansión del mercado se la llevó mayormente un competidor. La universidad es 5ª de 6 en su propia ciudad.',
+            en: 'Growing is not the same as winning. Enrollment rose 19%, but market share fell from 10.2% to 8.5%. The market expansion went mostly to one competitor. The university ranks 5th of 6 in its own city.',
+            es: 'Crecer no es lo mismo que ganar. La matrícula subió 19%, pero el market share cayó de 10,2% a 8,5%. La expansión del mercado se la llevó mayormente un competidor. La universidad es 5ª de 6 en su propia ciudad.',
           },
         ],
       },
@@ -205,8 +205,8 @@ export const cases: CaseStudy[] = [
     repo: 'https://github.com/DaelFame/ucsp-market-intelligence',
     cvBullets: [
       {
-        en: 'Built a two-page Power BI decision deck on 17.4M public enrollment records, exposing a −1.6pp market-share leak hidden behind +19% volume growth.',
-        es: 'Construí un deck de decisión de dos páginas en Power BI sobre 17.4M registros públicos, exponiendo una pérdida de −1.6 pp de market share oculta tras +19% de crecimiento en volumen.',
+        en: 'Built a two-page Power BI decision deck on 17.4M public enrollment records, exposing a −1.7pp market-share leak hidden behind +19% volume growth.',
+        es: 'Construí un deck de decisión de dos páginas en Power BI sobre 17.4M registros públicos, exponiendo una pérdida de −1,7 pp de market share oculta tras +19% de crecimiento en volumen.',
       },
       {
         en: 'Growth is associated with distance-modality share (r = 0.94 across 5 private universities; n = 5) — an association, not a causal claim.',
