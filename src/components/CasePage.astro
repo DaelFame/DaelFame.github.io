@@ -9,8 +9,11 @@ import fpa02 from '../assets/cases/fpa/02-profitability.png';
 import fpa03 from '../assets/cases/fpa/03-variance.png';
 import fpa04 from '../assets/cases/fpa/04-forecast.png';
 import fpa05 from '../assets/cases/fpa/05-market.png';
-import peruShot from '../assets/cases/peru.png';
-import ucspShot from '../assets/cases/ucsp.png';
+import peruOverview from '../assets/cases/peru/01-overview.png';
+import peruAnalysis from '../assets/cases/peru/02-analysis.png';
+import peruOverviewEs from '../assets/cases/peru/03-overview-es.png';
+import ucspCurrent from '../assets/cases/ucsp/01-current-state.png';
+import ucspOpportunities from '../assets/cases/ucsp/02-opportunities.png';
 
 interface Props {
   item: CaseStudy;
@@ -70,19 +73,40 @@ const GALLERY: Record<string, Shot[]> = {
   ],
   'peru-budget-lakehouse': [
     {
-      src: peruShot,
+      src: peruOverview,
       caption: {
-        en: 'Executive dashboard — planned versus executed budget, distribution by economic category and the sample-mode disclosure on the same screen.',
-        es: 'Dashboard ejecutivo — presupuesto planificado versus ejecutado, distribución por categoría económica y la advertencia de modo muestra en la misma pantalla.',
+        en: 'Executive overview — planned versus executed national budget for FY 2025 (S/ 4.33 B planned, S/ 2.70 B executed), with the sample-mode disclosure and the split by economic category.',
+        es: 'Resumen ejecutivo — presupuesto nacional programado versus ejecutado para el año fiscal 2025 (S/ 4,33 mil millones programado, S/ 2,70 mil millones ejecutado), con la advertencia de modo muestra y la distribución por categoría económica.',
+      },
+    },
+    {
+      src: peruAnalysis,
+      caption: {
+        en: 'Analysis page — where the money goes by sector, who promised versus who delivered by department, the funding sources behind the budget and the largest programmes.',
+        es: 'Página de análisis — a dónde va el dinero por sector, quién prometió versus quién ejecutó por departamento, las fuentes que financian el presupuesto y los programas más grandes.',
+      },
+    },
+    {
+      src: peruOverviewEs,
+      caption: {
+        en: 'The same dashboard in its Spanish locale (es-PE): the in-app switch changes every label, filter and legend, not just the title.',
+        es: 'El mismo dashboard en su localización española (es-PE): el selector de la app cambia todas las etiquetas, filtros y leyendas, no solo el título.',
       },
     },
   ],
   'ucsp-market-intelligence': [
     {
-      src: ucspShot,
+      src: ucspCurrent,
       caption: {
-        en: '01 | Situación actual — enrollment, market share and the ranking inside Arequipa, with the growth and leakage summary at the top.',
-        es: '01 | Situación actual — matrícula, market share y el ranking dentro de Arequipa, con el resumen de crecimiento y fuga en la parte superior.',
+        en: '01 | Situación actual — enrollment, market share and the Arequipa ranking on one screen: 8.5% share, 10,664 people in the community and fifth place out of six universities.',
+        es: '01 | Situación actual — matrícula, market share y el ranking de Arequipa en una sola pantalla: 8,5% de cuota, 10.664 personas en la comunidad y quinto lugar entre seis universidades.',
+      },
+    },
+    {
+      src: ucspOpportunities,
+      caption: {
+        en: '02 | Oportunidades de mejora — where to grow without leaving Arequipa: 74.6% of the city’s growth went to one competitor, nursing demand is left unserved, and 32.5% of students were born outside Arequipa.',
+        es: '02 | Oportunidades de mejora — dónde crecer sin salir de Arequipa: el 74,6% del crecimiento de la ciudad lo capturó un competidor, la demanda de Enfermería queda sin oferta y el 32,5% de los alumnos nació fuera de Arequipa.',
       },
     },
   ],
