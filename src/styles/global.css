@@ -1134,6 +1134,37 @@ p {
   color: var(--muted);
 }
 
+.case-gallery {
+  display: grid;
+  gap: 1.75rem;
+  margin-block-start: 2.5rem;
+}
+
+.case-gallery-title {
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
+}
+
+.case-shot {
+  margin: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.case-shot img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper-2);
+}
+
+.case-shot figcaption {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
 .case-story {
   margin-block-start: 2.5rem;
   display: grid;

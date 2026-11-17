@@ -34,7 +34,7 @@ export interface CaseStudy {
   stack: Tech[];
   href: string;
   repo: string;
-  preview?: 'ucsp' | 'peru';
+  preview?: 'ucsp' | 'peru' | 'fpa';
   inProgress?: Bilingual;
   /** Visible disclosure at the top of the card and page. */
   disclosure?: Bilingual;
@@ -217,34 +217,35 @@ export const cases: CaseStudy[] = [
   {
     slug: 'fpa-forecasting',
     index: '03',
-    discipline: { en: 'FP&A modelling', es: 'Modelado FP&A' },
+    discipline: { en: 'FP&A analytics', es: 'Analítica FP&A' },
     title: 'FP&A Forecasting & Variance Analysis',
-    period: { en: 'Competitive simulation', es: 'Simulación competitiva' },
+    period: { en: 'FY 2024–2029', es: 'FY 2024–2029' },
     question: {
-      en: 'Revenue grew 0.9% in Year 1 while profit fell 61%. Where did it go?',
-      es: 'El ingreso creció 0.9% en el Año 1 y la utilidad cayó 61%. ¿Dónde se fue?',
+      en: 'Revenue landed within 0.9% of budget while net income missed by 61%. Which drivers actually moved the result?',
+      es: 'El ingreso quedó dentro del 0,9% del presupuesto mientras la utilidad neta fallaba un 61%. ¿Qué drivers movieron realmente el resultado?',
     },
     result: {
-      en: '€243,137 of variance traced line by line to operating expenses.',
-      es: '€243.137 de varianza trazados línea por línea a gastos operativos.',
+      en: 'Net income beat plan by +€867,945 (+21.9%), pre-tax — but +€572K of that surplus is extraordinary income.',
+      es: 'La utilidad neta superó el plan en +€867.945 (+21,9%), antes de impuestos — pero +€572K de ese superávit es resultado extraordinario.',
     },
     metrics: [
-      { value: { en: '+0.9%', es: '+0,9 %' }, label: { en: 'revenue vs budget', es: 'ingreso vs presupuesto' } },
-      { value: { en: '−61.1%', es: '−61,1 %' }, label: { en: 'net income vs budget', es: 'utilidad neta vs presupuesto' } },
-      { value: { en: '€243,137', es: '€243.137' }, label: { en: 'net variance traced to OpEx', es: 'varianza neta trazada a OpEx' } },
-      { value: { en: '83', es: '83' }, label: { en: 'automated tests', es: 'tests automatizados' } },
+      { value: { en: '+€867,945', es: '+€867.945' }, label: { en: 'net income vs plan', es: 'utilidad neta vs plan' } },
+      { value: { en: '+21.9%', es: '+21,9 %' }, label: { en: 'variance vs plan', es: 'variación vs plan' } },
+      { value: { en: '+€572K', es: '+€572K' }, label: { en: 'extraordinary income', es: 'resultado extraordinario' } },
+      { value: { en: '−€326K', es: '−€326K' }, label: { en: 'operating expense overrun', es: 'sobrecosto operativo' } },
     ],
     disclosure: {
-      en: 'Competitive business simulation — not a real company. Years are labelled Year 1–4.',
-      es: 'Simulación competitiva de negocio — no es una empresa real. Los años se etiquetan Año 1–4.',
+      en: 'Anonymised competitive business simulation — not a real company’s books. Figures are pre-tax, FY 2024–2029.',
+      es: 'Simulación competitiva de negocio anonimizada — no son los libros de una empresa real. Cifras antes de impuestos, FY 2024–2029.',
     },
+    preview: 'fpa',
     story: [
       {
         title: { en: 'The question', es: 'La pregunta' },
         body: [
           {
-            en: 'A competitive business simulation of a fashion-accessories manufacturer, not a real client. Revenue grew 0.9% in Year 1 and net income fell 61%. The market showed up. The result did not. Where did the money go?',
-            es: 'Una simulación competitiva de negocio de un fabricante de accesorios de moda, no un cliente real. El ingreso creció 0.9% en el Año 1 y la utilidad neta cayó 61%. El mercado apareció. El resultado, no. ¿Dónde se fue el dinero?',
+            en: 'An anonymised competitive business simulation of a fashion-accessories manufacturer. In the first year revenue landed within 0.9% of budget while net income missed the plan by 61.1%. From the second year onward the company beat its own plan three years in a row — +127.0%, +43.3% and +12.2%. A miss followed by a streak of beats is not noise. Which drivers explain it, and how much of the surplus is repeatable?',
+            es: 'Una simulación competitiva de negocio anonimizada de un fabricante de accesorios de moda. En el primer año el ingreso quedó dentro del 0,9% del presupuesto mientras la utilidad neta fallaba el plan un 61,1%. Desde el segundo año la empresa superó su propio plan tres años seguidos — +127,0%, +43,3% y +12,2%. Un fallo seguido de una racha de excesos no es ruido. ¿Qué drivers lo explican y cuánto del superávit es repetible?',
           },
         ],
       },
@@ -253,8 +254,8 @@ export const cases: CaseStudy[] = [
         waterfall: true,
         body: [
           {
-            en: 'The entire miss traced to one line: operating expenses. Revenue and gross margin beat plan, but €359,888 of overrun in OpEx consumed it — and €150,000 of that carries no documentary support. It is kept as a visible gap, not smoothed away.',
-            es: 'Toda la desviación se trazó a una sola línea: gastos operativos. Ingresos y margen bruto superaron el plan, pero €359.888 de sobrecosto en OpEx se lo comieron — y €150.000 de eso no tienen respaldo documental. Se mantiene como un hueco visible, no maquillado.',
+            en: 'Across FY 2024–2029, pre-tax: plan net income €3,954,345, actual €4,822,290, variance +€867,945 (+21.9%). Three drivers carry the surplus — unit-cost savings +€551K, volume growth +€255K, and extraordinary income +€572K, which alone is 65.9% of it. Against that, operating expenses ran €326,210 over plan: general expenses +€199,051, R&D +€155,100, insolvency charges +€25,832, partly offset by personnel −€34,773 and depreciation −€19,000. Strip out the one-off and the operating story is thinner than the headline.',
+            es: 'En FY 2024–2029, antes de impuestos: utilidad neta plan €3.954.345, real €4.822.290, variación +€867.945 (+21,9%). Tres drivers sostienen el superávit — ahorro de costo unitario +€551K, crecimiento de volumen +€255K y resultado extraordinario +€572K, que por sí solo es el 65,9%. En contra, los gastos operativos se pasaron €326.210 del plan: gastos generales +€199.051, I+D +€155.100, cargos por insolvencia +€25.832, compensados en parte por personal −€34.773 y depreciación −€19.000. Sin el extraordinario, la historia operativa es más delgada que el titular.',
           },
         ],
       },
@@ -262,8 +263,8 @@ export const cases: CaseStudy[] = [
         title: { en: 'How I proved it', es: 'Cómo lo probé' },
         body: [
           {
-            en: 'A driver-based Python model rebuilt four years of simulated statements. Accounting identities, referential integrity and the exact variance tie-out are pinned by 83 automated tests. A naive/seasonal-naive baseline is being added to the repository so the forecast claim can be compared against a trivial benchmark before it is published.',
-            es: 'Un modelo Python por drivers reconstruyó cuatro años de estados simulados. Las identidades contables, la integridad referencial y el amarre exacto de la varianza están fijados por 83 tests automatizados. Se está añadiendo un baseline ingenuo/estacional al repositorio para comparar el forecast contra un benchmark trivial antes de publicarlo.',
+            en: 'Two layers, both auditable. The data-cleaning and processing engine (cg_01) ingests the raw Excel closing workbooks, JSON decision logs and Markdown operating notes, and verifies every source file with SHA-256 lineage on each run. It resolves period and quarter blocks, normalises product keys, flags anomalies against balance tolerances and price corridors, and exports a star schema of 18 tables and 28 relationships carrying 94 DAX measures. 83 pytest tests pin accounting identities, referential integrity, the exact variance tie-out and the forecast backtest. On top of it, a five-page Power BI PBIR report: 01 | Summary for the executive P&L, 02 | Profitability for margin drivers, 03 | Variance for the plan-versus-actual bridge, 04 | Forecast for backtest accuracy and the 2030 scenarios, 05 | Market for capacity and unserved demand. Every figure is executed against live DAX at the grain its visual shows before it is written, and every visible string is English.',
+            es: 'Dos capas, ambas auditables. El motor de limpieza y procesamiento de datos (cg_01) ingesta los libros Excel de cierre, los logs de decisiones JSON y las bitácoras Markdown, y verifica cada archivo fuente con trazabilidad SHA-256 en cada ejecución. Resuelve bloques de período y trimestre, normaliza claves de producto, marca anomalías contra tolerancias de balance y corredores de precio, y exporta un esquema estrella de 18 tablas y 28 relaciones que sostiene 94 medidas DAX. 83 tests pytest fijan las identidades contables, la integridad referencial, el amarre exacto de la varianza y el backtest del pronóstico. Encima, un reporte Power BI PBIR de cinco páginas: 01 | Summary para el P&L ejecutivo, 02 | Profitability para drivers de margen, 03 | Variance para el puente plan-versus-real, 04 | Forecast para la exactitud del backtest y los escenarios 2030, 05 | Market para capacidad y demanda sin atender. Cada cifra se ejecuta contra DAX en vivo en el grano que muestra su visual antes de escribirse, y todo el texto visible está en inglés.',
           },
         ],
       },
@@ -271,8 +272,8 @@ export const cases: CaseStudy[] = [
         title: { en: 'What it decides', es: 'Qué decide' },
         body: [
           {
-            en: 'The company was capacity-constrained, not demand-constrained. In Year 3 the market could not serve 594,748 units of demand. The ceiling was production — which turns a commercial question into a capital-allocation decision.',
-            es: 'La empresa estaba limitada por capacidad, no por demanda. En el Año 3 el mercado no pudo atender 594.748 unidades de demanda. El techo era la producción — lo que convierte una pregunta comercial en una decisión de asignación de capital.',
+            en: 'The company was capacity-constrained, not demand-constrained: in 2028 the market could not serve 594,748 units of demand — 405,181 neckties, 112,242 scarves and 77,325 socks. The ceiling was production, which turns a commercial question into a capital-allocation decision. And because the budget was beaten three years running, the plan itself needs recalibrating: under-budgeting hides capacity needs and understates cash.',
+            es: 'La empresa estaba limitada por capacidad, no por demanda: en 2028 el mercado no pudo atender 594.748 unidades de demanda — 405.181 corbatas, 112.242 bufandas y 77.325 calcetines. El techo era la producción, lo que convierte una pregunta comercial en una decisión de asignación de capital. Y como el presupuesto se superó tres años seguidos, el propio plan necesita recalibrarse: presupuestar a la baja oculta necesidades de capacidad y subestima la caja.',
           },
         ],
       },
@@ -280,13 +281,13 @@ export const cases: CaseStudy[] = [
         title: { en: 'What this does not prove', es: 'Qué no prueba' },
         body: [
           {
-            en: 'This is a competitive business simulation, not a real company’s books. The origin is disclosed because claiming otherwise would be trivially falsifiable. What it demonstrates is the method.',
-            es: 'Es una simulación competitiva de negocio, no los libros de una empresa real. El origen se declara porque afirmar lo contrario sería trivialmente falsable. Lo que demuestra es el método.',
+            en: 'This is an anonymised competitive business simulation, not a real company’s books, and all figures are pre-tax. The +€572K extraordinary income is not a repeating earnings stream, so the +21.9% variance should not be read as recurring performance. Revenue detail in the model stops at 2028, so the final year is driven by the forecast layer rather than a new sales close. What the work demonstrates is the method: raw workbooks in, a traced and tested model out.',
+            es: 'Es una simulación competitiva de negocio anonimizada, no los libros de una empresa real, y todas las cifras son antes de impuestos. El resultado extraordinario de +€572K no es un flujo recurrente, así que la variación de +21,9% no debe leerse como desempeño recurrente. El detalle de ventas del modelo llega hasta 2028, así que el último año lo sostiene la capa de pronóstico y no un cierre comercial nuevo. Lo que demuestra el trabajo es el método: libros en bruto de entrada, un modelo trazado y probado de salida.',
           },
         ],
       },
     ],
-  stack: [
+    stack: [
       { label: 'Python', slug: 'python' },
       { label: 'Power BI', slug: 'powerbi' },
       { label: 'DAX' },
@@ -294,18 +295,14 @@ export const cases: CaseStudy[] = [
     ],
     href: '/work/fpa-forecasting/',
     repo: 'https://github.com/DaelFame/fpa-forecasting-case-study',
-    inProgress: {
-      en: 'Executive report live (Pages 01–02 published · Pages 03–05 in final review)',
-      es: 'Reporte ejecutivo activo (Páginas 01–02 publicadas · Páginas 03–05 en revisión final)',
-    },
     cvBullets: [
       {
-        en: 'Built an end-to-end FP&A data engine (cg_01) and executive Power BI report (PBIR/TMDL) across FY 2024–2029, tracing a 61% Year-1 net-income miss to operating expenses and isolating EUR 150,000 of unsupported expenses.',
-        es: 'Construí un motor de datos FP&A (cg_01) y un reporte ejecutivo en Power BI (PBIR/TMDL) para FY 2024–2029, trazando una caída del 61% de utilidad neta en el Año 1 a gastos operativos y aislando EUR 150.000 sin respaldo.',
+        en: 'Built an automated data cleaning engine (cg_01, 83 pytest tests, SHA-256 source lineage) and a five-page DAX-verified Power BI report (PBIR/TMDL) across FY 2024–2029, explaining a +€867,945 (+21.9%) pre-tax variance from three drivers and an operating expense overrun.',
+        es: 'Construí un motor automatizado de limpieza de datos (cg_01, 83 tests pytest, trazabilidad SHA-256) y un reporte Power BI de cinco páginas verificado con DAX (PBIR/TMDL) para FY 2024–2029, explicando una variación antes de impuestos de +€867.945 (+21,9%) a partir de tres drivers y un sobrecosto operativo.',
       },
       {
-        en: 'Pinned accounting identities, SHA-256 source lineage, and exact variance tie-outs with automated pytest suites (competitive simulation).',
-        es: 'Fijé identidades contables, trazabilidad SHA-256 y amarres exactos de varianza con suites automatizadas en pytest (simulación competitiva).',
+        en: 'Model exposes that +€572K of the surplus is extraordinary income, not recurring performance — the decision-relevant finding behind the headline beat.',
+        es: 'El modelo expone que +€572K del superávit es resultado extraordinario, no desempeño recurrente — el hallazgo relevante para decidir detrás del titular.',
       },
     ],
   },

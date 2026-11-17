@@ -4,8 +4,13 @@ import { cases, type CaseStudy } from '../data/cases';
 import { Image } from 'astro:assets';
 import TechIcon from './TechIcon.astro';
 import HeroWaterfall from './HeroWaterfall.astro';
-import fpaSummaryImg from '../assets/cases/1_Summary.png';
-import fpaProfitabilityImg from '../assets/cases/2_Profitability.png';
+import fpa01 from '../assets/cases/fpa/01-summary.png';
+import fpa02 from '../assets/cases/fpa/02-profitability.png';
+import fpa03 from '../assets/cases/fpa/03-variance.png';
+import fpa04 from '../assets/cases/fpa/04-forecast.png';
+import fpa05 from '../assets/cases/fpa/05-market.png';
+import peruShot from '../assets/cases/peru.png';
+import ucspShot from '../assets/cases/ucsp.png';
 
 interface Props {
   item: CaseStudy;
@@ -23,26 +28,69 @@ const readRepo = lang === 'es' ? 'Leer el repositorio' : 'Read the repository';
 const nextLabel = lang === 'es' ? 'Siguiente caso' : 'Next case';
 const backLabel = lang === 'es' ? 'Volver al trabajo' : 'Back to work';
 
-const GALLERY: Record<string, { src: typeof fpaSummaryImg; caption: { en: string; es: string } }[]> = {
+type Shot = { src: typeof fpa01; caption: { en: string; es: string } };
+
+const GALLERY: Record<string, Shot[]> = {
   'fpa-forecasting': [
     {
-      src: fpaSummaryImg,
+      src: fpa01,
       caption: {
-        en: '01 | Summary — Executive P&L overview with interactive Report Page Tooltips (FY 2024–2029, pre-tax).',
-        es: '01 | Summary — Resumen ejecutivo de P&L con Report Page Tooltips interactivos (FY 2024–2029, pre-tax).',
+        en: '01 | Summary — five-year P&L, gross-margin trend and the year matrix, with report page tooltips on every card (FY 2024–2029, pre-tax).',
+        es: '01 | Summary — P&L de cinco años, tendencia del margen bruto y la matriz por año, con report page tooltips en cada tarjeta (FY 2024–2029, pre-tax).',
       },
     },
     {
-      src: fpaProfitabilityImg,
+      src: fpa02,
       caption: {
-        en: '02 | Profitability — Margin drivers, channel mix and unit-economics breakdown.',
-        es: '02 | Profitability — Drivers de margen, mix de canales y desglose de unit economics.',
+        en: '02 | Profitability — margin by product line, revenue mix and gross-margin contribution: ties carry 72.1% of revenue and 79% of margin.',
+        es: '02 | Profitability — margen por línea de producto, mezcla de ingresos y contribución al margen bruto: las corbatas sostienen 72,1% del ingreso y 79% del margen.',
+      },
+    },
+    {
+      src: fpa03,
+      caption: {
+        en: '03 | Variance — plan versus actual: a driver bridge, the year matrix and the operating-expense overrun line by line (+€867,945, +21.9%).',
+        es: '03 | Variance — plan versus real: puente de drivers, matriz por año y el sobrecosto operativo línea por línea (+€867.945, +21,9%).',
+      },
+    },
+    {
+      src: fpa04,
+      caption: {
+        en: '04 | Forecast — the 2030 scenario band, backtest accuracy per fold and forecast error by headline line (2029 fold: 76.2% accurate, −21.4% bias).',
+        es: '04 | Forecast — banda de escenarios 2030, exactitud del backtest por fold y error por línea principal (fold 2029: 76,2% de exactitud, sesgo −21,4%).',
+      },
+    },
+    {
+      src: fpa05,
+      caption: {
+        en: '05 | Market — published demand, unserved units and market share: 594,748 units unserved in 2028, share up from 14.3% to 20.1%.',
+        es: '05 | Market — demanda publicada, unidades sin atender y cuota de mercado: 594.748 unidades sin atender en 2028, cuota de 14,3% a 20,1%.',
+      },
+    },
+  ],
+  'peru-budget-lakehouse': [
+    {
+      src: peruShot,
+      caption: {
+        en: 'Executive dashboard — planned versus executed budget, distribution by economic category and the sample-mode disclosure on the same screen.',
+        es: 'Dashboard ejecutivo — presupuesto planificado versus ejecutado, distribución por categoría económica y la advertencia de modo muestra en la misma pantalla.',
+      },
+    },
+  ],
+  'ucsp-market-intelligence': [
+    {
+      src: ucspShot,
+      caption: {
+        en: '01 | Situación actual — enrollment, market share and the ranking inside Arequipa, with the growth and leakage summary at the top.',
+        es: '01 | Situación actual — matrícula, market share y el ranking dentro de Arequipa, con el resumen de crecimiento y fuga en la parte superior.',
       },
     },
   ],
 };
 
 const gallery = GALLERY[item.slug] ?? [];
+const galleryLabel = lang === 'es' ? 'Capturas del dashboard' : 'Dashboard screenshots';
+
 ---
 
 <article class="case">
@@ -82,23 +130,22 @@ const gallery = GALLERY[item.slug] ?? [];
 
   {
     gallery.length > 0 && (
-      <div class="case-gallery" style="display: grid; gap: 1.5rem; margin: 2rem 0;">
+      <section class="case-gallery">
+        <h2 class="case-gallery-title">{galleryLabel}</h2>
         {gallery.map((shot) => (
-          <figure style="margin: 0;">
+          <figure class="case-shot">
             <Image
               src={shot.src}
               alt={t(shot.caption)}
-              width={1400}
+              widths={[640, 960, 1400]}
+              sizes="(min-width: 1024px) 960px, 100vw"
               loading="lazy"
               decoding="async"
-              style="width: 100%; height: auto; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08);"
             />
-            <figcaption style="margin-top: 0.5rem; font-size: 0.875rem; opacity: 0.75;">
-              {t(shot.caption)}
-            </figcaption>
+            <figcaption>{t(shot.caption)}</figcaption>
           </figure>
         ))}
-      </div>
+      </section>
     )
   }
 
