@@ -939,6 +939,10 @@ p {
   margin-block-start: 1rem;
 }
 
+.about-narrative p + p {
+  margin-block-start: 1rem;
+}
+
 .about-kpmg {
   display: flex;
   gap: 0.5rem;

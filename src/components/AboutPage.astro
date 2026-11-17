@@ -20,7 +20,9 @@ const labels = {
   <header class="about-head">
     <p class="eyebrow">{t(profile.title)}</p>
     <h1 class="page-title">{profile.name}</h1>
-    <p class="lede about-narrative">{t(profile.about)}</p>
+    <div class="about-narrative">
+      {t(profile.about).split('\n\n').map((para) => <p class="lede">{para}</p>)}
+    </div>
 
     <div class="row about-cta">
       <a class="btn" href={`mailto:${profile.email}`}>{profile.email}</a>
