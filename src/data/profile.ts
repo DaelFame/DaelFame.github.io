@@ -129,7 +129,7 @@ export const profile: Profile = {
           es: 'Pasé los registros del restaurante de lo físico a lo digital y usé los datos para justificar cada cambio operativo.',
         },
         {
-          en: 'Analyzed sales trends and implemented electronic invoicing, Implementé medición de ventas, costos y KPIs (facturación electrónica y dashboards en Power BI) y alineé a los encargados con esas métricas; la operación pasó de 2 a 6 locales.',
+          en: 'Analyzed sales trends and implemented electronic invoicing, sales/cost/KPI measurement (e-invoicing and Power BI dashboards) and aligned managers on those metrics; the operation went from 2 to 6 locations.',
           es: 'Implementé medición de ventas, costos y KPIs (facturación electrónica y dashboards en Power BI) y alineé a los encargados con esas métricas; la operación pasó de 2 a 6 locales.',
         },
         {
