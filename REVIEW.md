@@ -40,6 +40,7 @@ Branch: `portfolio-cleanup` (site and `fpa-forecasting-case-study`) and
 | `src/i18n/ui.ts` | "Escribime", "Empezá … tenés". | "Escríbeme", "Empieza … tienes". |
 | `src/i18n/ui.ts` | "Arequipa, Peru"; "Open to remote roles". | "Arequipa, Perú"; contractor availability + UTC−5. |
 | `scripts/build-cv.mjs` | Appended "technical assessment" to the UCSP CV entry. | Removed. |
+| `src/data/profile.ts` | The English Toro Loco bullet contained a pasted Spanish sentence after "electronic invoicing", so the English CV and pages read half in Spanish. | Rewritten in English only; English CV PDF regenerated (commit `c230ef0`). |
 
 ### Repos
 
@@ -47,6 +48,8 @@ Branch: `portfolio-cleanup` (site and `fpa-forecasting-case-study`) and
 |---|---|
 | `fpa-forecasting-case-study` (branch `portfolio-cleanup`, commit `1f527ec`) | CI badge now links to the workflow; the 0.3% claim replaced by the measured folds; added a Status table; added the link to the written case. |
 | `DaelFame/DaelFame` (branch `portfolio-cleanup`) | Old Netlify link → `https://daelfame.github.io`; FP&A as case 01, UCSP renamed and corrected to −1.7 pp; in-progress rows removed; title unified; contractor availability. |
+| `DaelFame/cv` (branch `portfolio-cleanup`, commit `8a74de1`) | This hand-maintained LaTeX CV is the one the profile links, and it still carried every figure the site had already dropped: −15%, +30%, +55%, the 0.3% forecast, the J-1 entry, 1.6 pp and the "UCSP" title. Aligned with the site copy, header states contractor availability, both PDFs rebuilt (one page each). |
+| `peru-budget-lakehouse`, `ucsp-market-intelligence` (branch `portfolio-cleanup`) | A link to the written case added to each README. |
 
 ---
 
@@ -73,4 +76,6 @@ Branch: `portfolio-cleanup` (site and `fpa-forecasting-case-study`) and
   - `DaelFame/DaelFame` → `/pull/new/portfolio-cleanup`
   - `fpa-forecasting-case-study` → `/pull/new/portfolio-cleanup`
   - `DaelFame.github.io` → `/pull/new/portfolio-cleanup`
-- El sitio publica desde `main`; hasta que se mergee la rama, `daelfame.github.io` sigue mostrando la versión anterior.
+  - `cv` → `/pull/new/portfolio-cleanup`
+  - `peru-budget-lakehouse` y `ucsp-market-intelligence` → `/pull/new/portfolio-cleanup`
+- El sitio publica desde `main`; hasta que se mergee la rama, `daelfame.github.io` sigue mostrando la versión anterior (con el +55%, el 0,3% y la prueba técnica). Lo mismo para el CV del perfil: `DaelFame/cv` muestra el PDF viejo hasta mergear.
