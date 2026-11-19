@@ -44,7 +44,7 @@ export interface CaseStudy {
 export const cases: CaseStudy[] = [
   {
     slug: 'peru-budget-lakehouse',
-    index: '01',
+    index: '02',
     discipline: { en: 'Analytics engineering', es: 'Ingeniería de datos' },
     title: 'Peru Budget Lakehouse',
     period: { en: '2026', es: '2026' },
@@ -53,8 +53,8 @@ export const cases: CaseStudy[] = [
       es: '¿Dónde se ejecuta el presupuesto público — y dónde no?',
     },
     result: {
-      en: '8M source rows rebuilt into 29.5M facts, reconciled to S/ 0.00.',
-      es: '8M filas fuente convertidas en 29.5M hechos, reconciliadas a S/ 0.00.',
+      en: '8M source rows rebuilt into 29.5M facts; the Silver and Gold layers reconcile to S/ 0.00 (internal control, not a tie-out to the official MEF total).',
+      es: '8M filas fuente convertidas en 29.5M hechos; las capas Silver y Gold reconcilian a S/ 0.00 (control interno, no un amarre contra el total oficial del MEF).',
     },
     metrics: [
       { value: { en: '8M', es: '8 M' }, label: { en: 'source rows', es: 'filas fuente' } },
@@ -131,9 +131,9 @@ export const cases: CaseStudy[] = [
   },
   {
     slug: 'ucsp-market-intelligence',
-    index: '02',
+    index: '03',
     discipline: { en: 'Business intelligence', es: 'Inteligencia de negocio' },
-    title: 'UCSP Market Intelligence',
+    title: 'University Market Intelligence — Arequipa',
     period: { en: '2026', es: '2026' },
     question: {
       en: 'A public-data exercise: a private university in Arequipa was losing market share while growing. Could public enrollment data show where to grow next?',
@@ -150,16 +150,16 @@ export const cases: CaseStudy[] = [
       { value: { en: '0.94', es: '0,94' }, label: { en: 'modality–growth correlation', es: 'correlación modalidad–crecimiento' } },
     ],
     disclosure: {
-      en: 'Built as a technical assessment for a hiring process, using public enrollment data.',
-      es: 'Desarrollado como prueba técnica de un proceso de selección, con datos públicos de matrícula.',
+      en: 'Analytical exercise using public enrollment data (SUNEDU / TUNI.PE).',
+      es: 'Ejercicio analítico con datos públicos de matrícula (SUNEDU / TUNI.PE).',
     },
     story: [
       {
         title: { en: 'The question', es: 'La pregunta' },
         body: [
           {
-            en: 'A public-data exercise built as a technical assessment, not a client engagement. Enrollment files are published per semester with inconsistent program names, duplicated rows and missing campus fields. The question: can that data show where a university should grow, when the local market is already allocated?',
-            es: 'Un ejercicio con datos públicos, hecho como prueba técnica, no como encargo de un cliente. Los archivos de matrícula se publican por semestre con nombres de programa inconsistentes, filas duplicadas y campus faltantes. La pregunta: ¿pueden esos datos mostrar dónde debería crecer una universidad, si el mercado local ya está repartido?',
+            en: 'An analytical exercise on public enrollment data (SUNEDU / TUNI.PE). Enrollment files are published per semester with inconsistent program names, duplicated rows and missing campus fields. The question: can that data show where a university should grow, when the local market is already allocated?',
+            es: 'Un ejercicio analítico con datos públicos de matrícula (SUNEDU / TUNI.PE). Los archivos se publican por semestre con nombres de programa inconsistentes, filas duplicadas y campus faltantes. La pregunta: ¿pueden esos datos mostrar dónde debería crecer una universidad, si el mercado local ya está repartido?',
           },
         ],
       },
@@ -216,7 +216,7 @@ export const cases: CaseStudy[] = [
   },
   {
     slug: 'fpa-forecasting',
-    index: '03',
+    index: '01',
     discipline: { en: 'FP&A analytics', es: 'Analítica FP&A' },
     title: 'FP&A Forecasting & Variance Analysis',
     period: { en: 'FY 2024–2029', es: 'FY 2024–2029' },
@@ -307,6 +307,9 @@ export const cases: CaseStudy[] = [
     ],
   },
 ];
+
+// One display order everywhere: site listing, home selection, CV and case navigation.
+cases.sort((a, b) => a.index.localeCompare(b.index));
 
 export function getCase(slug: string): CaseStudy | undefined {
   return cases.find((c) => c.slug === slug);

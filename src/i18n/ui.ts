@@ -8,7 +8,7 @@ export const defaultLang: Lang = 'en';
 
 export const ui = {
   en: {
-    'meta.home.title': 'Joaquin Cardenas — Financial data analyst',
+    'meta.home.title': 'Joaquin Cardenas — Financial Data Analyst',
     'meta.home.description':
       'Financial data analyst with an accounting background. Pipelines and dashboards that make finance numbers tie out, from ledger to decision.',
 
@@ -24,7 +24,7 @@ export const ui = {
     'hero.lede':
       'I build pipelines and dashboards so the numbers tie out, from ledger to decision.',
     'hero.cta': 'See the work',
-    'hero.available': 'Open to remote financial data / BI roles',
+    'hero.available': 'Available as an independent contractor · UTC−5 year-round (New York time in winter, Chicago time in summer)',
     'hero.email': 'Email me',
 
     'capability.phrase': 'Accounting, finance, data and BI in one workflow.',
@@ -46,7 +46,7 @@ export const ui = {
     'cv.meta.description':
       'Curriculum vitae of Joaquin Cardenas, financial data analyst with an accounting background.',
 
-    'footer.rights': 'Arequipa, Peru',
+    'footer.rights': 'Arequipa, Perú',
   },
   es: {
     'meta.home.title': 'Joaquin Cardenas — Analista de datos financieros',
@@ -65,8 +65,8 @@ export const ui = {
     'hero.lede':
       'Construyo pipelines y dashboards para que los números cuadren desde el asiento hasta la decisión.',
     'hero.cta': 'Ver el trabajo',
-    'hero.available': 'Abierto a roles remotos de datos financieros / BI',
-    'hero.email': 'Escribime',
+    'hero.available': 'Disponible como contratista independiente · UTC−5 todo el año (hora de Nueva York en invierno y de Chicago en verano)',
+    'hero.email': 'Escríbeme',
 
     'capability.phrase': 'Contabilidad, finanzas, datos y BI en un mismo flujo.',
     'waterfall.fromCase': 'Del caso de FP&A',
@@ -78,7 +78,7 @@ export const ui = {
     'work.meta.description':
       'Tres casos: un lakehouse de presupuesto público, un deck de inteligencia de mercado universitario y un modelo de varianza FP&A.',
     'work.intro':
-      'Cada uno arranca con una pregunta de negocio y termina en una decisión defendible. Empezá por el 01 si tenés tres minutos.',
+      'Cada uno arranca con una pregunta de negocio y termina en una decisión defendible. Empieza por el 01 si tienes tres minutos.',
 
     'about.meta.title': 'Sobre mí — Joaquin Cardenas',
     'about.meta.description':

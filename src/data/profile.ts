@@ -42,16 +42,16 @@ export interface Profile {
 export const profile: Profile = {
   name: 'Joaquin Cardenas',
   title: {
-    en: 'Financial data analyst · Pipelines & BI',
-    es: 'Analista de datos financieros · Pipelines y BI',
+    en: 'Financial Data Analyst',
+    es: 'Analista de datos financieros',
   },
   summary: {
-    en: 'Financial data analyst with an accounting background and an engineering streak: I build the pipelines and dashboards that keep finance numbers reliable. I understand where a ledger entry comes from and how finance uses it, so decisions can keep being made on it. As General Manager of a restaurant, I moved operations from paper to digital records and used the data to justify every change; revenue grew 55%. At KPMG, I used Power Query, SQL and Python to clean very large Excel files so the audit work could start faster and stay focused. Accounting degree expected 2027. Based in Arequipa (UTC-5); worked in English at US resorts on two J-1 seasons.',
-    es: 'Analista de datos financieros con base contable y mano de ingeniería: construyo los pipelines y dashboards que mantienen confiables los números de finanzas. Entiendo de dónde sale un asiento y cómo lo usa finanzas, para que se puedan seguir tomando decisiones sobre él. Como gerente general de un restaurante, pasé la operación de lo físico a lo digital y usé los datos para justificar cada cambio; los ingresos crecieron 55%. En KPMG usé Power Query, SQL y Python para limpiar Excels muy grandes y poder empezar la auditoría más rápido y enfocada. Licenciatura en Contabilidad prevista para 2027. Desde Arequipa (UTC-5); trabajé en inglés en resorts de EE. UU. en dos temporadas J-1.',
+    en: 'Financial data analyst with an accounting background and an engineering streak: I build the pipelines and dashboards that keep finance numbers reliable. I understand where a ledger entry comes from and how finance uses it, so decisions can keep being made on it. As General Manager of a restaurant, I moved operations from paper to digital records and used the data to justify every change. At KPMG, I used Power Query, SQL and Python to clean very large Excel files so the audit work could start faster and stay focused. Accounting degree expected 2027. Based in Arequipa (UTC-5).',
+    es: 'Analista de datos financieros con base contable y mano de ingeniería: construyo los pipelines y dashboards que mantienen confiables los números de finanzas. Entiendo de dónde sale un asiento y cómo lo usa finanzas, para que se puedan seguir tomando decisiones sobre él. Como gerente general de un restaurante, pasé la operación de lo físico a lo digital y usé los datos para justificar cada cambio. En KPMG usé Power Query, SQL y Python para limpiar Excels muy grandes y poder empezar la auditoría más rápido y enfocada. Licenciatura en Contabilidad prevista para 2027. Desde Arequipa (UTC-5).',
   },
   about: {
-    en: "I ran a restaurant before I knew the job was called FP&A. Every decision —pricing, staffing, purchasing— had to be backed by a number, and the numbers lived on paper. I moved them into a digital ledger, took over the full P&L, and used that data to justify each change: revenue grew 55%.\n\nThat is where the three pieces clicked, and they are still what I do: accounting tells you where a number comes from, finance explains how it is used, and analytics turns it into something you can see coming. At KPMG I met the other extreme — Excel files that would not open and IFRS audits where days disappear before the real work starts — and tamed them with Power Query, SQL and Python. Today I build that at scale: pipelines and dashboards that let a number survive a room full of questions.",
-    es: 'Dirigí un restaurante antes de saber que ese trabajo se llamaba FP&A. Cada decisión —precios, personal, compras— tenía que sostenerse con un número, y los números vivían en papel. Los pasé a un registro digital, llevé el P&L completo y usé esos datos para justificar cada cambio: los ingresos crecieron 55%.\n\nAhí encajaron las tres piezas, y son las que sigo haciendo: la contabilidad dice de dónde sale un número, finanzas explica cómo se usa y la analítica lo convierte en algo que se ve venir. En KPMG conocí el otro extremo —Excels que no abrían y auditorías IFRS donde los días se van antes de llegar a lo importante— y los domé con Power Query, SQL y Python. Hoy construyo eso a escala: pipelines y dashboards que hacen que un número sobreviva a una sala llena de preguntas.',
+    en: "I ran a restaurant before I knew the job was called FP&A. Every decision —pricing, staffing, purchasing— had to be backed by a number, and the numbers lived on paper. I moved them into a digital ledger, took over the full P&L, and used that data to justify each change.\n\nThat is where the three pieces clicked, and they are still what I do: accounting tells you where a number comes from, finance explains how it is used, and analytics turns it into something you can see coming. At KPMG I met the other extreme — Excel files that would not open and IFRS audits where days disappear before the real work starts — and tamed them with Power Query, SQL and Python. Since then I have closed months for a bar and a contractor, reconciled accounts during an internship at KPMG, and built three public projects that show the method end to end.",
+    es: 'Dirigí un restaurante antes de saber que ese trabajo se llamaba FP&A. Cada decisión —precios, personal, compras— tenía que sostenerse con un número, y los números vivían en papel. Los pasé a un registro digital, llevé el P&L completo y usé esos datos para justificar cada cambio.\n\nAhí encajaron las tres piezas, y son las que sigo haciendo: la contabilidad dice de dónde sale un número, finanzas explica cómo se usa y la analítica lo convierte en algo que se ve venir. En KPMG conocí el otro extremo —Excels que no abrían y auditorías IFRS donde los días se van antes de llegar a lo importante— y los domé con Power Query, SQL y Python. Desde entonces cerré meses para un bar y una contratista, concilié cuentas en una pasantía en KPMG y construí tres proyectos públicos que muestran el método de punta a punta.',
   },
   experience: [
     {
@@ -81,8 +81,8 @@ export const profile: Profile = {
           es: 'Gestioné logística, presupuesto y administración para servicios de alimentación institucional a gran escala.',
         },
         {
-          en: 'Tracked budget vs. actual spend and built routing metrics that cut delivery times by 15%.',
-          es: 'Seguí presupuesto vs. real y construí métricas de ruteo que redujeron los tiempos de entrega un 15%.',
+          en: 'Tracked budget vs. actual spend and built routing metrics that Implementé reporting automatizado en Power BI (flujo de caja, personal, KPIs) donde antes no existía medición.',
+          es: 'Seguí presupuesto vs. real y construí métricas de ruteo que Implementé reporting automatizado en Power BI (flujo de caja, personal, KPIs) donde antes no existía medición.',
         },
       ],
     },
@@ -93,8 +93,8 @@ export const profile: Profile = {
       location: { en: 'Arequipa, Peru', es: 'Arequipa, Perú' },
       bullets: [
         {
-          en: 'Built automated Power BI dashboards for cash flow, labor and KPIs, raising reporting efficiency 30%.',
-          es: 'Construí dashboards automatizados de Power BI para flujo de caja, personal y KPIs, elevando la eficiencia del reporting un 30%.',
+          en: 'Built automated Power BI dashboards for cash flow, labor and KPIs, Implementé reporting automatizado en Power BI (flujo de caja, personal, KPIs) donde antes no existía medición.',
+          es: 'Construí dashboards automatizados de Power BI para flujo de caja, personal y KPIs, Implementé reporting automatizado en Power BI (flujo de caja, personal, KPIs) donde antes no existía medición.',
         },
         {
           en: 'Analyzed transactional sales data to identify revenue leaks and cost optimization opportunities.',
@@ -129,24 +129,12 @@ export const profile: Profile = {
           es: 'Pasé los registros del restaurante de lo físico a lo digital y usé los datos para justificar cada cambio operativo.',
         },
         {
-          en: 'Analyzed sales trends and implemented electronic invoicing, driving a 55% revenue increase.',
-          es: 'Analicé tendencias de venta e implementé facturación electrónica, logrando un aumento de ingresos del 55%.',
+          en: 'Analyzed sales trends and implemented electronic invoicing, Implementé medición de ventas, costos y KPIs (facturación electrónica y dashboards en Power BI) y alineé a los encargados con esas métricas; la operación pasó de 2 a 6 locales.',
+          es: 'Implementé medición de ventas, costos y KPIs (facturación electrónica y dashboards en Power BI) y alineé a los encargados con esas métricas; la operación pasó de 2 a 6 locales.',
         },
         {
           en: 'Managed full P&L and built Power BI dashboards for cash flow, labor costs and revenue KPIs.',
           es: 'Administré el P&L completo y construí dashboards de Power BI para flujo de caja, costos laborales y KPIs de ingresos.',
-        },
-      ],
-    },
-    {
-      org: { en: 'J-1 Program — Hospitality Operations (USA)', es: 'Programa J-1 — Operaciones de Hospitalidad (EE. UU.)' },
-      role: { en: 'Operations Associate', es: 'Asociado de Operaciones' },
-      period: { en: 'Dec 2016 – Mar 2017 & Dec 2019 – Mar 2020', es: 'Dic 2016 – Mar 2017 y Dic 2019 – Mar 2020' },
-      location: { en: 'Hawaii & Ohio, USA', es: 'Hawái y Ohio, EE. UU.' },
-      bullets: [
-        {
-          en: 'Two seasonal contracts at high-volume US resorts; worked fully in English in a US corporate environment.',
-          es: 'Dos contratos de temporada en resorts de alto volumen en EE. UU.; trabajé íntegramente en inglés en un entorno corporativo estadounidense.',
         },
       ],
     },
@@ -186,7 +174,7 @@ export const profile: Profile = {
       },
     },
   ],
-  languages: { en: 'English: B2', es: 'Inglés: B2' },
+  languages: { en: 'English: B2 (two seasons working in the US)', es: 'Inglés: B2 (dos temporadas trabajando en EE. UU.)' },
   email: 'Joaquin.data.dev@gmail.com',
   location: { en: 'Arequipa, Peru (UTC-5)', es: 'Arequipa, Perú (UTC-5)' },
 };
