@@ -36,7 +36,7 @@ Accounting student (expected 2027) with KPMG audit experience and FP&A/BI work t
 - Deployed an automated Power BI ecosystem on PostgreSQL for real-time AP/AR monitoring.
 - Managed month-end closing processes and prepared preliminary financial statements.
 
-**Toro Loco Bar & Grill — Hospitality — General Manager & Revenue Analyst** · Arequipa, Peru · May 2020 – Jun 2022
+**Toro Loco Bar & Grill — Hospitality — Manager** · Arequipa, Peru · May 2020 – Jun 2022
 - Analyzed sales trends and implemented electronic invoicing, driving a 55% revenue increase.
 - Built Power BI dashboards for real-time cash flow, labor costs, and revenue KPIs.
 - Managed full P&L for hospitality operations.
