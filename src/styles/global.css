@@ -303,7 +303,33 @@ p {
 /* ---------- hero ---------- */
 
 .hero {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
   padding-block: clamp(3rem, 9vw, 6.5rem) clamp(2.5rem, 6vw, 4rem);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -25% -10%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(42% 46% at 20% 26%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%),
+    radial-gradient(34% 38% at 84% 70%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 72%);
+  filter: blur(40px);
+  opacity: 0.6;
+  animation: heroDrift 26s ease-in-out infinite alternate;
+}
+
+@keyframes heroDrift {
+  from {
+    transform: translate3d(-2.5%, -1.5%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(2.5%, 2.5%, 0) scale(1.06);
+  }
 }
 
 .hero-grid {
@@ -796,6 +822,34 @@ p {
   transform-origin: center;
   transition: opacity 0.22s ease, transform 0.22s ease;
   outline: none;
+  animation: capIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.capmap-zone:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.capmap-zone:nth-child(2) {
+  animation-delay: 0.13s;
+}
+
+.capmap-zone:nth-child(3) {
+  animation-delay: 0.21s;
+}
+
+.capmap-zone:nth-child(4) {
+  animation-delay: 0.29s;
+}
+
+@keyframes capIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .capmap-ring {
@@ -820,6 +874,17 @@ p {
   fill-opacity: 0.75;
   stroke-opacity: 1;
   stroke-width: 1.6;
+  filter: drop-shadow(0 0 7px color-mix(in srgb, var(--accent) 40%, transparent));
+}
+
+.capmap-flow {
+  fill: var(--accent);
+  opacity: 0.75;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--accent) 55%, transparent));
+}
+
+.capmap-flow--dim {
+  opacity: 0.4;
 }
 
 .capmap-zone:focus-visible .capmap-ring {
@@ -845,6 +910,19 @@ p {
   fill: var(--paper);
   stroke: var(--accent);
   stroke-width: 1.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: capPulse 7s ease-in-out infinite;
+}
+
+@keyframes capPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.035);
+  }
 }
 
 .capmap-core-title {
@@ -956,8 +1034,17 @@ html.js .capmap-fallback {
   .capmap-zone,
   .capmap-ring,
   .capmap-hint,
+  .capmap-core,
   .capmap-caption.is-changing {
     transition: none;
+    animation: none;
+  }
+
+  .capmap-flow {
+    display: none;
+  }
+
+  .hero::before {
     animation: none;
   }
 }

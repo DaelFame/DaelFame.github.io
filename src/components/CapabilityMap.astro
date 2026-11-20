@@ -20,75 +20,77 @@ const { lang } = Astro.props;
 const data = {
   en: {
     center: 'One workflow.',
-    centerSub: 'four parts',
-    phrase: 'Accounting, finance, data and BI in one workflow.',
+    centerSub: '4 parts',
+    phrase:
+      'Record, understand, sustain, decide: four parts that in this profile come in the same person.',
     hint: 'Hover or tap a circle',
-    aria: 'Four overlapping circles — accounting, FP&A, data engineering and BI — working as one workflow. Each one explains itself on hover or focus.',
+    aria: 'Four overlapping circles — accounting, finance, data engineering and BI — working as one workflow. Each one explains itself on hover or focus.',
     zones: [
       {
         id: 'accounting',
         label: 'Accounting',
         cx: 102, cy: 102, lx: 66, ly: 70,
         k: 'Accounting',
-        v: 'The books close: AP/AR, month-end and reconciliations that actually tie out.',
+        v: 'Where the numbers live: every movement recorded, balanced and explainable.',
       },
       {
         id: 'fpa',
-        label: 'FP&A',
+        label: 'Finance',
         cx: 218, cy: 102, lx: 254, ly: 70,
-        k: 'FP&A',
-        v: 'The numbers are explained: budget vs actual, variance and scenarios.',
+        k: 'Finance',
+        v: 'Recording is not the end. The number is understood and used: budget, variance and the right use of resources.',
       },
       {
         id: 'data',
         label: 'Data Eng.',
         cx: 102, cy: 218, lx: 66, ly: 252,
         k: 'Data engineering',
-        v: 'The data holds: pipelines, a star schema, 131 tests, reconciliation gates.',
+        v: 'How the data travels, and how to shape it so it works as well as it can.',
       },
       {
         id: 'bi',
         label: 'BI',
         cx: 218, cy: 218, lx: 254, ly: 252,
         k: 'Business intelligence',
-        v: 'The decision is made: dashboards that end in a recommendation.',
+        v: 'The data comes back as a decision: what to do, with whom and on what evidence.',
       },
     ],
   },
   es: {
     center: 'Un flujo.',
-    centerSub: 'cuatro piezas',
-    phrase: 'Contabilidad, finanzas, datos y BI en un mismo flujo.',
+    centerSub: '4 piezas',
+    phrase:
+      'Registrar, entender, sostener y decidir: cuatro piezas que en este perfil vienen en la misma persona.',
     hint: 'Pasa el cursor o toca un círculo',
-    aria: 'Cuatro círculos superpuestos — contabilidad, FP&A, ingeniería de datos y BI — trabajando como un mismo flujo. Cada uno se explica al pasar el cursor o al enfocarlo.',
+    aria: 'Cuatro círculos superpuestos — contabilidad, finanzas, ingeniería de datos y BI — trabajando como un mismo flujo. Cada uno se explica al pasar el cursor o al enfocarlo.',
     zones: [
       {
         id: 'accounting',
         label: 'Contabilidad',
         cx: 102, cy: 102, lx: 66, ly: 70,
         k: 'Contabilidad',
-        v: 'El cierre cuadra: AP/AR, cierre de mes y conciliaciones que cierran de verdad.',
+        v: 'El registro de los números: cada movimiento asentado, cuadrado y explicable.',
       },
       {
         id: 'fpa',
-        label: 'FP&A',
+        label: 'Finanzas',
         cx: 218, cy: 102, lx: 254, ly: 70,
-        k: 'FP&A',
-        v: 'Los números se explican: presupuesto vs real, varianza y escenarios.',
+        k: 'Finanzas',
+        v: 'Registrar es el principio, no el final: el número se entiende y se usa para el buen uso de los recursos.',
       },
       {
         id: 'data',
         label: 'Ing. de datos',
         cx: 102, cy: 218, lx: 66, ly: 252,
         k: 'Ingeniería de datos',
-        v: 'Los datos se sostienen: pipelines, star schema, 131 tests, gates de conciliación.',
+        v: 'Entiendo cómo viaja el dato y lo estructuro para que funcione lo mejor posible.',
       },
       {
         id: 'bi',
         label: 'BI',
         cx: 218, cy: 218, lx: 254, ly: 252,
         k: 'Business intelligence',
-        v: 'La decisión se toma: dashboards que terminan en una recomendación.',
+        v: 'El dato vuelve convertido en decisión: qué hacer, con quién y con qué evidencia.',
       },
     ],
   },
@@ -117,6 +119,22 @@ const data = {
         </g>
       ))
     }
+
+    <circle class="capmap-flow" r="3.2" aria-hidden="true">
+      <animateMotion
+        dur="18s"
+        repeatCount="indefinite"
+        path="M102,102 C150,78 190,78 218,102 C242,126 242,194 218,218 C170,242 130,242 102,218 C78,194 78,130 102,102 Z"
+      ></animateMotion>
+    </circle>
+    <circle class="capmap-flow capmap-flow--dim" r="2.2" aria-hidden="true">
+      <animateMotion
+        dur="18s"
+        begin="-9s"
+        repeatCount="indefinite"
+        path="M102,102 C150,78 190,78 218,102 C242,126 242,194 218,218 C170,242 130,242 102,218 C78,194 78,130 102,102 Z"
+      ></animateMotion>
+    </circle>
 
     <circle cx="160" cy="160" r="50" class="capmap-core" />
     <text x="160" y="157" text-anchor="middle" class="capmap-core-title">{data.center}</text>
