@@ -774,50 +774,172 @@ p {
   opacity: 0.75;
 }
 
-/* ---------- ikigai ---------- */
+/* ---------- capability map ---------- */
 
-.ikigai {
+.capmap {
   display: grid;
-  gap: 1.25rem;
+  gap: 0.9rem;
   align-content: start;
+  justify-items: center;
 }
 
-.ikigai svg {
+.capmap-svg {
   width: 100%;
   max-width: 340px;
-  margin-inline: auto;
   height: auto;
+  overflow: visible;
 }
 
-.ikigai-label {
+.capmap-zone {
+  cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  outline: none;
+}
+
+.capmap-ring {
+  fill: var(--accent-soft);
+  fill-opacity: 0.45;
+  stroke: var(--accent);
+  stroke-opacity: 0.4;
+  stroke-width: 1;
+  transition: fill-opacity 0.22s ease, stroke-opacity 0.22s ease, stroke-width 0.22s ease;
+}
+
+.capmap[data-active]:not([data-active='']) .capmap-zone {
+  opacity: 0.3;
+}
+
+.capmap .capmap-zone.is-active {
+  opacity: 1;
+  transform: scale(1.035);
+}
+
+.capmap-zone.is-active .capmap-ring {
+  fill-opacity: 0.75;
+  stroke-opacity: 1;
+  stroke-width: 1.6;
+}
+
+.capmap-zone:focus-visible .capmap-ring {
+  stroke-opacity: 1;
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+}
+
+.capmap-label {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.02em;
   fill: var(--ink);
   font-weight: 600;
+  transition: fill 0.22s ease;
 }
 
-.ikigai-center {
+.capmap-zone.is-active .capmap-label {
+  fill: var(--accent);
+}
+
+.capmap-core {
+  fill: var(--paper);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+.capmap-core-title {
   font-family: var(--font-sans);
   font-size: 12.5px;
   font-weight: 600;
   fill: var(--ink);
 }
 
-.ikigai-legend {
+.capmap-core-sub {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.05em;
+  fill: var(--ink-2);
+  opacity: 0.8;
+}
+
+.capmap-hint {
+  margin: 0;
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+}
+
+html.js .capmap-hint {
+  display: block;
+}
+
+.capmap[data-active]:not([data-active='']) .capmap-hint {
+  opacity: 0;
+}
+
+.capmap-caption {
+  margin: 0;
+  display: grid;
+  gap: 0.28rem;
+  min-height: 3.4em;
+  max-width: 34ch;
+  text-align: center;
+}
+
+.capmap-caption-k {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  min-height: 1em;
+}
+
+.capmap-caption-v {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.capmap-caption.is-changing {
+  animation: capFade 0.2s ease;
+}
+
+@keyframes capFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.capmap-fallback {
   display: grid;
   gap: 0.8rem;
+  width: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.ikigai-legend li {
+html.js .capmap-fallback {
+  display: none;
+}
+
+.capmap-fallback li {
   display: grid;
   gap: 0.1rem;
 }
 
-.ikigai-k {
+.capmap-k {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   letter-spacing: 0.05em;
@@ -825,17 +947,19 @@ p {
   color: var(--accent);
 }
 
-.ikigai-v {
+.capmap-v {
   font-size: 0.8125rem;
   color: var(--ink-2);
 }
 
-.ikigai-phrase {
-  text-align: center;
-  font-size: 0.8125rem;
-  color: var(--ink-2);
-  max-width: 34ch;
-  margin-inline: auto;
+@media (prefers-reduced-motion: reduce) {
+  .capmap-zone,
+  .capmap-ring,
+  .capmap-hint,
+  .capmap-caption.is-changing {
+    transition: none;
+    animation: none;
+  }
 }
 
 @media (hover: none) {

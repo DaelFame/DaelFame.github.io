@@ -5,6 +5,10 @@ import type { Lang } from '../i18n/ui';
  * Capability map: four overlapping circles that answer the recruiter's real
  * question — "what do I get if I hire this person?" — not a feelings diagram.
  * Each quadrant is a seat he can fill; the intersection is the rare part.
+ *
+ * The circles are interactive: hovering, focusing or tapping one lifts it and
+ * explains it in a single caption line, which replaces the four-item legend
+ * that used to sit underneath. Without JavaScript the legend is still there.
  * Colours come from CSS tokens, so both themes work with no per-theme code.
  */
 interface Props {
@@ -15,66 +19,190 @@ const { lang } = Astro.props;
 
 const data = {
   en: {
-    accounting: 'Accounting',
-    fpa: 'FP&A',
-    data: 'Data Eng.',
-    bi: 'BI',
-    center1: 'One workflow.',
-    center2: '',
+    center: 'One workflow.',
+    centerSub: 'four parts',
     phrase: 'Accounting, finance, data and BI in one workflow.',
-    aria: 'Four overlapping circles — accounting, FP&A, data engineering and BI — working as one workflow.',
-    legend: [
-      { k: 'Accounting', v: 'The books close: AP/AR, month-end and reconciliations that actually tie out.' },
-      { k: 'FP&A', v: 'The numbers are explained: budget vs actual, variance and scenarios.' },
-      { k: 'Data engineering', v: 'The data holds: pipelines, a star schema, 131 tests, reconciliation gates.' },
-      { k: 'Business intelligence', v: 'The decision is made: dashboards that end in a recommendation.' },
+    hint: 'Hover or tap a circle',
+    aria: 'Four overlapping circles — accounting, FP&A, data engineering and BI — working as one workflow. Each one explains itself on hover or focus.',
+    zones: [
+      {
+        id: 'accounting',
+        label: 'Accounting',
+        cx: 102, cy: 102, lx: 66, ly: 70,
+        k: 'Accounting',
+        v: 'The books close: AP/AR, month-end and reconciliations that actually tie out.',
+      },
+      {
+        id: 'fpa',
+        label: 'FP&A',
+        cx: 218, cy: 102, lx: 254, ly: 70,
+        k: 'FP&A',
+        v: 'The numbers are explained: budget vs actual, variance and scenarios.',
+      },
+      {
+        id: 'data',
+        label: 'Data Eng.',
+        cx: 102, cy: 218, lx: 66, ly: 252,
+        k: 'Data engineering',
+        v: 'The data holds: pipelines, a star schema, 131 tests, reconciliation gates.',
+      },
+      {
+        id: 'bi',
+        label: 'BI',
+        cx: 218, cy: 218, lx: 254, ly: 252,
+        k: 'Business intelligence',
+        v: 'The decision is made: dashboards that end in a recommendation.',
+      },
     ],
   },
   es: {
-    accounting: 'Contabilidad',
-    fpa: 'FP&A',
-    data: 'Ing. de datos',
-    bi: 'BI',
-    center1: 'Un flujo.',
-    center2: '',
+    center: 'Un flujo.',
+    centerSub: 'cuatro piezas',
     phrase: 'Contabilidad, finanzas, datos y BI en un mismo flujo.',
-    aria: 'Cuatro círculos superpuestos — contabilidad, FP&A, ingeniería de datos y BI — trabajando como un mismo flujo.',
-    legend: [
-      { k: 'Contabilidad', v: 'El cierre cuadra: AP/AR, cierre de mes y conciliaciones que cierran de verdad.' },
-      { k: 'FP&A', v: 'Los números se explican: presupuesto vs real, varianza y escenarios.' },
-      { k: 'Ingeniería de datos', v: 'Los datos se sostienen: pipelines, star schema, 131 tests, gates de conciliación.' },
-      { k: 'Business intelligence', v: 'La decisión se toma: dashboards que terminan en una recomendación.' },
+    hint: 'Pasa el cursor o toca un círculo',
+    aria: 'Cuatro círculos superpuestos — contabilidad, FP&A, ingeniería de datos y BI — trabajando como un mismo flujo. Cada uno se explica al pasar el cursor o al enfocarlo.',
+    zones: [
+      {
+        id: 'accounting',
+        label: 'Contabilidad',
+        cx: 102, cy: 102, lx: 66, ly: 70,
+        k: 'Contabilidad',
+        v: 'El cierre cuadra: AP/AR, cierre de mes y conciliaciones que cierran de verdad.',
+      },
+      {
+        id: 'fpa',
+        label: 'FP&A',
+        cx: 218, cy: 102, lx: 254, ly: 70,
+        k: 'FP&A',
+        v: 'Los números se explican: presupuesto vs real, varianza y escenarios.',
+      },
+      {
+        id: 'data',
+        label: 'Ing. de datos',
+        cx: 102, cy: 218, lx: 66, ly: 252,
+        k: 'Ingeniería de datos',
+        v: 'Los datos se sostienen: pipelines, star schema, 131 tests, gates de conciliación.',
+      },
+      {
+        id: 'bi',
+        label: 'BI',
+        cx: 218, cy: 218, lx: 254, ly: 252,
+        k: 'Business intelligence',
+        v: 'La decisión se toma: dashboards que terminan en una recomendación.',
+      },
     ],
   },
 }[lang as 'en' | 'es'];
 ---
 
-<div class="ikigai">
-  <svg viewBox="0 0 320 320" role="img" aria-label={data.aria}>
-    <circle cx="102" cy="102" r="76" fill="var(--accent-soft)" fill-opacity="0.45" stroke="var(--accent)" stroke-opacity="0.4" />
-    <circle cx="218" cy="102" r="76" fill="var(--accent-soft)" fill-opacity="0.45" stroke="var(--accent)" stroke-opacity="0.4" />
-    <circle cx="102" cy="218" r="76" fill="var(--accent-soft)" fill-opacity="0.45" stroke="var(--accent)" stroke-opacity="0.4" />
-    <circle cx="218" cy="218" r="76" fill="var(--accent-soft)" fill-opacity="0.45" stroke="var(--accent)" stroke-opacity="0.4" />
+<div class="capmap" data-capmap>
+  <script is:inline>document.documentElement.classList.add('js');</script>
 
-    <circle cx="160" cy="160" r="50" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.5" />
+  <svg viewBox="0 0 320 320" class="capmap-svg" role="group" aria-label={data.aria}>
+    {
+      data.zones.map((zone) => (
+        <g
+          class="capmap-zone"
+          data-zone={zone.id}
+          data-k={zone.k}
+          data-v={zone.v}
+          tabindex="0"
+          role="button"
+          aria-label={`${zone.k}: ${zone.v}`}
+        >
+          <circle cx={zone.cx} cy={zone.cy} r="76" class="capmap-ring" />
+          <text x={zone.lx} y={zone.ly} text-anchor="middle" class="capmap-label">
+            {zone.label}
+          </text>
+        </g>
+      ))
+    }
 
-    <text x="66" y="70" text-anchor="middle" class="ikigai-label">{data.accounting}</text>
-    <text x="254" y="70" text-anchor="middle" class="ikigai-label">{data.fpa}</text>
-    <text x="66" y="252" text-anchor="middle" class="ikigai-label">{data.data}</text>
-    <text x="254" y="252" text-anchor="middle" class="ikigai-label">{data.bi}</text>
-
-    <text x="160" y="153" text-anchor="middle" class="ikigai-center">{data.center1}</text>
-    <text x="160" y="172" text-anchor="middle" class="ikigai-center">{data.center2}</text>
+    <circle cx="160" cy="160" r="50" class="capmap-core" />
+    <text x="160" y="157" text-anchor="middle" class="capmap-core-title">{data.center}</text>
+    <text x="160" y="173" text-anchor="middle" class="capmap-core-sub">{data.centerSub}</text>
   </svg>
 
-  <p class="ikigai-phrase">{data.phrase}</p>
+  <p class="capmap-hint">{data.hint}</p>
 
-  <ul class="ikigai-legend">
-    {data.legend.map((item) => (
-      <li>
-        <span class="ikigai-k">{item.k}</span>
-        <span class="ikigai-v">{item.v}</span>
-      </li>
-    ))}
+  <p class="capmap-caption" data-capmap-caption aria-live="polite">
+    <span class="capmap-caption-k" data-capmap-k></span>
+    <span class="capmap-caption-v" data-capmap-v>{data.phrase}</span>
+  </p>
+
+  <ul class="capmap-fallback">
+    {
+      data.zones.map((zone) => (
+        <li>
+          <span class="capmap-k">{zone.k}</span>
+          <span class="capmap-v">{zone.v}</span>
+        </li>
+      ))
+    }
   </ul>
 </div>
+
+<script>
+  const maps = document.querySelectorAll<HTMLElement>('[data-capmap]');
+
+  maps.forEach((root) => {
+    const zones = Array.from(root.querySelectorAll<SVGGElement>('.capmap-zone'));
+    const caption = root.querySelector<HTMLElement>('[data-capmap-caption]');
+    const kEl = root.querySelector<HTMLElement>('[data-capmap-k]');
+    const vEl = root.querySelector<HTMLElement>('[data-capmap-v]');
+    const base = vEl?.textContent ?? '';
+    let pinned: SVGGElement | null = null;
+
+    const render = (zone: SVGGElement | null) => {
+      root.dataset.active = zone?.dataset.zone ?? '';
+      zones.forEach((z) => z.classList.toggle('is-active', z === zone));
+      if (!kEl || !vEl || !caption) return;
+      caption.classList.remove('is-changing');
+      void caption.offsetWidth;
+      caption.classList.add('is-changing');
+      kEl.textContent = zone?.dataset.k ?? '';
+      vEl.textContent = zone?.dataset.v ?? base;
+    };
+
+    const settle = () => {
+      const focused = zones.find((z) => z === document.activeElement);
+      render(pinned ?? focused ?? null);
+    };
+
+    zones.forEach((zone) => {
+      zone.addEventListener('pointerenter', (event) => {
+        if (event.pointerType === 'mouse') render(zone);
+      });
+      zone.addEventListener('pointerleave', (event) => {
+        if (event.pointerType === 'mouse') settle();
+      });
+      zone.addEventListener('focus', () => render(zone));
+      zone.addEventListener('blur', () => settle());
+      zone.addEventListener('click', () => {
+        pinned = pinned === zone ? null : zone;
+        render(pinned ?? zone);
+      });
+      zone.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          pinned = pinned === zone ? null : zone;
+          render(pinned ?? zone);
+        }
+        if (event.key === 'Escape') {
+          pinned = null;
+          zone.blur();
+          render(null);
+        }
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (pinned && !root.contains(event.target as Node)) {
+        pinned = null;
+        render(null);
+      }
+    });
+
+    render(null);
+  });
+</script>
