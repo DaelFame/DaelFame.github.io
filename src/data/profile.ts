@@ -47,7 +47,7 @@ export const profile: Profile = {
   },
   summary: {
     en: 'Financial data analyst with an accounting background and an engineering streak: I build the pipelines and dashboards that keep finance numbers reliable. I understand where a ledger entry comes from and how finance uses it, so decisions can keep being made on it. As General Manager of a restaurant, I moved operations from paper to digital records and used the data to justify every change. At KPMG, I used Power Query, SQL and Python to clean very large Excel files so the audit work could start faster and stay focused. Accounting degree expected 2027. Based in Arequipa (UTC-5).',
-    es: 'Analista de datos financieros con base contable y mano de ingeniería: construyo los pipelines y dashboards que mantienen confiables los números de finanzas. Entiendo de dónde sale un asiento y cómo lo usa finanzas, para que se puedan seguir tomando decisiones sobre él. Como gerente general de un restaurante, pasé la operación de lo físico a lo digital y usé los datos para justificar cada cambio. En KPMG usé Power Query, SQL y Python para limpiar Excels muy grandes y poder empezar la auditoría más rápido y enfocada. Licenciatura en Contabilidad prevista para 2027. Desde Arequipa (UTC-5).',
+    es: 'Analista de datos financieros con base contable y mano de ingeniería: construyo los pipelines y dashboards que mantienen confiables los números de finanzas. Entiendo de dónde sale un asiento y cómo lo usa finanzas, para que se puedan seguir tomando decisiones sobre él. Como administrador general de un restaurante, pasé la operación de lo físico a lo digital y usé los datos para justificar cada cambio. En KPMG usé Power Query, SQL y Python para limpiar Excels muy grandes y poder empezar la auditoría más rápido y enfocada. Licenciatura en Contabilidad prevista para 2027. Desde Arequipa (UTC-5).',
   },
   about: {
     en: "I ran a restaurant before I knew the job was called FP&A. Every decision —pricing, staffing, purchasing— had to be backed by a number, and the numbers lived on paper. I moved them into a digital ledger, took over the full P&L, and used that data to justify each change.\n\nThat is where the three pieces clicked, and they are still what I do: accounting tells you where a number comes from, finance explains how it is used, and analytics turns it into something you can see coming. At KPMG I met the other extreme — Excel files that would not open and IFRS audits where days disappear before the real work starts — and tamed them with Power Query, SQL and Python. Since then I have closed months for a bar and a contractor, reconciled accounts during an internship at KPMG, and built three public projects that show the method end to end.",
@@ -120,7 +120,7 @@ export const profile: Profile = {
     },
     {
       org: { en: 'Toro Loco Bar & Grill — Restaurant', es: 'Toro Loco Bar & Grill — Restaurante' },
-      role: { en: 'General Manager & Revenue Analyst', es: 'Gerente General y Analista de Ingresos' },
+      role: { en: 'General Manager & Revenue Analyst', es: 'Administrador General' },
       period: { en: 'May 2020 – Jun 2022', es: 'May 2020 – Jun 2022' },
       location: { en: 'Arequipa, Peru', es: 'Arequipa, Perú' },
       bullets: [
