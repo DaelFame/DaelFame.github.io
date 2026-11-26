@@ -17,32 +17,34 @@ const { lang, showCaption = true } = Astro.props;
 const t = useTranslations(lang);
 const caseHref = lang === 'es' ? '/es/work/' : '/work/';
 
+// Net income vs plan by year, pre-tax (fpa-forecasting-case-study README, live DAX).
+// The bars must sum to the four-year variance: −243,137 + 351,995 + 499,886 + 259,201 = 867,945.
 const bridge = [
-  { en: 'Gross margin', es: 'Margen bruto', value: 74_457 },
-  { en: 'Operating expenses', es: 'Gastos operativos', value: -359_888 },
-  { en: 'Financial result', es: 'Resultado financiero', value: 24_294 },
-  { en: 'Extraordinary result', es: 'Resultado extraordinario', value: 18_000 },
+  { en: '2026', es: '2026', value: -243_137, pct: -61.1 },
+  { en: '2027', es: '2027', value: 351_995, pct: 127.0 },
+  { en: '2028', es: '2028', value: 499_886, pct: 43.3 },
+  { en: '2029', es: '2029', value: 259_201, pct: 12.2 },
 ];
 
 const copy = {
   en: {
-    headline: 'Where the €243,137 went',
-    period: 'Year 1 · EUR',
-    net: 'Net variance',
-    note: '€150,000 of general expenses carry no supporting document.',
-    alt: 'Waterfall chart: revenue met plan, but operating expenses of 359,888 euros left a net variance of minus 243,137 euros.',
+    headline: 'From a €243K miss to €868K ahead of plan',
+    period: 'Net income vs plan · EUR · pre-tax',
+    net: 'Four years',
+    note: '+€572,000 of the surplus is extraordinary income — it will not repeat.',
+    alt: 'Waterfall chart of net income versus plan by year: minus 243,137 euros in 2026, then plus 351,995, plus 499,886 and plus 259,201 euros, for a four-year total of plus 867,945 euros.',
   },
   es: {
-    headline: 'Dónde se fueron los €243.137',
-    period: 'Año 1 · EUR',
-    net: 'Varianza neta',
-    note: '€150.000 de gastos generales no tienen respaldo documental.',
-    alt: 'Gráfico de cascada: el ingreso llegó a presupuesto, pero 359.888 euros de gastos operativos dejaron una varianza neta de menos 243.137 euros.',
+    headline: 'De un hueco de €243K a €868K sobre el plan',
+    period: 'Utilidad neta vs plan · EUR · antes de impuestos',
+    net: 'Cuatro años',
+    note: '+€572.000 del superávit es resultado extraordinario — no se repite.',
+    alt: 'Gráfico de cascada de la utilidad neta frente al plan por año: menos 243.137 euros en 2026, luego más 351.995, más 499.886 y más 259.201 euros, para un total de más 867.945 euros en cuatro años.',
   },
 }[lang];
 
 const DOMAIN_MIN = -300_000;
-const DOMAIN_MAX = 100_000;
+const DOMAIN_MAX = 900_000;
 const SPAN = DOMAIN_MAX - DOMAIN_MIN;
 
 let running = 0;
@@ -53,6 +55,7 @@ const rows = bridge.map((d, i) => {
   return {
     label: d[lang],
     value: d.value,
+    pct: d.pct,
     left: ((Math.min(from, to) - DOMAIN_MIN) / SPAN) * 100,
     width: (Math.abs(d.value) / SPAN) * 100,
     delay: i * 110,
@@ -66,7 +69,8 @@ const zero = ((0 - DOMAIN_MIN) / SPAN) * 100;
 
 const nf = new Intl.NumberFormat(lang === 'es' ? 'es-ES' : 'en-US');
 const signed = (n: number) => `${n < 0 ? '−' : '+'}${nf.format(Math.abs(n))}`;
-const plain = (n: number) => `${n < 0 ? '−' : ''}${nf.format(Math.abs(n))}`;
+const pf = new Intl.NumberFormat(lang === 'es' ? 'es-ES' : 'en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const pct = (n: number) => `${n < 0 ? '−' : '+'}${pf.format(Math.abs(n))}%`;
 ---
 
 <div class="wf-wrap">
@@ -80,7 +84,7 @@ const plain = (n: number) => `${n < 0 ? '−' : ''}${nf.format(Math.abs(n))}`;
     {
       rows.map((r) => (
         <div class="wf-row">
-          <span class="wf-label">{r.label}</span>
+          <span class="wf-label">{r.label} <span class="wf-pct">{pct(r.pct)}</span></span>
           <span class="wf-track">
             <span
               class:list={['wf-bar', r.value < 0 ? 'neg' : 'pos']}
@@ -97,9 +101,9 @@ const plain = (n: number) => `${n < 0 ? '−' : ''}${nf.format(Math.abs(n))}`;
     <div class="wf-row wf-net">
       <span class="wf-label">{copy.net}</span>
       <span class="wf-track">
-        <span class="wf-bar" style={`left:${netLeft}%;width:${netWidth}%;--delay:460ms`}></span>
+        <span class="wf-bar pos" style={`left:${netLeft}%;width:${netWidth}%;--delay:460ms`}></span>
       </span>
-      <span class="wf-value">{plain(net)}</span>
+      <span class="wf-value">{signed(net)}</span>
     </div>
   </div>
 

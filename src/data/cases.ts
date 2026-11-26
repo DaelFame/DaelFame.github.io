@@ -219,24 +219,24 @@ export const cases: CaseStudy[] = [
     index: '01',
     discipline: { en: 'FP&A analytics', es: 'Analítica FP&A' },
     title: 'FP&A Forecasting & Variance Analysis',
-    period: { en: 'FY 2024–2029', es: 'FY 2024–2029' },
+    period: { en: 'FY 2026–2029', es: 'FY 2026–2029' },
     question: {
-      en: 'Revenue landed within 0.9% of budget while net income missed by 61%. Which drivers actually moved the result?',
-      es: 'El ingreso quedó dentro del 0,9% del presupuesto mientras la utilidad neta fallaba un 61%. ¿Qué drivers movieron realmente el resultado?',
+      en: 'Year one missed plan by 61% even though revenue landed on budget; the next three years beat it. What broke, what fixed it — and how much of the recovery is repeatable?',
+      es: 'El primer año falló el plan un 61% aunque el ingreso llegó a presupuesto; los tres siguientes lo superaron. ¿Qué se rompió, qué lo corrigió y cuánto de la recuperación es repetible?',
     },
     result: {
-      en: 'Net income beat plan by +€867,945 (+21.9%), pre-tax — but +€572K of that surplus is extraordinary income.',
-      es: 'La utilidad neta superó el plan en +€867.945 (+21,9%), antes de impuestos — pero +€572K de ese superávit es resultado extraordinario.',
+      en: 'From a −⁠€243,137 miss in year one to +⁠€867,945 (+21.9%) ahead of plan over four years, pre-tax — but +⁠€572K of that surplus is extraordinary income.',
+      es: 'De un hueco de −⁠€243.137 en el primer año a +⁠€867.945 (+21,9%) sobre el plan en cuatro años, antes de impuestos — pero +⁠€572K de ese superávit es resultado extraordinario.',
     },
     metrics: [
-      { value: { en: '+€867,945', es: '+€867.945' }, label: { en: 'net income vs plan', es: 'utilidad neta vs plan' } },
-      { value: { en: '+21.9%', es: '+21,9 %' }, label: { en: 'variance vs plan', es: 'variación vs plan' } },
-      { value: { en: '+€572K', es: '+€572K' }, label: { en: 'extraordinary income', es: 'resultado extraordinario' } },
-      { value: { en: '−€326K', es: '−€326K' }, label: { en: 'operating expense overrun', es: 'sobrecosto operativo' } },
+      { value: { en: '−61.1%', es: '−61,1 %' }, label: { en: 'net income vs plan, year one', es: 'utilidad neta vs plan, primer año' } },
+      { value: { en: '+⁠€867,945', es: '+⁠€867.945' }, label: { en: 'net income vs plan, four years', es: 'utilidad neta vs plan, cuatro años' } },
+      { value: { en: '+⁠€572K', es: '+⁠€572K' }, label: { en: 'of it is extraordinary income', es: 'de eso es resultado extraordinario' } },
+      { value: { en: '83', es: '83' }, label: { en: 'tests pin the tie-out', es: 'tests fijan el amarre' } },
     ],
     disclosure: {
-      en: 'Anonymised competitive business simulation — not a real company’s books. Figures are pre-tax, FY 2024–2029.',
-      es: 'Simulación competitiva de negocio anonimizada — no son los libros de una empresa real. Cifras antes de impuestos, FY 2024–2029.',
+      en: 'Anonymised competitive business simulation — not a real company’s books. Figures are pre-tax, FY 2026–2029.',
+      es: 'Simulación competitiva de negocio anonimizada — no son los libros de una empresa real. Cifras antes de impuestos, FY 2026–2029.',
     },
     preview: 'fpa',
     story: [
@@ -244,8 +244,8 @@ export const cases: CaseStudy[] = [
         title: { en: 'The question', es: 'La pregunta' },
         body: [
           {
-            en: 'An anonymised competitive business simulation of a fashion-accessories manufacturer. In the first year revenue landed within 0.9% of budget while net income missed the plan by 61.1%. From the second year onward the company beat its own plan three years in a row — +127.0%, +43.3% and +12.2%. A miss followed by a streak of beats is not noise. Which drivers explain it, and how much of the surplus is repeatable?',
-            es: 'Una simulación competitiva de negocio anonimizada de un fabricante de accesorios de moda. En el primer año el ingreso quedó dentro del 0,9% del presupuesto mientras la utilidad neta fallaba el plan un 61,1%. Desde el segundo año la empresa superó su propio plan tres años seguidos — +127,0%, +43,3% y +12,2%. Un fallo seguido de una racha de excesos no es ruido. ¿Qué drivers lo explican y cuánto del superávit es repetible?',
+            en: 'An anonymised competitive business simulation of a fashion-accessories manufacturer. In 2026 revenue landed within 0.9% of budget, yet net income missed the plan by 61.1% (−⁠€243,137). From 2027 the company beat its own plan three years in a row — +127.0%, +43.3% and +12.2%. A miss followed by a streak of beats is not noise. What broke in year one, what turned it around, and how much of the recovery is repeatable?',
+            es: 'Una simulación competitiva de negocio anonimizada de un fabricante de accesorios de moda. En 2026 el ingreso quedó dentro del 0,9% del presupuesto, pero la utilidad neta falló el plan un 61,1% (−⁠€243.137). Desde 2027 la empresa superó su propio plan tres años seguidos — +127,0%, +43,3% y +12,2%. Un fallo seguido de una racha de excesos no es ruido. ¿Qué se rompió el primer año, qué le dio la vuelta y cuánto de la recuperación es repetible?',
           },
         ],
       },
@@ -254,8 +254,12 @@ export const cases: CaseStudy[] = [
         waterfall: true,
         body: [
           {
-            en: 'Across FY 2024–2029, pre-tax: plan net income €3,954,345, actual €4,822,290, variance +€867,945 (+21.9%). Three drivers carry the surplus — unit-cost savings +€551K, volume growth +€255K, and extraordinary income +€572K, which alone is 65.9% of it. Against that, operating expenses ran €326,210 over plan: general expenses +€199,051, R&D +€155,100, insolvency charges +€25,832, partly offset by personnel −€34,773 and depreciation −€19,000. Strip out the one-off and the operating story is thinner than the headline.',
-            es: 'En FY 2024–2029, antes de impuestos: utilidad neta plan €3.954.345, real €4.822.290, variación +€867.945 (+21,9%). Tres drivers sostienen el superávit — ahorro de costo unitario +€551K, crecimiento de volumen +€255K y resultado extraordinario +€572K, que por sí solo es el 65,9%. En contra, los gastos operativos se pasaron €326.210 del plan: gastos generales +€199.051, I+D +€155.100, cargos por insolvencia +€25.832, compensados en parte por personal −€34.773 y depreciación −€19.000. Sin el extraordinario, la historia operativa es más delgada que el titular.',
+            en: 'Year one was a cost problem, not a market problem: gross margin beat plan by €74,457, but operating expenses ran €359,888 over — and €150,000 of those general expenses has no supporting document. It is carried as a visible gap, not smoothed away.',
+            es: 'El primer año fue un problema de costos, no de mercado: el margen bruto superó el plan en €74.457, pero los gastos operativos se pasaron €359.888 — y €150.000 de esos gastos generales no tienen documento de respaldo. Se muestra como un hueco visible, no se maquilla.',
+          },
+          {
+            en: 'Over the four years, pre-tax: plan net income €3,954,345, actual €4,822,290, variance +⁠€867,945 (+21.9%). Three drivers carry the surplus — unit-cost savings +⁠€551K, volume growth +⁠€255K, and extraordinary income +⁠€572K, which alone is 65.9% of it. Operating expenses still ran €326,210 over plan across the period. Strip out the one-off and the operating story is thinner than the headline.',
+            es: 'En los cuatro años, antes de impuestos: utilidad neta plan €3.954.345, real €4.822.290, variación +⁠€867.945 (+21,9%). Tres drivers sostienen el superávit — ahorro de costo unitario +⁠€551K, crecimiento de volumen +⁠€255K y resultado extraordinario +⁠€572K, que por sí solo es el 65,9%. Los gastos operativos igual se pasaron €326.210 del plan en el período. Sin el extraordinario, la historia operativa es más delgada que el titular.',
           },
         ],
       },
@@ -281,8 +285,8 @@ export const cases: CaseStudy[] = [
         title: { en: 'What this does not prove', es: 'Qué no prueba' },
         body: [
           {
-            en: 'This is an anonymised competitive business simulation, not a real company’s books, and all figures are pre-tax. The +€572K extraordinary income is not a repeating earnings stream, so the +21.9% variance should not be read as recurring performance. Revenue detail in the model stops at 2028, so the final year is driven by the forecast layer rather than a new sales close. What the work demonstrates is the method: raw workbooks in, a traced and tested model out.',
-            es: 'Es una simulación competitiva de negocio anonimizada, no los libros de una empresa real, y todas las cifras son antes de impuestos. El resultado extraordinario de +€572K no es un flujo recurrente, así que la variación de +21,9% no debe leerse como desempeño recurrente. El detalle de ventas del modelo llega hasta 2028, así que el último año lo sostiene la capa de pronóstico y no un cierre comercial nuevo. Lo que demuestra el trabajo es el método: libros en bruto de entrada, un modelo trazado y probado de salida.',
+            en: 'This is an anonymised competitive business simulation, not a real company’s books, and all figures are pre-tax. The +⁠€572K extraordinary income is not a repeating earnings stream, so the +21.9% variance should not be read as recurring performance. Revenue detail in the model stops at 2028, so the final year is driven by the forecast layer rather than a new sales close. What the work demonstrates is the method: raw workbooks in, a traced and tested model out.',
+            es: 'Es una simulación competitiva de negocio anonimizada, no los libros de una empresa real, y todas las cifras son antes de impuestos. El resultado extraordinario de +⁠€572K no es un flujo recurrente, así que la variación de +21,9% no debe leerse como desempeño recurrente. El detalle de ventas del modelo llega hasta 2028, así que el último año lo sostiene la capa de pronóstico y no un cierre comercial nuevo. Lo que demuestra el trabajo es el método: libros en bruto de entrada, un modelo trazado y probado de salida.',
           },
         ],
       },
@@ -297,12 +301,12 @@ export const cases: CaseStudy[] = [
     repo: 'https://github.com/DaelFame/fpa-forecasting-case-study',
     cvBullets: [
       {
-        en: 'Built an automated data cleaning engine (cg_01, 83 pytest tests, SHA-256 source lineage) and a five-page DAX-verified Power BI report (PBIR/TMDL) across FY 2024–2029, explaining a +€867,945 (+21.9%) pre-tax variance from three drivers and an operating expense overrun.',
-        es: 'Construí un motor automatizado de limpieza de datos (cg_01, 83 tests pytest, trazabilidad SHA-256) y un reporte Power BI de cinco páginas verificado con DAX (PBIR/TMDL) para FY 2024–2029, explicando una variación antes de impuestos de +€867.945 (+21,9%) a partir de tres drivers y un sobrecosto operativo.',
+        en: 'Built an automated data cleaning engine (cg_01, 83 pytest tests, SHA-256 source lineage) and a five-page DAX-verified Power BI report (PBIR/TMDL) tracing a −61% year-one miss to operating expenses and a four-year recovery to +⁠€867,945 (+21.9%) ahead of plan.',
+        es: 'Construí un motor automatizado de limpieza de datos (cg_01, 83 tests pytest, trazabilidad SHA-256) y un reporte Power BI de cinco páginas verificado con DAX (PBIR/TMDL) que traza un fallo de −61% en el primer año a los gastos operativos y una recuperación a +⁠€867.945 (+21,9%) sobre el plan en cuatro años.',
       },
       {
-        en: 'Model exposes that +€572K of the surplus is extraordinary income, not recurring performance — the decision-relevant finding behind the headline beat.',
-        es: 'El modelo expone que +€572K del superávit es resultado extraordinario, no desempeño recurrente — el hallazgo relevante para decidir detrás del titular.',
+        en: 'Model exposes that +⁠€572K of the surplus is extraordinary income, not recurring performance — the decision-relevant finding behind the headline beat.',
+        es: 'El modelo expone que +⁠€572K del superávit es resultado extraordinario, no desempeño recurrente — el hallazgo relevante para decidir detrás del titular.',
       },
     ],
   },
