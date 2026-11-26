@@ -1,6 +1,7 @@
 ---
 import type { Lang } from '../i18n/ui';
 import TechIcon from './TechIcon.astro';
+import CapabilityMap from './CapabilityMap.astro';
 
 /**
  * Skills shown as one process, not a tool list.
@@ -59,12 +60,17 @@ const { lang } = Astro.props;
 
 <section class="section" aria-labelledby="how-i-work">
   <div class="container">
-    <p class="eyebrow">{lang === 'es' ? 'Cómo trabajo' : 'How I work'}</p>
-    <h2 id="how-i-work">
-      {lang === 'es'
-        ? 'Entiendo el asiento. Construyo el pipeline.'
-        : 'I read the ledger. I build the pipeline.'}
-    </h2>
+    <div class="process-head">
+      <div>
+        <p class="eyebrow">{lang === 'es' ? 'Cómo trabajo' : 'How I work'}</p>
+        <h2 id="how-i-work">
+          {lang === 'es'
+            ? 'Entiendo el asiento. Construyo el pipeline.'
+            : 'I read the ledger. I build the pipeline.'}
+        </h2>
+      </div>
+      <CapabilityMap lang={lang} />
+    </div>
 
     <ol class="flow">
       {
@@ -87,3 +93,24 @@ const { lang } = Astro.props;
     </ol>
   </div>
 </section>
+
+<style>
+  .process-head {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    margin-block-end: 2.5rem;
+  }
+
+  .process-head :global(.capmap) {
+    max-width: 22rem;
+    justify-self: center;
+  }
+
+  @media (min-width: 960px) {
+    .process-head {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+    }
+  }
+</style>

@@ -19,12 +19,12 @@ export const ui = {
     'lang.label': 'Language',
     skip: 'Skip to content',
 
-    'hero.eyebrow': 'Financial data analyst · Accounting background',
-    'hero.title': 'Financial data analyst with an accounting background.',
+    'hero.eyebrow': 'Financial Data Analyst · FP&A & BI · Accounting background',
+    'hero.title': 'Finance data that ties out.',
     'hero.lede':
-      'I build pipelines and dashboards so the numbers tie out, from ledger to decision.',
+      'Trained in accounting, I build the pipelines and dashboards behind finance decisions — and prove every number reconciles before anyone acts on it.',
     'hero.cta': 'See the work',
-    'hero.available': 'Available as an independent contractor · UTC−5 year-round (New York time in winter, Chicago time in summer)',
+    'hero.available': 'Open to remote FP&A / BI roles and contract work · Arequipa, UTC−5',
     'hero.email': 'Email me',
 
     'capability.phrase': 'Accounting, finance, data and BI in one workflow.',
@@ -60,12 +60,12 @@ export const ui = {
     'lang.label': 'Idioma',
     skip: 'Ir al contenido',
 
-    'hero.eyebrow': 'Analista de datos financieros · Base contable',
-    'hero.title': 'Analista de datos financieros con base contable.',
+    'hero.eyebrow': 'Analista de datos financieros · FP&A y BI · Base contable',
+    'hero.title': 'Datos financieros que cuadran.',
     'hero.lede':
-      'Construyo pipelines y dashboards para que los números cuadren desde el asiento hasta la decisión.',
+      'Vengo de la contabilidad y construyo los pipelines y dashboards detrás de las decisiones de finanzas — y demuestro que cada número concilia antes de que alguien actúe sobre él.',
     'hero.cta': 'Ver el trabajo',
-    'hero.available': 'Disponible como contratista independiente · UTC−5 todo el año (hora de Nueva York en invierno y de Chicago en verano)',
+    'hero.available': 'Abierto a roles remotos de FP&A / BI y proyectos por contrato · Arequipa, UTC−5',
     'hero.email': 'Escríbeme',
 
     'capability.phrase': 'Contabilidad, finanzas, datos y BI en un mismo flujo.',

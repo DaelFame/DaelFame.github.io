@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import CapabilityMap from '../components/CapabilityMap.astro';
+import TieOut from '../components/TieOut.astro';
+import Credentials from '../components/Credentials.astro';
 import SelectedWork from '../components/SelectedWork.astro';
 import Process from '../components/Process.astro';
 import Github from '../components/Github.astro';
@@ -36,9 +37,11 @@ const t = useTranslations(lang);
         </p>
       </div>
 
-      <CapabilityMap lang={lang} />
+      <TieOut lang={lang} />
     </div>
   </section>
+
+  <Credentials lang={lang} />
 
   <SelectedWork lang={lang} />
   <Process lang={lang} />

@@ -1,0 +1,318 @@
+---
+import type { Lang } from '../i18n/ui';
+
+/**
+ * Hero visual: a reconciliation working paper.
+ * The differentiator is not "builds dashboards" — every data profile says that —
+ * but "proves the numbers tie out before anyone decides on them". So the hero
+ * shows two real tie-outs from the case studies, with an audit tick on the
+ * line that reconciles.
+ *
+ * Figures must match the source repositories:
+ *  - peru-budget-lakehouse: 8M source rows, 29.5M fact rows, Silver vs Gold S/ 0.00
+ *  - fpa-forecasting-case-study: plan €3,954,345, actual €4,822,290, variance +€867,945, 83 tests
+ * Zero JavaScript. Rows fade in with CSS; under reduced motion the final state shows at once.
+ */
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const prefix = lang === 'es' ? '/es' : '';
+
+const data = {
+  en: {
+    title: 'Tie-out',
+    sub: 'Working paper',
+    caption: 'Two reconciliations from the case studies',
+    papers: [
+      {
+        ref: 'A-1',
+        name: 'Peru Budget Lakehouse',
+        href: '/work/peru-budget-lakehouse/',
+        rows: [
+          { k: 'Source rows (MEF)', v: '8M' },
+          { k: 'Fact rows, star schema', v: '29.5M' },
+        ],
+        total: { k: 'Σ Silver − Σ Gold', v: 'S/ 0.00' },
+        proof: 'Pipeline halts above S/ 0.01 · 131 tests',
+      },
+      {
+        ref: 'B-1',
+        name: 'FP&A Forecasting',
+        href: '/work/fpa-forecasting/',
+        rows: [
+          { k: 'Plan net income', v: '€3,954,345' },
+          { k: 'Actual net income', v: '€4,822,290' },
+        ],
+        total: { k: 'Variance vs plan', v: '+€867,945' },
+        proof: 'Tie-out pinned by 83 tests',
+      },
+    ],
+    tick: 'tied',
+    foot: 'A dashboard is only as good as its tie-out.',
+  },
+  es: {
+    title: 'Amarre',
+    sub: 'Papel de trabajo',
+    caption: 'Dos conciliaciones de los casos',
+    papers: [
+      {
+        ref: 'A-1',
+        name: 'Peru Budget Lakehouse',
+        href: '/work/peru-budget-lakehouse/',
+        rows: [
+          { k: 'Filas fuente (MEF)', v: '8 M' },
+          { k: 'Filas de hechos, star schema', v: '29,5 M' },
+        ],
+        total: { k: 'Σ Silver − Σ Gold', v: 'S/ 0,00' },
+        proof: 'El pipeline se detiene sobre S/ 0,01 · 131 tests',
+      },
+      {
+        ref: 'B-1',
+        name: 'FP&A Forecasting',
+        href: '/work/fpa-forecasting/',
+        rows: [
+          { k: 'Utilidad neta plan', v: '€3.954.345' },
+          { k: 'Utilidad neta real', v: '€4.822.290' },
+        ],
+        total: { k: 'Variación vs plan', v: '+€867.945' },
+        proof: 'Amarre fijado por 83 tests',
+      },
+    ],
+    tick: 'cuadra',
+    foot: 'Un dashboard vale lo que vale su amarre.',
+  },
+}[lang];
+---
+
+<figure class="tieout" aria-label={data.caption}>
+  <header class="tieout-head">
+    <span class="tieout-title">{data.title}</span>
+    <span class="tieout-sub">{data.sub}</span>
+  </header>
+
+  {
+    data.papers.map((paper, i) => (
+      <a class="tieout-paper" href={`${prefix}${paper.href}`} style={`--i:${i}`}>
+        <span class="tieout-ref">
+          <span class="tieout-ref-id">{paper.ref}</span>
+          <span>{paper.name}</span>
+          <span class="tieout-arrow" aria-hidden="true">&rarr;</span>
+        </span>
+        <dl class="tieout-rows">
+          {paper.rows.map((row) => (
+            <div class="tieout-row">
+              <dt>{row.k}</dt>
+              <dd>{row.v}</dd>
+            </div>
+          ))}
+          <div class="tieout-row tieout-total">
+            <dt>{paper.total.k}</dt>
+            <dd>
+              {paper.total.v}
+              <span class="tieout-tick">
+                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                  <path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                {data.tick}
+              </span>
+            </dd>
+          </div>
+        </dl>
+        <span class="tieout-proof">{paper.proof}</span>
+      </a>
+    ))
+  }
+
+  <figcaption class="tieout-foot">{data.foot}</figcaption>
+</figure>
+
+<style>
+  .tieout {
+    margin: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper);
+    box-shadow:
+      0 1px 0 var(--line),
+      0 24px 48px -32px color-mix(in srgb, var(--ink) 35%, transparent);
+    font-variant-numeric: tabular-nums;
+    overflow: hidden;
+  }
+
+  .tieout-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.875rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--paper-2);
+  }
+
+  .tieout-title {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .tieout-sub,
+  .tieout-ref-id,
+  .tieout-proof {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+
+  .tieout-sub {
+    text-transform: uppercase;
+  }
+
+  .tieout-paper {
+    display: block;
+    padding: 1rem 1.25rem 1.125rem;
+    color: inherit;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: tieout-in 520ms var(--ease) forwards;
+    animation-delay: calc(var(--i) * 260ms + 120ms);
+    transition: background-color 160ms var(--ease);
+  }
+
+  .tieout-paper + .tieout-paper {
+    border-top: 1px dashed var(--line-strong);
+  }
+
+  .tieout-paper:hover,
+  .tieout-paper:focus-visible {
+    background: var(--accent-soft);
+  }
+
+  .tieout-ref {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin-block-end: 0.65rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .tieout-arrow {
+    margin-inline-start: auto;
+    color: var(--accent);
+    transition: transform 160ms var(--ease);
+  }
+
+  .tieout-paper:hover .tieout-arrow {
+    transform: translateX(3px);
+  }
+
+  .tieout-rows {
+    display: grid;
+    gap: 0.3rem;
+    margin: 0;
+  }
+
+  .tieout-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.8125rem;
+  }
+
+  .tieout-row dt {
+    color: var(--ink-2);
+  }
+
+  .tieout-row dd {
+    margin: 0;
+    font-family: var(--font-mono);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* Accounting convention: single rule above a total, double rule below. */
+  .tieout-total {
+    margin-block-start: 0.2rem;
+    padding-block: 0.35rem 0.3rem;
+    border-top: 1px solid var(--ink-2);
+    border-bottom: 3px double var(--ink-2);
+    font-weight: 600;
+  }
+
+  .tieout-total dt {
+    color: var(--ink);
+  }
+
+  .tieout-tick {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    margin-inline-start: 0.5rem;
+    padding: 0.05rem 0.4rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    vertical-align: 1px;
+    transform: scale(0.6);
+    opacity: 0;
+    animation: tieout-stamp 360ms var(--ease) forwards;
+    animation-delay: calc(var(--i) * 260ms + 620ms);
+  }
+
+  .tieout-proof {
+    display: block;
+    margin-block-start: 0.55rem;
+    letter-spacing: 0.02em;
+  }
+
+  .tieout-foot {
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--line);
+    background: var(--paper-2);
+    font-size: 0.8125rem;
+    font-style: italic;
+    color: var(--ink-2);
+  }
+
+  @keyframes tieout-in {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes tieout-stamp {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tieout-paper,
+    .tieout-tick {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .tieout-head,
+    .tieout-paper,
+    .tieout-foot {
+      padding-inline: 1rem;
+    }
+
+    .tieout-row {
+      font-size: 0.75rem;
+    }
+  }
+</style>

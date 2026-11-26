@@ -440,6 +440,14 @@ p {
   text-overflow: ellipsis;
 }
 
+.wf-pct {
+  margin-inline-start: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
 .wf-track {
   position: relative;
   height: 16px;
@@ -1405,6 +1413,10 @@ html.js .capmap-fallback {
 .case-para {
   color: var(--ink-2);
   line-height: 1.7;
+}
+
+.case-para + .case-para {
+  margin-block-start: 1em;
 }
 
 .case-section .wf-wrap {

@@ -246,6 +246,33 @@ Requested by the user: *"toma el rol de un head hunter y avelaulo y con esavelau
 
 ## Log
 
+**L11 (second headhunter + visual review, 2026-11-25)**
+
+> Deseo que analices el repositorio, que veas cuál es la mejor forma, tanto como head hunter como de la manera de cómo se ve de la mejor manera posible, posibles mejoras o cambios
+
+Decided with the user: target is remote FP&A / BI roles plus contract work; the FP&A case is
+told as a turnaround ("empezó mal y después terminó muy bien"); hero visual delegated to
+recommendation.
+
+Applied:
+- Experience bullets (La Katita, Triburritos) carried Spanish fragments inside the English text;
+  rewritten in both locales, Toro Loco leads with 2 → 6 locations. CV PDFs regenerated.
+- FP&A case unified on the README figures (FY 2026–2029, not 2024–2029): 2026 −€243,137
+  (−61.1%) → 2027 +€351,995 → 2028 +€499,886 → 2029 +€259,201 = +€867,945 (+21.9%). The
+  waterfall now bridges net income vs plan by year (supersedes the S4 headline); the year-one
+  opex bridge moves into the text.
+- S15 restored: H1 "Finance data that ties out." / "Datos financieros que cuadran.", eyebrow is
+  the role, availability shortened.
+- Hero visual (supersedes S18): `TieOut` — a reconciliation working paper with two real tie-outs
+  (Lakehouse S/ 0.00, FP&A +€867,945) and audit ticks. The capability map moves into "How I work".
+- `Credentials` strip under the hero: KPMG, 1st globally in Audit Foundations 1, 2 → 6 locations,
+  English B2.
+- JSON-LD enriched (`alumniOf`, `knowsAbout`, `knowsLanguage`); dead `src/data/metrics.ts`
+  (stale 0.3%) removed; `.gitattributes` forces LF (51 files were CRLF-only diffs).
+
+Open: self-hosted typeface; inline `lang === 'es'` copy in components still to move to `ui.ts`;
+ES case cards still show EN number formatting in some `result` strings (e.g. "29.5M").
+
 **L10 (headhunter evaluation — see above)**
 
 ---
