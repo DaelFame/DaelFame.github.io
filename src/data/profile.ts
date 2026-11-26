@@ -81,8 +81,8 @@ export const profile: Profile = {
           es: 'Gestioné logística, presupuesto y administración para servicios de alimentación institucional a gran escala.',
         },
         {
-          en: 'Tracked budget vs. actual spend and built routing metrics that Implementé reporting automatizado en Power BI (flujo de caja, personal, KPIs) donde antes no existía medición.',
-          es: 'Seguí presupuesto vs. real y construí métricas de ruteo que Implementé reporting automatizado en Power BI (flujo de caja, personal, KPIs) donde antes no existía medición.',
+          en: 'Tracked budget vs. actual spend, built delivery-routing metrics and set up automated Power BI reporting (cash flow, staffing, KPIs) where nothing was measured before.',
+          es: 'Seguí presupuesto vs. real, construí métricas de ruteo e implementé reporting automatizado en Power BI (flujo de caja, personal, KPIs) donde antes no existía medición.',
         },
       ],
     },
@@ -93,8 +93,8 @@ export const profile: Profile = {
       location: { en: 'Arequipa, Peru', es: 'Arequipa, Perú' },
       bullets: [
         {
-          en: 'Built automated Power BI dashboards for cash flow, labor and KPIs, Implementé reporting automatizado en Power BI (flujo de caja, personal, KPIs) donde antes no existía medición.',
-          es: 'Construí dashboards automatizados de Power BI para flujo de caja, personal y KPIs, Implementé reporting automatizado en Power BI (flujo de caja, personal, KPIs) donde antes no existía medición.',
+          en: 'Built automated Power BI dashboards for cash flow, labor and KPIs where no reporting existed before.',
+          es: 'Construí dashboards automatizados de Power BI para flujo de caja, personal y KPIs donde antes no existía reporting.',
         },
         {
           en: 'Analyzed transactional sales data to identify revenue leaks and cost optimization opportunities.',
@@ -125,16 +125,16 @@ export const profile: Profile = {
       location: { en: 'Arequipa, Peru', es: 'Arequipa, Perú' },
       bullets: [
         {
+          en: 'Implemented sales, cost and KPI measurement (e-invoicing and Power BI dashboards) and aligned managers on those metrics; the operation grew from 2 to 6 locations.',
+          es: 'Implementé medición de ventas, costos y KPIs (facturación electrónica y dashboards en Power BI) y alineé a los encargados con esas métricas; la operación pasó de 2 a 6 locales.',
+        },
+        {
           en: 'Moved restaurant records from paper to digital systems, then used the data to justify each operational change.',
           es: 'Pasé los registros del restaurante de lo físico a lo digital y usé los datos para justificar cada cambio operativo.',
         },
         {
-          en: 'Analyzed sales trends and implemented electronic invoicing, sales/cost/KPI measurement (e-invoicing and Power BI dashboards) and aligned managers on those metrics; the operation went from 2 to 6 locations.',
-          es: 'Implementé medición de ventas, costos y KPIs (facturación electrónica y dashboards en Power BI) y alineé a los encargados con esas métricas; la operación pasó de 2 a 6 locales.',
-        },
-        {
-          en: 'Managed full P&L and built Power BI dashboards for cash flow, labor costs and revenue KPIs.',
-          es: 'Administré el P&L completo y construí dashboards de Power BI para flujo de caja, costos laborales y KPIs de ingresos.',
+          en: 'Managed the full P&L, including cash flow, labor costs and revenue KPIs.',
+          es: 'Administré el P&L completo, incluidos flujo de caja, costos laborales y KPIs de ingresos.',
         },
       ],
     },
