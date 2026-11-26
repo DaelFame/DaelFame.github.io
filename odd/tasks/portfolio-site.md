@@ -246,6 +246,29 @@ Requested by the user: *"toma el rol de un head hunter y avelaulo y con esavelau
 
 ## Log
 
+**L14 (quality pass + measurement, verbatim)**
+
+> si correcto modifica para que este sea un portafolio de calidad y que demuestre mi diferenciador, desde el apartado visual si se requiere poner algo más también. También hay un tema: npx modern-web-guidance@latest install para el tema de medir también y tener mejor puesto para las mejores prácticas
+
+Applied:
+- `modern-web-guidance` installed for Claude Code (`.agents/skills/`, symlinked in `.claude/skills/`,
+  pinned in `skills-lock.json`). `legacy-scan`: `color-scheme` meta added; the `sibling-index()`
+  suggestion dropped (not in the Baseline 2024 target).
+- S14 closed: Lighthouse CI (`lighthouserc.json`) now runs in `deploy.yml`. Accessibility, best
+  practices, SEO ≥ 0.95 and CLS ≤ 0.1 block the deploy; performance and LCP ≤ 1.5 s warn.
+- Measured (Lighthouse mobile, simulated): before 100/97/100/100 on `/` with two a11y failures
+  (capability-map hint contrast 2.86:1, accessible names not matching visible labels); after
+  100/100/100/100 on `/`, `/es/`, `/about/`, `/work/fpa-forecasting/`.
+- Self-hosted IBM Plex Sans 400/600 with the 400 file preloaded and `font-size-adjust: from-font`.
+  The variable font plus Plex Mono pushed LCP to 1.73 s; static weights bring it to ≈1.50 s (the
+  budget). Labels keep the system monospace on purpose.
+- New `Difference` section on the home page: typical dashboard project vs how I work (starts from
+  the ledger, done when totals tie out, the pipeline stops on disagreement, talks to the
+  controller and the data team, proof is code + tests + a written case). Stacks into cards via a
+  container query.
+- EN H1 → "Finance data you can trust."; OG image updated (role and title were stale).
+- About: name first, then the fact sheet (on phones) and the story.
+
 **L13 (About review, verbatim)**
 
 > listo, analiza el about me, y esas cosas

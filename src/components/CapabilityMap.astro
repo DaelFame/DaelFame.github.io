@@ -110,7 +110,7 @@ const data = {
           data-v={zone.v}
           tabindex="0"
           role="button"
-          aria-label={`${zone.k}: ${zone.v}`}
+          aria-label={zone.label === zone.k ? `${zone.k}: ${zone.v}` : `${zone.label} — ${zone.k}: ${zone.v}`}
         >
           <circle cx={zone.cx} cy={zone.cy} r="76" class="capmap-ring" />
           <text x={zone.lx} y={zone.ly} text-anchor="middle" class="capmap-label">

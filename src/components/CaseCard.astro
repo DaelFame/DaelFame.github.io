@@ -38,6 +38,8 @@ const placeholder = item.inProgress
           src={preview}
           alt={`${item.title} — dashboard preview`}
           width={800}
+          widths={[400, 800]}
+          sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"
           loading="lazy"
           decoding="async"
         />

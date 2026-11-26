@@ -1,4 +1,11 @@
 ---
+// Self-hosted type: IBM Plex Sans, static 400 + 600 (headings). Each subset is a separate
+// @font-face with unicode-range, so only Latin downloads. The 400 file is preloaded because
+// the hero lede is the LCP element; the variable font (46 KB) pushed LCP past the 1.5 s budget.
+// Labels and figures use the system monospace on purpose: a mono webfont cost ~0.3 s of FCP.
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import plexSansLatin from '@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2?url';
 import '../styles/global.css';
 import ThemeToggle from '../components/ThemeToggle.astro';
 import LangSwitcher from '../components/LangSwitcher.astro';
@@ -32,6 +39,8 @@ const cvHref = lang === 'es' ? '/es/cv/' : '/cv/';
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#FFFFFF" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="preload" href={plexSansLatin} as="font" type="font/woff2" crossorigin />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="canonical" href={new URL(path, Astro.site)} />
     <link rel="alternate" hreflang="en" href={enUrl} />

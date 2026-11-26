@@ -80,10 +80,13 @@ const copy = {
 ---
 
 <div class="about">
+  <header class="about-title">
+    <p class="eyebrow">{t(profile.title)}</p>
+    <h1 class="page-title">{profile.name}</h1>
+  </header>
+
   <div class="about-grid">
-    <header class="about-head">
-      <p class="eyebrow">{t(profile.title)}</p>
-      <h1 class="page-title">{profile.name}</h1>
+    <div class="about-head">
       <div class="about-narrative">
         {t(profile.about).split('\n\n').map((para) => <p class="lede">{para}</p>)}
       </div>
@@ -98,7 +101,7 @@ const copy = {
         </a>
         <a class="btn btn-ghost" href={copy.cvHref}>{copy.cv} &rarr;</a>
       </div>
-    </header>
+    </div>
 
     <aside class="about-facts" aria-labelledby="about-facts-title">
       <h2 id="about-facts-title" class="about-facts-title">{copy.facts}</h2>

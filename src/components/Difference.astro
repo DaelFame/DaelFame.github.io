@@ -1,0 +1,217 @@
+---
+import type { Lang } from '../i18n/ui';
+
+/**
+ * The differentiator, stated as a comparison a recruiter can scan in seconds:
+ * a typical dashboard project versus how an accountant who builds data works.
+ * Every right-hand claim is demonstrated in a case study (reconciliation gate,
+ * tie-out tests, written cases), so nothing here is an unbacked adjective.
+ */
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const data = {
+  en: {
+    eyebrow: 'The difference',
+    title: 'Most dashboards are built from the data. I build them from the ledger.',
+    colTopic: 'Topic',
+    colTypical: 'Typical dashboard project',
+    colMine: 'How I work',
+    rows: [
+      { k: 'Starts from', a: 'The data table', b: 'Where the number comes from: the entry, the account, the close' },
+      { k: 'Done when', a: 'The chart renders', b: 'The totals tie out to the source' },
+      { k: 'If numbers disagree', a: 'Someone notices in the meeting', b: 'The pipeline stops before anything is published' },
+      { k: 'Talks to', a: 'The data team', b: 'The controller and the data team, in their own terms' },
+      { k: 'Proof', a: 'Screenshots', b: 'Code, automated tests and a written case' },
+    ],
+  },
+  es: {
+    eyebrow: 'La diferencia',
+    title: 'La mayoría de los dashboards se construyen desde el dato. Yo los construyo desde el asiento.',
+    colTopic: 'Tema',
+    colTypical: 'Proyecto de dashboard típico',
+    colMine: 'Cómo lo hago yo',
+    rows: [
+      { k: 'Empieza por', a: 'La tabla de datos', b: 'De dónde sale el número: el asiento, la cuenta, el cierre' },
+      { k: 'Termina cuando', a: 'El gráfico se ve bien', b: 'Los totales cuadran contra la fuente' },
+      { k: 'Si los números no coinciden', a: 'Alguien lo nota en la reunión', b: 'El pipeline se detiene antes de publicar nada' },
+      { k: 'Habla con', a: 'El equipo de datos', b: 'El contador y el equipo de datos, cada uno en su idioma' },
+      { k: 'Prueba', a: 'Capturas de pantalla', b: 'Código, tests automáticos y un caso escrito' },
+    ],
+  },
+}[lang];
+---
+
+<section class="section diff" aria-labelledby="diff-title">
+  <div class="container">
+    <p class="eyebrow">{data.eyebrow}</p>
+    <h2 id="diff-title" class="diff-title">{data.title}</h2>
+
+    <div class="diff-wrap">
+    <table class="diff-table">
+      <thead>
+        <tr>
+          <th scope="col"><span class="visually-hidden">{data.colTopic}</span></th>
+          <th scope="col" class="diff-a">{data.colTypical}</th>
+          <th scope="col" class="diff-b">{data.colMine}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          data.rows.map((row, i) => (
+            <tr style={`--i:${i}`}>
+              <th scope="row">{row.k}</th>
+              <td class="diff-a" data-label={data.colTypical}>{row.a}</td>
+              <td class="diff-b" data-label={data.colMine}>
+                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                  <path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span>{row.b}</span>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<style>
+  .diff-title {
+    max-width: 24ch;
+    margin-block: 0.5rem 2rem;
+  }
+
+  .diff-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+
+  .diff-table thead th {
+    padding: 0 1rem 0.75rem;
+    text-align: start;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-block-end: 1px solid var(--line-strong);
+  }
+
+  .diff-table thead th.diff-b {
+    color: var(--accent);
+  }
+
+  .diff-table tbody th,
+  .diff-table td {
+    padding: 0.95rem 1rem;
+    text-align: start;
+    vertical-align: top;
+    border-block-end: 1px solid var(--line);
+  }
+
+  .diff-table tbody th {
+    width: 22%;
+    padding-inline-start: 0;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .diff-table thead th:first-child {
+    padding-inline-start: 0;
+  }
+
+  .diff-a {
+    width: 32%;
+    color: var(--muted);
+  }
+
+  td.diff-b {
+    display: flex;
+    gap: 0.55rem;
+    align-items: baseline;
+    color: var(--ink);
+    background: var(--accent-soft);
+  }
+
+  td.diff-b svg {
+    flex: none;
+    color: var(--accent);
+    transform: translateY(2px);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* The table stacks by its own width (container query), not the viewport's. */
+  .diff-wrap {
+    container-type: inline-size;
+  }
+
+  @container (width < 640px) {
+    /* Column names move into per-cell labels, so the header row leaves the
+       accessibility tree too — otherwise screen readers hear them twice. */
+    .diff-table thead {
+      display: none;
+    }
+
+    .diff-table,
+    .diff-table tbody,
+    .diff-table tr,
+    .diff-table tbody th,
+    .diff-table td {
+      display: block;
+      width: auto;
+    }
+
+    .diff-table tr {
+      margin-block-end: 1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .diff-table tbody th {
+      padding: 0.75rem 1rem 0.25rem;
+      border: 0;
+    }
+
+    .diff-table td {
+      padding: 0.35rem 1rem 0.75rem;
+      border: 0;
+    }
+
+    td.diff-a::before,
+    td.diff-b::before {
+      content: attr(data-label);
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-block-end: 0.15rem;
+    }
+
+    td.diff-b {
+      display: block;
+      padding-block-start: 0.6rem;
+    }
+
+    td.diff-b svg {
+      display: none;
+    }
+  }
+</style>

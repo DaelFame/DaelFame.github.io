@@ -20,7 +20,7 @@ export const ui = {
     skip: 'Skip to content',
 
     'hero.eyebrow': 'Financial Data Analyst · FP&A & BI · Accounting background',
-    'hero.title': 'Finance data that ties out.',
+    'hero.title': 'Finance data you can trust.',
     'hero.lede':
       'Trained in accounting, I build the pipelines and dashboards behind finance decisions — and make sure every number is right before anyone decides on it.',
     'hero.cta': 'See the work',

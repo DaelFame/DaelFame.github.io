@@ -18,6 +18,8 @@ html {
 }
 
 body {
+  /* Keep the fallback font at Plex's x-height while the web font loads (Baseline 2024). */
+  font-size-adjust: from-font;
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
@@ -359,6 +361,10 @@ p {
   margin-block-start: 1.5rem;
   font-size: 0.8125rem;
   color: var(--muted);
+}
+
+.hero-available > span:not(.dot) {
+  flex: 1 1 14rem;
 }
 
 .hero-available a {
@@ -955,8 +961,7 @@ p {
   font-size: 0.625rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: var(--ink-2);
-  opacity: 0.55;
+  color: var(--muted);
   transition: opacity 0.2s ease;
 }
 
@@ -1149,10 +1154,18 @@ html.js .capmap-fallback {
 
 /* ---------- about ---------- */
 
+.about-title {
+  margin-block-end: 1.5rem;
+}
+
 .about-grid {
   display: grid;
   gap: 2.5rem;
   align-items: start;
+}
+
+.about-narrative .lede:first-child {
+  margin-block-start: 0;
 }
 
 .about-head .lede {
@@ -1262,6 +1275,13 @@ html.js .capmap-fallback {
   .about-get {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+  }
+}
+
+/* Phones and tablets: the recruiter fact sheet comes first, the story after. */
+@media (max-width: 1023px) {
+  .about-facts {
+    order: -1;
   }
 }
 
