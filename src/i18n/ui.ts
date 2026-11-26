@@ -22,7 +22,7 @@ export const ui = {
     'hero.eyebrow': 'Financial Data Analyst · FP&A & BI · Accounting background',
     'hero.title': 'Finance data that ties out.',
     'hero.lede':
-      'Trained in accounting, I build the pipelines and dashboards behind finance decisions — and prove every number reconciles before anyone acts on it.',
+      'Trained in accounting, I build the pipelines and dashboards behind finance decisions — and make sure every number is right before anyone decides on it.',
     'hero.cta': 'See the work',
     'hero.available': 'Open to remote FP&A / BI roles and contract work · Arequipa, UTC−5',
     'hero.email': 'Email me',
@@ -63,7 +63,7 @@ export const ui = {
     'hero.eyebrow': 'Analista de datos financieros · FP&A y BI · Base contable',
     'hero.title': 'Datos financieros que cuadran.',
     'hero.lede':
-      'Vengo de la contabilidad y construyo los pipelines y dashboards detrás de las decisiones de finanzas — y demuestro que cada número concilia antes de que alguien actúe sobre él.',
+      'Vengo de la contabilidad y construyo los pipelines y dashboards detrás de las decisiones de finanzas — y me aseguro de que cada número sea correcto antes de que alguien decida con él.',
     'hero.cta': 'Ver el trabajo',
     'hero.available': 'Abierto a roles remotos de FP&A / BI y proyectos por contrato · Arequipa, UTC−5',
     'hero.email': 'Escríbeme',

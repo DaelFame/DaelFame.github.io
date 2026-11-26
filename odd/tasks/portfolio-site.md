@@ -246,6 +246,15 @@ Requested by the user: *"toma el rol de un head hunter y avelaulo y con esavelau
 
 ## Log
 
+**L12 (hero wording, verbatim)**
+
+> Amarre ?? otra cosa pero me gusta vender de la mejor manera, que un head hunter entre y abra y diga este perfil es diferente y es lo que necesito
+
+Applied: the hero card keeps the reconciliation idea but drops accounting jargon for recruiter
+language — "Numbers I can prove" / "Números que puedo demostrar", "verified" ticks, plain row
+labels, closing line "Many analysts build dashboards. I make sure the numbers in them are right."
+Lede no longer says "reconciles".
+
 **L11 (second headhunter + visual review, 2026-11-25)**
 
 > Deseo que analices el repositorio, que veas cuál es la mejor forma, tanto como head hunter como de la manera de cómo se ve de la mejor manera posible, posibles mejoras o cambios
