@@ -32,4 +32,5 @@ where a feature is not yet interoperable.
 ```bash
 npm run check   # types + content collections
 npm run build   # static output in dist/
+npx --yes @lhci/cli@0.15 autorun   # Lighthouse budgets (lighthouserc.json); also runs in CI
 ```
