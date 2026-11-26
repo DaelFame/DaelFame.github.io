@@ -246,6 +246,16 @@ Requested by the user: *"toma el rol de un head hunter y avelaulo y con esavelau
 
 ## Log
 
+**L13 (About review, verbatim)**
+
+> listo, analiza el about me, y esas cosas
+
+Applied: biography rewritten in chronological order (restaurant → automotive workshop and
+food-service reporting → KPMG); it previously said "since then" after KPMG and attributed the
+month-end close to a bar. About gains a recruiter fact sheet (role, looking for, location,
+languages, education) with the KPMG 1st-globally badge (S9), and a "What you get" block.
+CV summary shortened, leads with the KPMG ranking; "KPMG en Peru" → "KPMG in Peru" in EN.
+
 **L12 (hero wording, verbatim)**
 
 > Amarre ?? otra cosa pero me gusta vender de la mejor manera, que un head hunter entre y abra y diga este perfil es diferente y es lo que necesito

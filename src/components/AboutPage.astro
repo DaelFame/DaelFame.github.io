@@ -4,53 +4,132 @@ import { profile, p } from '../data/profile';
 import Github from './Github.astro';
 import Linkedin from './Linkedin.astro';
 
+/**
+ * About: the story on the left (chronological), a recruiter fact sheet on the
+ * right (role, availability, location, languages, education, the KPMG ranking),
+ * then "what you get" — the answer to "why hire this person".
+ * Facts must match src/data/profile.ts and odd/sources/cv.md.
+ */
 interface Props {
   lang: Lang;
 }
 
 const { lang } = Astro.props;
 const t = p(lang);
-const labels = {
-  en: { languages: 'Languages', looking: 'What I am looking for', cv: 'Full CV', cvHref: '/cv/' },
-  es: { languages: 'Idiomas', looking: 'Qué busco', cv: 'CV completo', cvHref: '/es/cv/' },
+
+const copy = {
+  en: {
+    cv: 'Full CV',
+    cvHref: '/cv/',
+    facts: 'At a glance',
+    rows: [
+      { k: 'Role', v: 'Financial Data Analyst — FP&A & BI' },
+      { k: 'Looking for', v: 'Remote FP&A / BI roles and contract work' },
+      { k: 'Based in', v: 'Arequipa, Peru · UTC−5' },
+      { k: 'Languages', v: 'Spanish (native) · English B2' },
+      { k: 'Education', v: 'Accounting, UCSP — expected 2027' },
+    ],
+    badgeK: '1st globally',
+    badgeV: "KPMG's Audit Foundations 1 training program, international cohort",
+    getTitle: 'What you get',
+    get: [
+      {
+        k: 'Numbers checked before they are shown',
+        v: 'I reconcile before I publish. A pipeline that does not tie out stops itself instead of feeding a dashboard.',
+      },
+      {
+        k: 'One person for two conversations',
+        v: 'I can talk debits and accruals with the controller and joins and schemas with the data team — and translate between them.',
+      },
+      {
+        k: 'Proof you can open',
+        v: 'Three public projects with code, tests and a written case. Nothing here asks you to take my word for it.',
+      },
+    ],
+  },
+  es: {
+    cv: 'CV completo',
+    cvHref: '/es/cv/',
+    facts: 'En resumen',
+    rows: [
+      { k: 'Rol', v: 'Analista de datos financieros — FP&A y BI' },
+      { k: 'Busco', v: 'Roles remotos de FP&A / BI y proyectos por contrato' },
+      { k: 'Desde', v: 'Arequipa, Perú · UTC−5' },
+      { k: 'Idiomas', v: 'Español (nativo) · Inglés B2' },
+      { k: 'Formación', v: 'Contabilidad, UCSP — prevista 2027' },
+    ],
+    badgeK: '1.er puesto global',
+    badgeV: 'Programa Audit Foundations 1 de KPMG, cohorte internacional',
+    getTitle: 'Qué ganas si trabajamos juntos',
+    get: [
+      {
+        k: 'Números revisados antes de mostrarse',
+        v: 'Concilio antes de publicar. Un pipeline que no cuadra se detiene solo en vez de alimentar un dashboard.',
+      },
+      {
+        k: 'Una persona para dos conversaciones',
+        v: 'Hablo de debe, haber y devengos con el contador, y de joins y esquemas con el equipo de datos — y traduzco entre ambos.',
+      },
+      {
+        k: 'Pruebas que puedes abrir',
+        v: 'Tres proyectos públicos con código, tests y un caso escrito. Nada aquí te pide que me creas sin ver.',
+      },
+    ],
+  },
 }[lang];
 ---
 
-<div class="about about--narrative">
-  <header class="about-head">
-    <p class="eyebrow">{t(profile.title)}</p>
-    <h1 class="page-title">{profile.name}</h1>
-    <div class="about-narrative">
-      {t(profile.about).split('\n\n').map((para) => <p class="lede">{para}</p>)}
-    </div>
+<div class="about">
+  <div class="about-grid">
+    <header class="about-head">
+      <p class="eyebrow">{t(profile.title)}</p>
+      <h1 class="page-title">{profile.name}</h1>
+      <div class="about-narrative">
+        {t(profile.about).split('\n\n').map((para) => <p class="lede">{para}</p>)}
+      </div>
 
-    <div class="row about-cta">
-      <a class="btn" href={`mailto:${profile.email}`}>{profile.email}</a>
-      <a class="btn btn-ghost" href="https://www.linkedin.com/in/joaquincardenas-data">
-        <Linkedin class="brand-icon" /><span>LinkedIn</span>
-      </a>
-      <a class="btn btn-ghost" href="https://github.com/DaelFame">
-        <Github class="brand-icon" /><span>GitHub</span>
-      </a>
-      <a class="btn btn-ghost" href={labels.cvHref}>{labels.cv} &rarr;</a>
-    </div>
-  </header>
+      <div class="row about-cta">
+        <a class="btn" href={`mailto:${profile.email}`}>{profile.email}</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/joaquincardenas-data">
+          <Linkedin class="brand-icon" /><span>LinkedIn</span>
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/DaelFame">
+          <Github class="brand-icon" /><span>GitHub</span>
+        </a>
+        <a class="btn btn-ghost" href={copy.cvHref}>{copy.cv} &rarr;</a>
+      </div>
+    </header>
 
-  <section class="about-block about-cols">
-    <div>
-      <h2>{labels.looking}</h2>
-      <ul class="plain-list">
-        <li>{lang === 'es' ? 'Roles remotos de datos financieros, BI o FP&A.' : 'Remote financial data, BI or FP&A roles.'}</li>
-        <li>{lang === 'es' ? 'Equipos donde contabilidad y datos se hablan en el mismo idioma.' : 'Teams where accounting and data speak the same language.'}</li>
-      </ul>
-    </div>
+    <aside class="about-facts" aria-labelledby="about-facts-title">
+      <h2 id="about-facts-title" class="about-facts-title">{copy.facts}</h2>
+      <dl>
+        {
+          copy.rows.map((row) => (
+            <div class="about-fact">
+              <dt>{row.k}</dt>
+              <dd>{row.v}</dd>
+            </div>
+          ))
+        }
+      </dl>
+      <p class="about-kpmg">
+        <strong>{copy.badgeK}</strong>
+        <span>{copy.badgeV}</span>
+      </p>
+    </aside>
+  </div>
 
-    <div>
-      <h2>{labels.languages}</h2>
-      <ul class="plain-list">
-        <li>{t(profile.languages)}</li>
-        <li>{lang === 'es' ? 'Español: nativo' : 'Spanish: native'}</li>
-      </ul>
-    </div>
+  <section class="about-block" aria-labelledby="about-get">
+    <h2 id="about-get">{copy.getTitle}</h2>
+    <ul class="about-get">
+      {
+        copy.get.map((item) => (
+          <li>
+            <h3>{item.k}</h3>
+            <p>{item.v}</p>
+          </li>
+        ))
+      }
+    </ul>
   </section>
 </div>
